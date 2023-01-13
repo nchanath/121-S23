@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Homework 10 -- Linked Lists | CSCI 121 Computer Science I</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Complete and submit by 4&#x2F;21 at 1:00pm Note the due date for this assignment. In the problems below you are asked to develop a series of linked list methods and also classes of objects that use li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Homework 10 -- Linked Lists">
+<meta property="og:url" content="https://nchanath.github.io/121-S23/2023/01/12/hw10/index.html">
+<meta property="og:site_name" content="CSCI 121 Computer Science I">
+<meta property="og:description" content="Complete and submit by 4&#x2F;21 at 1:00pm Note the due date for this assignment. In the problems below you are asked to develop a series of linked list methods and also classes of objects that use li">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-13T06:30:46.000Z">
+<meta property="article:modified_time" content="2023-01-13T06:36:36.808Z">
+<meta property="article:author" content="Chanathip Namprempre">
+<meta property="article:tag" content="Homework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@ajmeaw">
+  
+    <link rel="alternate" href="/121-S23/atom.xml" title="CSCI 121 Computer Science I" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/121-S23/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/121-S23/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/121-S23/fancybox/jquery.fancybox.min.css">
+
+  
+  <script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script>
+    MathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";
+    MathJax.Ajax.config.path["font"] = "https://cdn.mathjax.org/mathjax/font";
+  </script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/121-S23/" id="logo">CSCI 121 Computer Science I</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Announcements">Announcements</a>
+        
+          <a class="main-nav-link" href="/121-S23/syllabus">Syllabus</a>
+        
+          <a class="main-nav-link" href="/121-S23/lecturenotes">Lecture Notes</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Handouts">Handouts</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Homework">Homework</a>
+        
+          <a class="main-nav-link" href="/121-S23/resources">Resources</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/121-S23/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nchanath.github.io/121-S23"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hw10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw10/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:30:46.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Homework 10 -- Linked Lists
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Complete and submit by 4&#x2F;21 at 1:00pm</strong></p>
+<p><strong>Note the due date for this assignment.</strong></p>
+<p>In the problems below you are asked to develop a series of linked list methods and also classes of objects that use lists of linked nodes as their underlying representation.  You should work from the starting code for linked lists that we showed you in lecture, <a href="LinkedList.py"><em>available for download here.</em></a> In some of the problems, we will ask you to extend the class definition with a new method. In others, we will ask you to devise a class from scratch, but you can use our code to make your methods for that new class.</p>
+<p>For these new classes, our testing code will be examining the structure of the linked list of nodes your code makes.  You need to follow our instructions carefully, naming the instance variables the way we prescribe them so that our tests can examine the objects’ underlying linked structure.</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW10-P1-sum"><a href="#HW10-P1-sum" class="headerlink" title="[HW10 P1] sum"></a><code>[HW10 P1]</code> sum</h2><p>Add a method called <code>sum</code> to the the <code>LinkedList</code> class that computes and returns the sum of all the values held in the nodes of the linked list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll = LinkedList()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">7</span>, <span class="number">10</span>, <span class="number">1</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.<span class="built_in">sum</span>()</span><br><span class="line"><span class="number">18</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="HW10-P2-count"><a href="#HW10-P2-count" class="headerlink" title="[HW10 P2] count"></a><code>[HW10 P2]</code> count</h2><p>Add a method called <code>count</code> to the <code>LinkedList</code> class that takes a value and returns how many times that value appears in the nodes of the linked list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll = LinkedList()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">7</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">7</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.count(<span class="number">10</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.count(<span class="number">7</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.count(<span class="number">6</span>)</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="HW10-P3-apply"><a href="#HW10-P3-apply" class="headerlink" title="[HW10 P3] apply"></a><code>[HW10 P3]</code> apply</h2><p>Add a method called <code>apply</code> to the <code>LinkedList</code> class that takes a function as its argument. It should modify each of the values in the nodes with the value of that function applied to it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll = LinkedList()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">7</span>, <span class="number">10</span>, <span class="number">1</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.apply(<span class="keyword">lambda</span> x: x*x)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">49</span>, <span class="number">100</span>, <span class="number">1</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.apply(<span class="keyword">lambda</span> x: x+<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">50</span>, <span class="number">101</span>, <span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW10-P4-sorted-list"><a href="#HW10-P4-sorted-list" class="headerlink" title="[HW10 P4] sorted list"></a><code>[HW10 P4]</code> sorted list</h2><p>Within the same file, add a new class definition <code>Sorted</code> that inherits from <code>LinkedList</code>. It should instead maintain the items that are appended in sorted order.  To do this, you’ll want to override the <code>append</code> method of <code>LinkedList</code> objects by writing a new <code>append</code> method under the class <code>Sorted</code>. It should insert nodes into the list in the order of their keys.  The first node should hold the smallest item, and the subsequent nodes should be at least as large, or larger than this first item.  Moving down the nodes from the first to the last, the values should be in sorted order. You need not change or add any other methods to this class.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll = Sorted()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">1</span>, <span class="number">7</span>, <span class="number">10</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW10-P5-delete-all"><a href="#HW10-P5-delete-all" class="headerlink" title="[HW10 P5] delete all"></a><code>[HW10 P5]</code> delete all</h2><p>Add a new method <code>deleteAll</code> to class <code>LinkedList</code> that takes a value and modifies the linked list so that all nodes with that value are removed.  If no nodes have that value, the list should not be changed.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll = LinkedList()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">7</span>, <span class="number">10</span>, <span class="number">7</span>, <span class="number">1</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.deleteAll(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">10</span>, <span class="number">1</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.deleteAll(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ll.display()</span><br><span class="line">&lt;<span class="number">10</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW10-P6-Queue"><a href="#HW10-P6-Queue" class="headerlink" title="[HW10 P6] Queue"></a><code>[HW10 P6]</code> Queue</h2><p>There is a common collection for organizing a sequence of items called a <code>Queue</code>. The two main methods of queues are <code>enqueue</code> which places an item onto the queue, and <code>dequeue</code> which removes an item from the queue.  A <code>dequeue</code> always removes the <em>least recently added</em> item from the queue.</p>
+<p>A queue can be thought of as a line of items, where a new item gets added to the back of the line with <code>enqueue</code>, and where <code>dequeue</code> removes the item from the front. The front item is often called the “head” item of the queue.</p>
+<p>Create a new <code>Queue</code> class. Write it’s code so that it stores its elements using a linked list.  We’ve <a href="Queue.py"><em>provided a template of the code at this link</em></a> that you can complete by replacing each of the <code>pass</code> lines with a method’s code. In addition to <code>__init__</code>, which makes an empty <code>Queue</code>, it should also have the methods <code>enqueue</code>, <code>dequeue</code>, and <code>head</code>.</p>
+<p>Write the code so that it maintains two instance variables <code>first</code> and <code>last</code>.  When the queue is empty, both its <code>self.first</code> and <code>self.last</code> should be <code>None</code>.  When the queue has several items, <code>self.first</code> should contain the node with the value that’s been sitting in the queue the longest. This would be the value that was least recently added, the head item.  The next node after <code>self.first</code> should contain the value that was added after the “head”, and so on, all the way to the node at the end, which should contain the value most recently added.  The variable <code>self.last</code> should be that last node in the list.</p>
+<p>When a value is added to the queue with <code>enqueue</code>, a new node should be placed at the end of the list, and <code>self.last</code> should be changed to refer to that new node.  When a value is removed with <code>dequeue</code> the node referenced by <code>self.first</code> should be removed and <code>self.first</code> should change to the next node in the linked list.</p>
+<p>The <code>dequeue</code> method should return the value that was held in that removed node. The <code>head</code> method should return the head value, but not remove it from the queue. If the queue is empty, the <code>head</code> method should return <code>None</code>.</p>
+<p>When a queue has only one item, <code>self.first</code> and <code>self.last</code> will be referring to the same node in the linked list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q = Queue()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.enqueue(<span class="number">7</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.enqueue(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.enqueue(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.head()</span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.dequeue()</span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.head()</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.enqueue(<span class="number">8</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.dequeue()</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.head()</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="HW10-P7-doubly-linked"><a href="#HW10-P7-doubly-linked" class="headerlink" title="[HW10 P7] doubly-linked"></a><code>[HW10 P7]</code> doubly-linked</h2><p>Let’s now devise a new linked list class with a different node type, one that provides a “doubly-linked” list which we describe below.  We’ll name the new class ‘DLinkedList’ and its node class ‘DLLNode’.</p>
+<p>In a doubly-linked list, nodes have a link to both the <em>previous</em> and the next node in their structure.  That means that each ‘DLLNode’ should have a <code>value</code>, a <code>next</code>, and a <code>prev</code>. The use of <code>value</code> and <code>next</code> are as before for singly-linked lists. As before, a node’s <code>next</code> refers to the node that follows it in the linked structure. In addition, a node’s <code>prev</code> refers to the node that <em>precedes it</em> in the linked structure. When a node is the last in the linked list, its <code>next</code> should be <code>None</code>. If a node is the first in the linked list, its <code>prev</code> should be <code>None</code>.  For any node that is neither the first or the last, its <code>next</code> node should have it as <code>prev</code>. Its <code>prev</code> node should have it as <code>next</code>. That is to say, for any node <code>n</code> sitting somewhere in the middle of a doubly-linked list</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n.<span class="built_in">next</span>.prev == n</span><br></pre></td></tr></table></figure>
+<p>and</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n.prev.<span class="built_in">next</span> == n</span><br></pre></td></tr></table></figure>
+
+<p>Rewrite the code for the <em>original</em> <code>LinkedList.py</code> source we provided.  Call it <code>DLinkedList.py</code> and name its classes <code>DLLNode</code> and <code>DLinkedList</code>.  Its <code>DLLNode</code> class should build doubly-linked nodes that contain both <code>next</code> and <code>prev</code> attributes. A <code>DLinkedList</code> object should have two attributes: <code>first</code> and <code>last</code>. When the list is empty, these should both be set to <code>None</code>. When the list has length one, that one node should be both the <code>first</code> and the <code>last</code>. When the list is longer, <code>first</code> should refer to that list’s first node and <code>last</code> should refer to that list’s last node.</p>
+<p>Write the <code>append</code>, <code>insert</code>, and <code>delete</code> methods of <code>DLinkedList</code> so that they modify both <code>next</code> and <code>prev</code> when nodes are linked and unlinked with these methods. They should also modify the <code>first</code> and <code>last</code> references in cases where those parts of the list structure change.</p>
+<p>Note that the other methods we wrote for <code>LinkedList</code> will not need to be changed for <code>DLinkedList</code>. They will still work since they only inspect the nodes in the list (they don’t modify them) and rely only on the <code>next</code> attribute of nodes and the <code>first</code> attribute of lists.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw10/" data-id="clcu5cl9u000073t0861odsxi" data-title="Homework 10 -- Linked Lists" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/121-S23/2023/01/12/hw9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Homework 9 -- Higher-Order Functions</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Announcements/" rel="tag">Announcements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/121-S23/tags/Announcements/" style="font-size: 10px;">Announcements</a> <a href="/121-S23/tags/Homework/" style="font-size: 20px;">Homework</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/121-S23/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw10/">Homework 10 -- Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw9/">Homework 9 -- Higher-Order Functions</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw8/">Homework 8 -- Object Classes and Inheritance</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw7/">Homework 7 -- Call yourself</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw6/">Homework 6 -- Joining Splits and Other Things</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Chanathip Namprempre<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/121-S23/tags/Announcements" class="mobile-nav-link">Announcements</a>
+  
+    <a href="/121-S23/syllabus" class="mobile-nav-link">Syllabus</a>
+  
+    <a href="/121-S23/lecturenotes" class="mobile-nav-link">Lecture Notes</a>
+  
+    <a href="/121-S23/tags/Handouts" class="mobile-nav-link">Handouts</a>
+  
+    <a href="/121-S23/tags/Homework" class="mobile-nav-link">Homework</a>
+  
+    <a href="/121-S23/resources" class="mobile-nav-link">Resources</a>
+  
+</nav>
+    
+
+
+<script src="/121-S23/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/121-S23/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/121-S23/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
