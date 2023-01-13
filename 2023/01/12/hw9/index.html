@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Homework 9 -- Higher-Order Functions | CSCI 121 Computer Science I</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Complete and submit by 4&#x2F;7 at 1:00pm  Here we exercise the higher order function aspects of Python. The Python language allows you to treat functions as data. You can pass function objects as par">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Homework 9 -- Higher-Order Functions">
+<meta property="og:url" content="https://nchanath.github.io/121-S23/2023/01/12/hw9/index.html">
+<meta property="og:site_name" content="CSCI 121 Computer Science I">
+<meta property="og:description" content="Complete and submit by 4&#x2F;7 at 1:00pm  Here we exercise the higher order function aspects of Python. The Python language allows you to treat functions as data. You can pass function objects as par">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-13T06:25:23.000Z">
+<meta property="article:modified_time" content="2023-01-13T06:30:02.658Z">
+<meta property="article:author" content="Chanathip Namprempre">
+<meta property="article:tag" content="Homework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@ajmeaw">
+  
+    <link rel="alternate" href="/121-S23/atom.xml" title="CSCI 121 Computer Science I" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/121-S23/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/121-S23/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/121-S23/fancybox/jquery.fancybox.min.css">
+
+  
+  <script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script>
+    MathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";
+    MathJax.Ajax.config.path["font"] = "https://cdn.mathjax.org/mathjax/font";
+  </script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/121-S23/" id="logo">CSCI 121 Computer Science I</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Announcements">Announcements</a>
+        
+          <a class="main-nav-link" href="/121-S23/syllabus">Syllabus</a>
+        
+          <a class="main-nav-link" href="/121-S23/lecturenotes">Lecture Notes</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Handouts">Handouts</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Homework">Homework</a>
+        
+          <a class="main-nav-link" href="/121-S23/resources">Resources</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/121-S23/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nchanath.github.io/121-S23"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hw9" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw9/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:25:23.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Homework 9 -- Higher-Order Functions
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Complete and submit by 4&#x2F;7 at 1:00pm</strong> </p>
+<p>Here we exercise the <em>higher order</em> function aspects of Python. The Python language allows you to treat functions as data. You can pass function objects as parameters to functions and you can return functions from functions.  Functions can also be described tersely, and <em>anonymously</em>, with the <code>lambda</code> construct.</p>
+<p>We focus briefly on the trickiest of these features: functions that return functions. Consider the kind of Python code suggested below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def functionMaker(...):</span><br><span class="line"></span><br><span class="line">    def some_function(...):</span><br><span class="line">        ...</span><br><span class="line">        # code of some_function</span><br><span class="line">        ...</span><br><span class="line">        return ...</span><br><span class="line"></span><br><span class="line">    return some_function</span><br></pre></td></tr></table></figure>
+
+<p>The function <code>functionMaker</code> is handed some information. Using that information it describes <code>some_function</code> and returns that function object to the code that called <code>functionMaker</code>.  Here is a more realized version of that code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">makeAdder</span>(<span class="params">amount</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x</span>):</span><br><span class="line">        <span class="keyword">return</span> x + amount</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> add</span><br></pre></td></tr></table></figure>
+
+<p>The function <code>makeAdder</code> returns back a function that adds a specific <code>amount</code> to its parameter <code>x</code>.  So <code>makeAdder(1)</code> returns an incrementing function, and <code>makeAdder(10)</code> returns an “adds 10” function.</p>
+<p>We could also write the <code>makeAdder</code> function like below:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">makeAdder</span>(<span class="params">amount</span>):</span><br><span class="line"></span><br><span class="line">    add = (<span class="keyword">lambda</span> x: x+amount)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> add</span><br></pre></td></tr></table></figure>
+<p>or simply</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">makeAdder</span>(<span class="params">amount</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">lambda</span> x: x+amount)</span><br></pre></td></tr></table></figure>
+
+<p>This somehow makes it clear what’s happening: <code>makeAdder</code> gives back a function object that uses any specific <code>amount</code> you feed <code>makeAdder</code> as input. The code below builds three different function objects, one for each amount:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; adds10 = makeAdder(10)</span><br><span class="line">&gt;&gt;&gt; adds1 = makeAdder(1)</span><br><span class="line">&gt;&gt;&gt; adds37 = makeAdder(37)</span><br><span class="line">&gt;&gt;&gt; adds10(8)</span><br><span class="line">18</span><br><span class="line">&gt;&gt;&gt; adds1(8)</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; adds37(8)</span><br><span class="line">45</span><br></pre></td></tr></table></figure>
+<p>You can write <code>makeAdder</code> more tersely as:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">makeAdder = (<span class="keyword">lambda</span> amount: (<span class="keyword">lambda</span> x: x + amount))</span><br></pre></td></tr></table></figure>
+
+<p>This is just a nested pair of <code>lambda</code> expressions.</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW9-P1-max-of-two"><a href="#HW9-P1-max-of-two" class="headerlink" title="[HW9 P1] max of two"></a><code>[HW9 P1]</code> max of two</h2><p>Write a function <code>def max_of_two(f,g,x)</code> that takes three parameters. The first two are functions and the third is a number. The function <code>max_of_two</code> should call each of the two functions <code>f</code> and <code>g</code> on the number <code>x</code> that was given.  It should return the maximum of those two results.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; max_of_two(lambda a: a+10, lambda b: b*b, 2)</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; max_of_two(lambda a: a+10, lambda b: b*b, 3)</span><br><span class="line">13</span><br><span class="line">&gt;&gt;&gt; max_of_two(lambda a: a+10, lambda b: b*b, 4)</span><br><span class="line">16</span><br><span class="line">&gt;&gt;&gt; max_of_two(lambda a: a+10, lambda b: b*b, 5)</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+
+<p>The function <code>max_of_two</code> is a higher-order function because it takes two function parameters.</p>
+<h2 id="HW9-P2-average"><a href="#HW9-P2-average" class="headerlink" title="[HW9 P2] average"></a><code>[HW9 P2]</code> average</h2><p>Write a function <code>def average(f,start,end)</code> that takes three parameters. The first is an integer function and the next two are integers. It should return the average value of function <code>f</code> when evaluated on numbers in the range from <code>start</code> up to <code>end</code>. That is, it should compute the sum <code>f(start) + f(start+1) + ... + f(end)</code> divided by the number of summands in that sum.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; average(lambda b: b*b, 1, 5)</span><br><span class="line">11.0</span><br><span class="line">&gt;&gt;&gt; average(lambda b: b*b, 2, 5)</span><br><span class="line">13.5</span><br><span class="line">&gt;&gt;&gt; average(lambda b: b*b, -1, 1)</span><br><span class="line">0.666666666666666</span><br><span class="line">&gt;&gt;&gt; average(lambda a: a+10, 1,5)</span><br><span class="line">13.0</span><br></pre></td></tr></table></figure>
+
+<p>The function <code>average</code> is a higher-order function because it takes a function as a parameter.</p>
+<p>You can assume that <code>start</code> is not larger than <code>end</code> and so there is at least one value in the range.</p>
+<h2 id="HW9-P3-brick-maker"><a href="#HW9-P3-brick-maker" class="headerlink" title="[HW9 P3] brick maker"></a><code>[HW9 P3]</code> brick maker</h2><p>Define a function <code>brick_maker</code> that takes a single parameter— a symbol represented as a string—and returns a function that’s specialized for making a rectangular “brick” , that is, a string made up of repeats of that character, of a given width and height.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; at_brick = brick_maker(&#x27;@&#x27;)</span><br><span class="line">&gt;&gt;&gt; dot_brick = brick_maker(&#x27;.&#x27;)</span><br><span class="line">&gt;&gt;&gt; print(at_brick(3,2))</span><br><span class="line">@@@</span><br><span class="line">@@@</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(dot_brick(5,1))</span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(dot_brick(3,4))</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; at_brick(2,2)</span><br><span class="line">&#x27;@@\n@@\n&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>Note that the function given back by <code>brick_maker</code> is <em>a function that</em> <strong>returns</strong> <em>a string</em>. Neither <code>at_brick</code> nor <code>dot_brick</code> print. In our first few tests, above, we explicitly <code>print</code> the string returned by <code>at_brick</code> and <code>dot_brick</code>. In the last test, we examine the string returned by <code>at_brick</code>.</p>
+<p>Bricks have positive widths and positive heights. You need not worry about handling brick parameters that are not positive.</p>
+<p>The function <code>brick_maker</code> is higher order.  When given a symbol it gives back a function, one that happens to be a brick creation function for that symbol.</p>
+<h2 id="HW9-P4-max-of-functions"><a href="#HW9-P4-max-of-functions" class="headerlink" title="[HW9 P4] max of functions"></a><code>[HW9 P4]</code> max of functions</h2><p>Write a function <code>def max_of_funcs(f,g)</code> which takes two function parameters, <code>f</code> and <code>g</code>.  It should return function <code>h</code>, with the property that when given a value <code>x</code> the result of <code>h(x)</code> should be the maximum of <code>f(x)</code> and <code>g(x)</code>.  Note that this function is very different from the function <code>max_of_two</code>, but the two are closely related.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = max_of_funcs(lambda a: a+10, lambda b: b*b)</span><br><span class="line">&gt;&gt;&gt; f(2)</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; f(3)</span><br><span class="line">13</span><br><span class="line">&gt;&gt;&gt; f(4)</span><br><span class="line">16</span><br><span class="line">&gt;&gt;&gt; f(5)</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+
+<p>The <code>max_of_funcs</code> is a higher-order function because it takes two function parameters and returns a function.</p>
+<h2 id="HW9-P5-conditional-print"><a href="#HW9-P5-conditional-print" class="headerlink" title="[HW9 P5] conditional print"></a><code>[HW9 P5]</code> conditional print</h2><p>Write a function <code>conditional_print</code>. It is a higher-order function that takes a parameter and gives back a <em>printing procedure</em>, one that acts like the built-in <code>print</code> procedure by outputting information to the terminal. This printing function will behave a little differently though: the function that <code>conditional_print</code> gives back will be a <em>conditionally printing procedure</em>.</p>
+<p>Let’s pin down what we mean by this. The <code>print</code> procedure takes a parameter and always prints it, like so:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(6)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; print(3)</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; print(7)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; print(37)</span><br><span class="line">37</span><br><span class="line">&gt;&gt;&gt; print(36)</span><br><span class="line">36</span><br></pre></td></tr></table></figure>
+
+<p>A “conditionally printing procedure” only prints inputs of a particular type (while doing nothing on other inputs).  For example, you could create a function that prints its integer input when it is a multiple of 3, and does nothing otherwise.  Suppose you did this, defined a function called <code>print_when_mult_of_three</code>, and used it instead of <code>print</code>.  Then, we’d expect to see this kind of interaction:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print_when_mult_of_three(6)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; print_when_mult_of_three(3)</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; print_when_mult_of_three(7)</span><br><span class="line">&gt;&gt;&gt; print_when_mult_of_three(37)</span><br><span class="line">&gt;&gt;&gt; print_when_mult_of_three(36)</span><br><span class="line">36</span><br></pre></td></tr></table></figure>
+
+<p>You’ll notice what happened there. When the function was fed multiples of three (like 6, 3, and 36) it printed those. For the other numbers, it didn’t do anything. It printed only when that condition was met.</p>
+<p>So, back to the matter at hand: we want you to write a higher-order function called <code>conditional_print</code> that constructs conditionally printing procedures. It should take a single input, which we will call a “test”.  A test is a function that only returns <code>True</code> or <code>False</code>.  When given a test, <code>conditional_print</code> should return a conditionally printing procedure that only prints when the test returns <code>True</code>.</p>
+<p>It can then be used like below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; mult_of_three = (lambda n: n % 3 == 0)</span><br><span class="line">&gt;&gt;&gt; pr_mo3 = conditional_print(mult_of_three)</span><br><span class="line">&gt;&gt;&gt; pr_mo3(6)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; pr_mo3(7)</span><br><span class="line">&gt;&gt;&gt; pr_pos =  conditional_print(lambda x: x &gt; 0)</span><br><span class="line">&gt;&gt;&gt; pr_pos(7)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; pr_pos(-7)</span><br><span class="line">&gt;&gt;&gt; pr_pos(0)</span><br><span class="line">&gt;&gt;&gt; pr_pos(1)</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>The <code>conditional_print</code> function is higher-order because it takes a function as a parameter. It also returns back a function, a procedure that conditionally prints.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw9/" data-id="clcu547d100005ft00rt22lsg" data-title="Homework 9 -- Higher-Order Functions" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/121-S23/2023/01/12/hw8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Homework 8 -- Object Classes and Inheritance</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Announcements/" rel="tag">Announcements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/121-S23/tags/Announcements/" style="font-size: 10px;">Announcements</a> <a href="/121-S23/tags/Homework/" style="font-size: 20px;">Homework</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/121-S23/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw9/">Homework 9 -- Higher-Order Functions</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw8/">Homework 8 -- Object Classes and Inheritance</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw7/">Homework 7 -- Call yourself</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw6/">Homework 6 -- Joining Splits and Other Things</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw5/">Homework 5 -- List</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Chanathip Namprempre<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/121-S23/tags/Announcements" class="mobile-nav-link">Announcements</a>
+  
+    <a href="/121-S23/syllabus" class="mobile-nav-link">Syllabus</a>
+  
+    <a href="/121-S23/lecturenotes" class="mobile-nav-link">Lecture Notes</a>
+  
+    <a href="/121-S23/tags/Handouts" class="mobile-nav-link">Handouts</a>
+  
+    <a href="/121-S23/tags/Homework" class="mobile-nav-link">Homework</a>
+  
+    <a href="/121-S23/resources" class="mobile-nav-link">Resources</a>
+  
+</nav>
+    
+
+
+<script src="/121-S23/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/121-S23/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/121-S23/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
