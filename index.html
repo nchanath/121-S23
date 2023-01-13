@@ -107,7 +107,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/121-S23/2023/01/12/proj4/">proj4</a>
+      <a class="p-name article-title" href="/121-S23/2023/01/12/proj4/">Project 4 -- Adventure</a>
     </h1>
   
 
@@ -115,14 +115,137 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p><a href="pr4adventure.zip">starter code for the adventure option</a></p>
+<p>In this project you will be making your own text-based adventure game.  In such a game, a player walks around in some sort of world, exploring or accomplishing a task. You can pick the game’s theme (what sort of world it is, etc.), what sort of activities are most important (fight monsters? trade resources?), and what the goal is.</p>
+<p>We have provided the code with a very simple game to start with. It has a very small world and is a lackluster game, to say the least, but the code provides a framework from which to build your program. There are several Python files that make up the program, each defining classes that help make up the contents of the world. You should start by playing its game (you’ll want to run the script <code>main.py</code>) and then look through the code to see how the code works. (When playing, the command “help” will give you a list of other commands.)</p>
+<p>Once you get comfortable with the code, you should begin changing and building on it to make your own game. We list a collection of suggested changes to make to the code below. It describes many improvements you could make and assigns a number of points to each change. (In general, bigger&#x2F;harder additions are worth more points.)  To get a passing score on this assignment, you must earn at least 20 points, though you should aim to earn at least 40. You can pick which improvements to make, but remember that your goal isn’t just to check off boxes by making the improvements. You want to make something that is actually a good game. (So for example, it is probably necessary to choose the option that expands your world beyond 4 rooms…)</p>
+<p>The improvements are not explained in the sort of specific detail that would tell you exactly what changes they include. You have to add this functionality in a way that you think makes for a good game. For example, you have to figure out how to modify the user interface so that the new functionality can be used. (If you are adding doors that require keys to unlock them, do you just make it so you have to be carrying the key to go through the door? Or is there a specific “unlock” command? If so, you should update the “help” description to include information on how to use it.)</p>
+<p>I have included an <code>examples</code> folder with compiled Python code for a few different games. There is a very simple “minotaur” game that suggests the kind of minimal game that you can get working for the first “check-in” milestone. Run it with the command:</p>
+<pre><code>python3 minotaur-39.py
+</code></pre>
+<p>This only runs on Python 3.9. There is a second file you can use to run on Python 3.8 instead. There are some stellar compiled examples of past students’ projects. Maybe these will be inspiration for developing your own game. They do illustrate well how others have made improvements and made them fit into their own game’s story. To run them, use the <code>.pyc</code> file for your version of Python. I’m running version 3.9 so I would type</p>
+<pre><code> python3 hagoromo-39.pyc
+</code></pre>
+<p>to run the <code>hagoromo</code> game. There is <code>zoo</code> and <code>owl</code> to try, too.</p>
+<p>You should create a document that briefly describes your game and explains its gameplay. You should develop this document as you develop the game. It should include a list of all the improvements you’ve made, the points you feel you earned for each, and a brief explanation of what specifically you did for each improvement. Sometimes there will be very little to say, but if the improvement gave you freedom to choose how things would work, you should say what you chose. If you have to add a new type of monster, for example, say what type you added and what if anything is special about it.  You should also have a quick note about what code in what files was added&#x2F;modified to make this work. You are also free to make improvements that aren’t on the list of options, and if you do that you should describe them here as well. This document should explicitly enumerate and tally for us the points you have earned with your work.</p>
+<p>Your project will be evaluated in several ways. These are:</p>
+<ul>
+<li><p>How many points did you earn from your improvements?</p>
+</li>
+<li><p>How well did you make the improvements you made? Did you do the minimum to make it count, or do something very challenging? Were there bugs? Were the improvements made in a way that was easy for the user to understand? Were they incorporated well into the game?</p>
+</li>
+<li><p>How good is the overall game? You should be trying to make a game that is actually fun to play. Pick improvements that help you achieve this and try to design the game well. Make your improvements well-integrated into the game. (For example, if you add weapons to your game, you should make it so that there are various different weapons that exist in the world so that finding a good weapon is part of playing the game. Just having a single weapon on the floor in the starting room that you pick up at the beginning of the game doesn’t add much.) Make sure someone who is new to the game can figure out how to play.</p>
+</li>
+<li><p>Did you make regular progress in your coding? We will have several “milestones” for this project that we’d like you to reach, and you should think of their dates as real deadlines to meet before the final submission deadline. For these intermediate deadlines you will report by demonstrating your game to us, and show us how much of the work you have completed at each stage. You will be evaluated on your progress with each of these minor deadlines, in addition to what you’ve completed by the major deadline. Start early, do not let this assignment sit.</p>
+</li>
+<li><p>How well documented is your code and how understandable is it? This applies both to comments in the code and to the document you’re submitting. Your code should be well-written and readable, and we should be able to figure out what you did and how you did it.</p>
+</li>
+</ul>
+<p>Some notes on the work:</p>
+<ul>
+<li><p>The starter code has each class in a separate file. It is not necessary to make a file for every class. For example, if you have classes defining particular types of items, it might be natural to put them in the same “game items” file. However, it can often be good practice to keep some things in separate files as a way of making the code more manageable.</p>
+</li>
+<li><p>You should think ahead and have an idea of what you want your game to end up looking like before you start adding things, but you should also add things one at a time in a way that can be tested as they get added.</p>
+</li>
+<li><p>Leave time for general testing of the game at the end. Even once all of the technical improvements have been made, you will want to change things around a bit to make the game better. Feel free to have a friend play the game and see if they enjoy it, if they can figure out how to play, etc. We will formalize this process with the “beta test” deadline in the last week.</p>
+</li>
+<li><p>The starter code is meant as starter code. It is okay to change things. You should also not assume everything is done perfectly. You ideally want your program to work gracefully even if, for example, a user makes a typo while inputting a command. The starter code is reasonably good about this sort of thing, but it can certainly be improved.</p>
+</li>
+</ul>
+<h2 id="Working-with-Partners"><a href="#Working-with-Partners" class="headerlink" title="Working with Partners"></a>Working with Partners</h2><p>You are allowed (even encouraged!) to work with a partner on this project. If you do so, you must both contribute roughly equal work to the project. I expect a slightly more ambitious game from you. You will need 25 points to pass and should aim for at least 50 total points (as opposed to 20 and 40 for single individuals).</p>
+<p>You should also submit a brief description of who did what work. (This should be no more than a page, probably substantially shorter.) Did you sit at a computer together working? Split things up? Test each others’ code? You should describe briefly what parts each person worked on, what was worked on together, what “worked on together” meant for you, and how you coordinated your efforts.</p>
+<p>This is a small enough project that coordinating the efforts of two people should not be too complicated, but if you’re interested, I would recommend using a Git repository. (These can be set up for free online, and a quick google search will give not only the needed resources but also instructions on how to use Git.)</p>
+<h2 id="Deadlines"><a href="#Deadlines" class="headerlink" title="Deadlines"></a>Deadlines</h2><p>This project will include several intermediate deadlines.</p>
+<ul>
+<li><p><strong>Game Proposal:</strong> <em>April 17th.</em> Submit a brief text file to the Gradescope submission system. This should say who you will partner with (if anyone) and the general game idea. (The game idea is just a very basic description– two or three sentences should be plenty.)  If you are working with a partner, you should both separately submit the same proposal file.</p>
+</li>
+<li><p><strong>Progress check-in:</strong> <em>Thursday, April 28th.</em> By this day you should have done the work to have earned at least 20 points, 30 ideally, though perhaps crudely implemented. Briefly show these changes to a TA or professor, either during lab, or during professor office hours, or TA evening hours. We will evaluate your progress.</p>
+</li>
+<li><p><strong>Project submission:</strong> <em>Wednesday, May 5th.</em> Submit your game’s code and any of its supporting files, a description of your game and instructions for playing it, and a report of the features you implemented with a breakdown of the point total you reached.</p>
+</li>
+</ul>
+<h2 id="Menu-of-improvements"><a href="#Menu-of-improvements" class="headerlink" title="Menu of improvements"></a>Menu of improvements</h2><ul>
+<li><p><strong>“me” command</strong> <em>(2 points)</em>:<br>Create a command that lets the player see their current status, including their health and&#x2F;or whatever other attributes you’ve added.</p>
+</li>
+<li><p><strong>bigger world</strong> <em>(2 points)</em>:<br>The game starts with four rooms. That is not enough for much to happen in. Make the world bigger and more interesting. Give descriptions to rooms that say more than just a room number.</p>
+</li>
+<li><p><strong>“inspect” command</strong> <em>(2 points)</em>:<br>Create a command that lets the player look at items. This should display the item description. The player should be able to look at both items they see in their current location and items in their inventory.</p>
+</li>
+<li><p><strong>limited inventory</strong> <em>(2 points)</em>:<br>Make objects you’re carrying have a size or weight, and put a limit on how much you can carry.</p>
+</li>
+<li><p><strong>“drop” command</strong> <em>(2 points)</em>:<br>Make it so that the player can drop items, so that their inventory doesn’t become unreasonably large.</p>
+</li>
+<li><p><strong>weapons</strong> <em>(2 points)</em>:<br>Implement a new type of item for weapons, ones that a player can use to make themselves more formidable in battle. This will requires modifying how fights against monsters work.</p>
+</li>
+<li><p><strong>armor</strong> <em>(2 points)</em>:<br>Implement a type of item for armor.  These make it harder for a monster to kill the player.</p>
+</li>
+<li><p><strong>healing items</strong> <em>(2 points)</em>:<br>Create items that players can use to restore health. These items should only be usable once each and should disappear when used. </p>
+</li>
+<li><p><strong>item stacking</strong> <em>(2 points)</em>:<br>Make the inventory display ‘(x2)’ if there are two identical items (and so on, if there are more), rather than listing the item name twice.</p>
+</li>
+<li><p><strong>introducing monsters during play</strong> <em>(2 points)</em>:<br>Make it so that over time new monsters appear in the world.</p>
+</li>
+<li><p><strong>“wait” command</strong> <em>(2 points)</em>:<br>In the game as it is, time passes only when you move to a new room. Make it so that you can type a command that just lets time pass. Or implement a trickier version: let the user type a number so they can wait for a number of turns with only one command entry.</p>
+</li>
+<li><p><strong>regeneration</strong> <em>(2 points)</em>:<br>Have the player regenerate in some way over time. The easiest thing is to make health increase a little each turn, but there are other things you could do as well.</p>
+</li>
+<li><p><strong>locked chests</strong> <em>(3 points)</em>:<br>Create “chests” or other containers that cannot be opened without a key, and also the relevant keys.</p>
+</li>
+<li><p><strong>locked doors</strong> <em>(3 points)</em>:<br>Create doors that cannot be used unless first unlocked with a key, and also the relevant keys.</p>
+</li>
+<li><p><strong>containers</strong> <em>(3 points)</em>:<br>Make containers (bags, boxes, etc.)  that can hold other objects.</p>
+</li>
+<li><p><strong>victory condition</strong> <em>(3 points)</em>:<br>Create a way for the player to win the game.</p>
+</li>
+<li><p><strong>random world</strong> <em>(3 points)</em>:<br>Make the world be generated in a random way when the program is run so that it’s somewhat different each time the game is played.</p>
+</li>
+<li><p><strong>loot</strong> <em>(3 points)</em>:<br>Make it so that defeating some monsters causes useful items to appear. There should be some amount of randomness about what those items are.</p>
+</li>
+<li><p><strong>events</strong> <em>(3 points)</em>:<br>Make it so that interesting things sometimes happen. Their ocurrence can be governed by a timer or they could happen just at random.</p>
+</li>
+<li><p><strong>more monsters</strong> <em>(3 points)</em>:<br>Create several different types of monsters. They should not just have different names, but really be different in important ways.</p>
+</li>
+<li><p><strong>special rooms</strong> <em>(3 points)</em>:<br>Make rooms that have some effect on the player or monsters when they are entered.  Maybe there’s a hospital that heals you when you enter it? That sort of thing.</p>
+</li>
+<li><p><strong>complex rooms</strong> <em>(3 points)</em>:<br>Give rooms some additional attributes or behavior. Maybe they get dirty?  Or full? Or different types behave differently?</p>
+</li>
+<li><p><strong>player attributes</strong> <em>(3 points)</em>:<br>By default the only characteristic of the player is their health.  Add more attributes that affect what the player can do.</p>
+</li>
+<li><p><strong>command abbreviations</strong> <em>(1-3 points)</em>:<br>The typing needed to play a text adventure can get tedious. Usually games allow abbreviations.  This could simply just be some short, alternate commands (“inv” instead of “inventory”, etc.)  or, more ambitiously, you could accept any string that is the start of only one command. And&#x2F;or you could allow items, monsters, and other things to be abbreviated in some consistent way.</p>
+</li>
+<li><p><strong>helper</strong> <em>(4 points)</em>:<br>Create an autonomous character that is on your side and does something helpful. You should have some ability to control&#x2F;influence how they behave. Maybe you need to ask for their help or ask them to join&#x2F;follow you in your quest, etc.</p>
+</li>
+<li><p><strong>currency</strong> <em>(4 points)</em>:<br>Create a currency for the game. There should be a way for the player to gain currency, and also useful ways for them to spend the currency. (A merchant? a store?)</p>
+</li>
+<li><p><strong>leveling up</strong> <em>(4 points)</em>:<br>Add a mechanism for “leveling up” the player. That is, as they accomplish things in the game, the player should get stronger in some way.</p>
+</li>
+<li><p><strong>crafting</strong> <em>(4 points)</em>:<br>Create some system where the player can use an item, or several items, to construct a useful item.</p>
+</li>
+<li><p><strong>magic</strong> <em>(4 points)</em>:<br>Create a system where the player has “spells” (or “abilities,” whatever best fits your theme) that they can use (possibly learned during the game). There should be some restriction on how often spells can be cast.</p>
+</li>
+<li><p><strong>characters</strong> <em>(4 points)</em>:<br>Characters are neutral beings in the game that you can talk to and interact with.  (The “talking to” can be a matter of picking one of several options of things to say from a list.) They should interact with you or the world in some way when you talk to them. This should be different than the “helper” above (that is, if you make a helper character, then you need another character to get credit for this option).</p>
+</li>
+<li><p><strong>modifying the world</strong> <em>(4 points)</em>:<br>Allow the player to modify rooms&#x2F;locations in some way, more than just by grabbing&#x2F;dropping objects. The changes they make should have a real effect on the gameplay. This could be something like lighting a candle that allows you to see the contents of the room, but only if you are carrying matches. It could be digging a hole that traps monsters. It could be turning on a faucet to flood a room that eventually floods nearby rooms. Perhaps you can make it so that the player creates new rooms or locations with an action.</p>
+</li>
+<li><p><strong>map</strong> <em>(3 to 6 points)</em>:<br>Allow the player to gain the ability to inspect a map of the world. Or give them the ability to look at a map from the start, but make it so that the contents of the map are slowly revealed (say, as rooms are explored). The map can just be “ASCII art,” a printed display.  This is worth more points if you have a larger&#x2F;complex world, or display some interesting things in each location, or limit the map in some way.</p>
+</li>
+<li><p><strong>saving the game</strong> <em>(10 points)</em> :<br>Let a player choose to save their game to come back to later. This should create a file in the folder where the program is stored (or maybe in a “saved” subfolder of that folder) with a name specified by the user. On starting the program, the user should have the option to continue from the point at which they saved, instead of creating a new game.</p>
+</li>
+<li><p><strong>graphical interface</strong> <em>(10 points)</em>:<br>Typing is annoying. Make the program work through a graphical interface instead of typed commands.  You don’t have to create pictures that actually look like the world. You can have a window, with portions dedicated to displaying the description of the current room, what monsters, are there, what items are there, etc. Within this interface, actions should be made by clicking buttons with the mouse or by hitting single keys as controls, rather than just through typing commands. Common options here are the <code>curses</code> library or the “Tk interactive” library <code>tkinter</code>.</p>
+</li>
+<li><p><strong>choose your own</strong> <em>(? points)</em>:<br>Make whatever changes you want, beyond the required points, if it helps make the game better. If it’s important to you to get points for these changes, talk to Jim, David, or Eitan to figure out how many points they are worth.</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj4/" data-id="clcu6t9mk000ujkt09oka7nc8" data-title="proj4" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj4/" data-id="clcv2649i000u8tt07tngct7a" data-title="Project 4 -- Adventure" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
     </footer>
   </div>
   
@@ -145,7 +268,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/121-S23/2023/01/12/proj3/">proj3</a>
+      <a class="p-name article-title" href="/121-S23/2023/01/12/proj3/">Project 2 -- Hawks and Doves, simulating competition among birds</a>
     </h1>
   
 
@@ -153,14 +276,92 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p><strong>Complete and submit by 4&#x2F;15 at 1:00pm</strong></p>
+<hr>
+<ul>
+<li><a href="hawkdove.py">starting code for the <strong>hawkdove</strong> project</a></li>
+</ul>
+<hr>
+<p>In this project you will build a small ecosystem. In this ecosystem birds of various species look for food. Sometimes they find it and eat it. Other times they find it, but so does another bird. The birds then have the choice to fight for the food or to be passive. Depending on their decisions, they could get the food or not, but they could also be injured in the fight. You will create different species of birds with varying behaviors and see how those species thrive (or not) in certain situations.</p>
+<p>The scenarios you’ll be investigating here are commonly talked about in a variety of fields. We’ll be focusing on the programming, but there are lots of important ideas here, and the analysis of this sort of situation is of interest to biologists, economists, mathematicians, and others. Computer simulation is only one way to go about thinking about these issues, but it is a tool that can add help greatly with this analysis (and with more complicated scenarios of a similar type).</p>
+<h2 id="The-model"><a href="#The-model" class="headerlink" title="The model"></a>The model</h2><p>The system we simulate is a very simple one, without most of the complexities of the real world. The only active animals in our world will be birds. Each bird has a number representing its health, which starts at 100. If a bird eats, its health goes up. If it is injured, its health goes down. Birds also lose a small amount of health each unit of time. (This represents their normal rate of burning calories—a bird that doesn’t eat slowly gets less healthy over time.) If the health of a bird hits 0, it dies. If the health goes high—over 200—then the bird reproduces. When it reproduces, its health goes down by 100, and a new bird is created.</p>
+<p>Birds find food in one of two ways. Each time step, there are 10 units of food that are found by single birds on their own, who then get to eat the food without worry. There are also 50 units of food that are contested—one bird finds the food, but another approaches before they can eat it. In cases of contested food, each bird has two options—they can be passive or aggressive. Depending on what they choose, one of the following scenarios will occur:</p>
+<ul>
+<li><p><strong>Two passive birds.</strong> When both birds are passive, they will engage in displays meant to get the other bird to leave, and this will continue until one bird does so. The display costs a small amount of health for each bird, and it is random which of the birds ends up with the food.</p>
+</li>
+<li><p><strong>One aggressive and one passive bird.</strong> If one bird is aggressive and the other is passive, the passive bird will flee and the aggressive bird will get the food.</p>
+</li>
+<li><p><strong>Two aggressive birds.</strong> When both birds are aggressive, they will fight. One bird (chosen randomly) will win, and they will get the food. The loser instead is injured, reducing their health.</p>
+</li>
+</ul>
+<p>We will be modeling several types of birds. We’ll begin with hawks and doves. Hawks will always be aggressive, while doves will always be passive. Once we have that simulation working correctly, we’ll add other types of birds. Along the way we’ll get a bunch of interesting results.</p>
+<p><strong>Programming note:</strong> The goal of this project is to show you object-oriented programming used in a particular way. As a result, we will be very precise about exactly what classes there should be, what methods those classes should have, and what those methods should do. Follow the instructions carefully.</p>
+<h1 id="First-Experiment-hawks-and-doves"><a href="#First-Experiment-hawks-and-doves" class="headerlink" title="First Experiment: hawks and doves"></a>First Experiment: hawks and doves</h1><p>Our first goal is to run the simulation with just hawks and doves. In order to do this, we’ll need to write a lot of code. Your starter code file, <code>hawkdove.py</code>, contains an outline of what we will need.</p>
+<p>It has the needed <code>import</code> statements, and it has a set of constants defined at the top. These constants determine the relative values of food, injuries, and displays, as well as how many of each type of bird we create at the start of the simulation. It also has the code for actually running the simulation, but that code won’t work yet. In between those things, we’ll need to add several classes, each with several methods, that will represent the world of our simulation and the birds that live within it. Follow the steps below to add these pieces.</p>
+<ol>
+<li><p>Create a <code>World</code> class. This will represent the world as a whole. (We will only ever create one actual world object.) The initialization method should take no parameters other than <code>self</code>. The class should only have one instance variable, a list of currently-existing birds, and that list should initially be set to the empty list <code>[]</code>.</p>
+</li>
+<li><p>Create a <code>Bird</code> class. We won’t actually create any instances of this class, but we’ll have other classes that inherit from <code>Bird</code> and represent specific types of birds. It will be useful to define some things about birds here so that we don’t need to repeat them many times later. The <code>Bird</code> initialization function should take a single parameter other than <code>self</code>, a world object. The bird should then add itself to the list of birds that exist in that world. It should also keep an instance variable storing the world that it is in, and it should have an instance variable tracking its current health, which starts at <code>100</code>.</p>
+</li>
+<li><p>Add an <code>eat</code> method to the <code>Bird</code> class. This method should take no additional parameters. When it is called, it should increase the bird’s health by the amount specified by the <code>foodbenefit</code> constant.</p>
+</li>
+<li><p>Add an <code>injured</code> method to the <code>Bird</code> class. This method should take no additional parameters, and should reduce the bird’s health by the amount specified by the <code>injurycost</code> constant.</p>
+</li>
+<li><p>Add a <code>display</code> method to the <code>Bird</code> class. This method should take no additional parameters and should reduce the bird’s health by the amount specified by the <code>displaycost</code> constant.</p>
+</li>
+<li><p>Add a <code>die</code> method to the <code>Bird</code> class. This method should take no additional parameters and should remove the bird from its world’s bird list.</p>
+</li>
+<li><p>Add an <code>update</code> method to the <code>Bird</code> class. This method takes no additional parameters and it represents one unit of time passing. It should reduce the bird’s health by <code>1</code> (representing calories being burned) and then should check whether the health is at or below <code>0</code>. If so, the bird should die (which you can make happen using the <code>die</code> method). We now have a <code>Bird</code> class that has all the basic functionality.</p>
+</li>
+<li><p>Let’s now add additional functionality to the <code>World</code> class. First, create an <code>update</code> method in this class. It should take no additional parameters, and should simply call the <code>update</code> method for each bird in the bird list. With this we now have a single method we can call that makes time pass for every individual in our simulation.</p>
+</li>
+<li><p>Add a <code>free_food</code> method to the <code>World</code> class. This represents the uncontested food that birds can find. It should take a single integer as its parameter. It should then award a free unit of food that many times. Each award of free food is done by picking a random bird from the bird list and having that bird <code>eat</code>. (Each choice of bird should be made independent of the others—it is possible a bird will get free food multiple times in a single <code>free_food</code> call if the bird is lucky.)</p>
+</li>
+<li><p>Now create <code>Dove</code> and <code>Hawk</code> classes, representing our two types of birds. These classes should inherit from <code>Bird</code>, so we won’t need to add all that much to them. Each should have a class variable called <code>species</code> that is a string representing the species of that bird. The <code>Dove</code> class should have species set to <code>&quot;Dove&quot;</code> and the <code>Hawk</code> class should have species set to <code>&quot;Hawk&quot;</code>. There is no need to add initialization functions to either class—the initialization function <code>__init__</code> in <code>Bird</code> will do just fine.</p>
+</li>
+<li><p>Add <code>update</code> methods to <code>Dove</code> and <code>Hawk</code>. These are modifications of the method for <code>Bird</code>. They should do the same things <code>Bird</code> does. (Don’t repeat the code—use the function from <code>Bird</code>.) Then they should also reproduce if necessary. After the standard <code>update</code> (including the health reduction) these methods should check whether the dove&#x2F;hawk has health of at least <code>200</code>. If so, the health should be reduced by <code>100</code> and a new bird (of the same type) should be created (in the same world).</p>
+</li>
+<li><p>Add a <code>defend_choice</code> method to <code>Dove</code> and <code>Hawk</code>. This method takes no input and “asks” the bird whether it will defend itself if another bird finds it with food. Doves never will, so their function should always return <code>False</code>, while hawks should have a function that always returns <code>True</code>.</p>
+</li>
+<li><p>Finally, we need to add a method that represents a hawk&#x2F;dove coming upon another bird with food. This method will be called <code>encounter</code>, and it takes as input another bird (the one that has already found the food). It should use <code>defend_choice</code> to find out if the other bird will defend itself, and then respond accordingly. A dove will run away if the other bird defends itself, having no effect on the dove, and letting the other bird eat. (Remember, you need to explicitly have the other bird eat.) If the other bird does not defend itself, both birds should display, then a random one of the two should eat the food. A hawk on the other hand will always eat if the other bird does not defend itself. If it does, the two fight with a random winner. The winner eats and the loser gets injured. Once this is done, your <code>Hawk</code> and <code>Dove</code> classes are complete.</p>
+</li>
+<li><p>We can now complete the <code>World</code> class. First we add a <code>conflict</code> method. This is the analogous function to <code>free_food</code>, and it creates encounters between birds over food. It should take a number parameter and make that many encounters occur. In each encounter, two (different) birds should be randomly selected. An encounter should then occur where one of the birds finds the other. (Do this by calling the <code>encounter</code> method.)  Like with <code>free_food</code>, the same bird can be chosen for multiple encounters.</p>
+</li>
+<li><p>Add a <code>status</code> method to world. This method should count the number of birds of each species that currently exist and print a summary of that information to the terminal.</p>
+</li>
+</ol>
+<p>We can now run our first experiments. Set <code>init_hawk</code> and <code>init_dove</code> to 50, and <code>init_defensive</code> and <code>init_evolving</code> to 0 (these are two types of birds we haven’t made yet, so we don’t want them in this experiment). Then set <code>injurycost</code>, <code>displaycost</code>, and <code>foodbenefit</code> to <code>11</code>, <code>1</code>, and <code>8</code> respectively. Run the script. The code provided at the bottom will run the experiment for <code>10000</code> units of time, at each step providing free food <code>10</code> times and contested food <code>50</code> times. At the end, you should see a mix of hawks and doves. Try changing <code>injurycost</code> to <code>7</code>. Now you should see that only hawks survive. Play around with different numbers. You should find that you can create outcomes that mix hawks and doves and outcomes that are all hawks, but no outcomes that are all doves.</p>
+<h1 id="Second-Experiment-defensive-birds"><a href="#Second-Experiment-defensive-birds" class="headerlink" title="Second Experiment: defensive birds"></a>Second Experiment: defensive birds</h1><p>Next we want to add a new type of bird. This type of bird is “defensive”—if it finds food first, it will fight to defend it from other birds, but it will not attack other birds to take their food. (It will, however, display in the way doves do.) It also of course creates additional defensive birds when it reproduces. You should create a <code>Defensive</code> class to represent this bird. Remember that <code>defend_choice</code> determines what a bird does when it has already found food and another bird appears, while <code>encounter</code> determines what it does when it finds another bird already with food. Remember to avoid repeating code whenever possible!</p>
+<p>When you have such a class created, set <code>init_defensive</code> to <code>50</code> so that we now have three types of birds in our experiment. Now try several experiments. Set <code>injurycost</code> to <code>10</code>, <code>displaycost</code> to <code>1</code> and <code>foodbenefit</code> to <code>12</code>. You should see that only hawks survive. If you instead change <code>foodbenefit</code> to <code>8</code>, you should see only defensive birds. Can you find settings that give a mix of defensive birds and hawks? Can you find settings where doves survive?</p>
+<h1 id="Third-Experiment-evolution"><a href="#Third-Experiment-evolution" class="headerlink" title="Third Experiment: evolution"></a>Third Experiment: evolution</h1><p>Now we make a bigger change. Instead of specifying exactly what type of birds we have and how they behave, we want to allow birds to behave in a variety of ways and let them evolve over generations. We’ll get rid of doves and hawks and defensive birds. Instead we’ll use a new class, <code>Evolving</code>, that can represent birds of various kinds. We’ll let these new birds vary in two ways. One is that they will have different levels of aggression, choosing to fight more or less frequently. The other is that they’ll vary by weight, with heavier birds winning fights more often but also burning more calories over time. Then, we’ll let these birds evolve— children of a bird will have roughly the same (but not identical) attributes as the parent—and we can see how the birds change over time.</p>
+<p>First, you’ll need to write <code>defend_choice</code> and <code>encounter</code>. These methods need to account for the new way birds choose whether to fight. A bird should choose to fight with a probability equal to its aggressiveness (which will always be between <code>0.0</code> and <code>1.0</code>). (Note that this is true whether encountering another bird or defending—we’re dropping the distinction we made in <code>Defensive</code>.) The <code>encounter</code> method also needs to account for the new, more complicated method of fighting. We want heavier birds to win fights more often, so we will say that if the two birds have weights <code>w1</code> and <code>w2</code>, then the probability of first bird winning is <code>w1/(w1+w2)</code>.</p>
+<p><strong>Programming tip:</strong> calling <code>random.random()</code> provides a uniform random number between <code>0.0</code> and <code>1.0</code>. You can use this to make things happen with a certain probability.</p>
+<p>Next you need to write <code>update</code> and <code>__init__</code>. These functions will be used to create two changes from our previous birds. The first is that heavier birds burn more calories. As a result, we want health to decrease by <code>0.4 + 0.6 * w</code> at each unit of time. (This is still 1 for the smallest birds, but it scales up as the birds get larger.)</p>
+<p>The bigger change, however, will be to how reproduction works. It is no longer enough to just create another bird of the same type. We want the offspring of a successful bird to be similar to its parent, but with some variation. (This is a rough approximation of mutations that occur in nature.) You should modify the initialization function for <code>Evolving</code>. It should take one additional argument, the evolving bird’s parent (which could be <code>None</code>).  If this <code>parent</code> argument is set to <code>None</code> (this is what we use when we create the initial population of “Adam&#x2F;Eve” birds at the start of the experiment) then the <code>weight</code> and <code>aggression</code> should be chosen as floating point numbers from the allowed ranges (between <code>0.0</code> and <code>1.0</code> for <code>aggression</code> and between <code>1.0</code> to <code>3.0</code> for weight).</p>
+<p>If instead, the <code>parent</code> parameter is not <code>None</code>, then we give this new bird a <code>weight</code> and <code>aggression</code> close to that of its parent by setting each attribute to that of its parent plus or minus a small random amount.  In particular, <code>weight</code> should be set to the parent’s <code>weight</code> plus a random value between <code>-0.1</code> and <code>0.1</code>. Similarly, <code>aggression</code> should be the parent’s <code>aggression</code> plus a random value between <code>-0.05</code> and <code>0.05</code>. We do, however, want these values to stay in the allowed ranges (again, from <code>0.0</code> to <code>1.0</code> for <code>aggression</code> and from <code>1.0</code> to <code>3.0</code> for <code>weight</code>.) If the random variation would put a value above&#x2F;below the allowed maximum&#x2F;minimum, then instead set it to the maximum&#x2F;minimum exactly.</p>
+<p><strong>Tip:</strong> <code>random.uniform(a,b)</code> returns a random floating point number between <code>a</code> and <code>b</code>.</p>
+<p>The reproduction part of <code>update</code> should use this <code>__init__</code> by creating a new <code>Evolving</code> bird, passing <code>self</code> as the parent parameter. This means that new birds will be similar to the ones that survived, with some mutation. And since the birds we create in the beginning for the initial population are built with a <code>None</code> parent, they’ll have widely varying random values.</p>
+<p>Finally, we need a way to show what the evolving birds are like at a given point in time. We can’t just print counts of each type of bird anymore, so instead we’ll create a simple scatter plot of the weights and aggressiveness of the birds. A simple function for producing scatter plots, <code>plot</code>, has been provided for you. It takes two lists as parameters. The first parameter is the list of <em>x</em> coordinates of points being plotted, which will for us be the <code>weight</code> of each bird in the population.  The second parameter is a list of the corresponding <em>y</em> coordinates (in this case each bird’s aggressiveness). The two lists must correspond in order—the <em>i</em>-th <em>x</em> coordinate must correspond to the same individual as the <em>i</em>-th <em>y</em> coordinate. Add a method <code>evolvingPlot</code> to the <code>World</code> class that creates a scatter plot of all the current <code>Evolving</code> birds.</p>
+<p>We can now run an experiment with these birds. At the bottom of the file, uncomment the line that makes a plot of evolving birds. Then set the initial bird counts so that the only birds we have are <code>150</code> evolving birds. Finally, set <code>injurycost</code> to <code>10</code>, <code>displaycost</code> to <code>1</code> and <code>foodbenefit</code> to <code>8</code>. When you run the script, you should see that our evolving birds naturally separate into two “species” clumps—one passive, light clump fulfilling the “dove” role, and one aggressive, heavier clump fulfilling the “hawk” role. Try varying these constants to see what is possible. You should find that some settings will result in two clumps (though one of these clumps can move around), while others result in a single clump.</p>
+<h1 id="What-all-of-this-means"><a href="#What-all-of-this-means" class="headerlink" title="What all of this means"></a>What all of this means</h1><p>The above description focused on the programming, since that’s what this class is about. The phenomena that you have simulated, though, are part of a deep and interesting area of study. Game theory is the mathematical modeling and analysis of strategic interactions between rational actors. It is widely used in economics to model market interactions—11 game theorists have now won Nobel prizes in economics. Political scientists use it to model any number of things, including international relations and domestic politics.</p>
+<p>Modern game theory began as a result of groundbreaking research by John von Newmann and his 1944 book with Oskar Morgenstern, though some of the basic ideas had been seen earlier in works by Cournot and others. The most famous game theorist is probably John Nash, in part due to the movie A Beautiful Mind. Nash developed the definition of Nash equilibria, the standard solution concept for games, and proved that such equilibria exist in all games. For a more detailed overview of game theory, I recommend the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Game_theory">Wikipedia article</a>.</p>
+<p>The game we simulated in Experiment 1, Hawk-Dove, is a special case of the game of Chicken, a standard example in economics. The Hawk-Dove version was introduced by John Maynard Smith and George Price in a 1973 paper, “The logic of animal conflict.”  Smith also introduced the idea of an “evolutionarily stable strategy,” a solution concept for games specifically tailored to modeling evolution. Again, I recommend the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chicken_(game)">Wikipedia article</a> on the game to see more explanation.</p>
+<p>Games can be (and usually are) analyzed without computer simulation. A large set of mathematical tools has been developed so that one can tell what the equilibrium of a game will be without need to simulate it. However, simulation can provide a concrete means to see how the game behaves. It can also be used to answer difficult questions when the theory becomes very difficult in complicated games. For example, see <a target="_blank" rel="noopener" href="http://octavia.zoology.washington.edu/publications/BergstromAndGodfreySmith98.pdf">this paper by Bergstrom and Godfrey-Smith</a>. This is an example of modern research in biology that uses computer simulation of the hawk-dove game.</p>
+<p>The results of these models do really tell us something about how the world works. The mixed results of the hawk-dove simulation help explain why a variety of animals exist and behave in different ways. The fact that these mixed results disappear in certain cases, with hawks becoming dominant (but never the reverse dominance for doves) also tells us something about which animals might succeed in which sort of situation.</p>
+<p>The strength of the defensive strategy also has wide-ranging implications. It has been used as an argument for why territoriality might develop among certain animals. It can even be used to explain why social norms or a sense of “ownership” might evolve. Rules that specify who should get what reduce conflict, and in some cases it can do so in a way that makes every individual benefit from following the rules, even if they are arbitrary. (Of course, there are many other potential explanations of these things as well.)</p>
+<p>The simulation of evolving birds also of course has relevance to biology. You can see how the mixed equilibrium of hawks and doves can appear even if the initial animals do not fall into two separate species. It can even be used to model one way that speciation might occur, with a previous homogenous population separating into two distinct types.</p>
+<p>Game theory is also used in a variety of fields in computer science. Algorithms research now includes a substantial effort to find efficient ways of analyzing games to find various sorts of equilibria. (This turns out to be a very difficult problem.) Game theory is also used to model interactions between multiple actors. This includes network protocols, peer-to-peer file sharing protocols, and any other situation where protocols are being written for multiple agents to interact. (The goal here is to make it so that self-interested participants can’t deviate from the prescribed protocol in order to take more resources for themselves.) It also has a natural home in cryptography, which routinely studies the interaction of untrustworthy agents. One member of our CS faculty has done research in this area of cryptography and would be happy to talk to you about it if you’re interested.</p>
+<h1 id="Submitting-your-work"><a href="#Submitting-your-work" class="headerlink" title="Submitting your work"></a>Submitting your work</h1><p>All you need to submit for this project is the main file containing all your work. Upload it to the homework submission site whenever you are ready.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj3/" data-id="clcu6t9mh000mjkt07ezg4tsv" data-title="proj3" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj3/" data-id="clcv2649h000s8tt01khwd14o" data-title="Project 2 -- Hawks and Doves, simulating competition among birds" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
     </footer>
   </div>
   
@@ -371,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj2/" data-id="clcu6t9mk000xjkt063icgnlo" data-title="Project 2 -- Stats/Chats" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj2/" data-id="clcv2649g000q8tt07ckw06l5" data-title="Project 2 -- Stats/Chats" class="article-share-link">Share</a>
       
       
       
@@ -517,7 +718,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj1/" data-id="clcu6t9mk000wjkt067ke82ta" data-title="Project 1 -- The Game of Life and Image Processing" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj1/" data-id="clcv2649g000o8tt0f87edi6o" data-title="Project 1 -- The Game of Life and Image Processing" class="article-share-link">Share</a>
       
       
       
@@ -590,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw11/" data-id="clcu6t9me000bjkt0at2pcpc0" data-title="Homework 11 -- Searching and sorting" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw11/" data-id="clcv2649900068tt0bcfohnw4" data-title="Homework 11 -- Searching and sorting" class="article-share-link">Share</a>
       
       
       
@@ -666,7 +867,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw10/" data-id="clcu6t9m80001jkt00fbl68hk" data-title="Homework 10 -- Linked Lists" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw10/" data-id="clcv2649700038tt00o4wbca7" data-title="Homework 10 -- Linked Lists" class="article-share-link">Share</a>
       
       
       
@@ -758,7 +959,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw9/" data-id="clcu6t9mf000gjkt04ez13zw3" data-title="Homework 9 -- Higher-Order Functions" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw9/" data-id="clcv2649f000m8tt0057nfxbt" data-title="Homework 9 -- Higher-Order Functions" class="article-share-link">Share</a>
       
       
       
@@ -892,7 +1093,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw8/" data-id="clcu6t9mg000ijkt066fbb4x1" data-title="Homework 8 -- Object Classes and Inheritance" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw8/" data-id="clcv2649d000i8tt0eate4v4w" data-title="Homework 8 -- Object Classes and Inheritance" class="article-share-link">Share</a>
       
       
       
@@ -979,7 +1180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw7/" data-id="clcu6t9md0008jkt0by5g7n7a" data-title="Homework 7 -- Call yourself" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw7/" data-id="clcv2649e000k8tt06xchedwz" data-title="Homework 7 -- Call yourself" class="article-share-link">Share</a>
       
       
       
@@ -1072,7 +1273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw6/" data-id="clcu6t9mf000djkt08sgkdbld" data-title="Homework 6 -- Joining Splits and Other Things" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw6/" data-id="clcv2649d000g8tt03zceb4yn" data-title="Homework 6 -- Joining Splits and Other Things" class="article-share-link">Share</a>
       
       
       
@@ -1136,11 +1337,11 @@
       <ul>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj4/">proj4</a>
+            <a href="/121-S23/2023/01/12/proj4/">Project 4 -- Adventure</a>
           </li>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj3/">proj3</a>
+            <a href="/121-S23/2023/01/12/proj3/">Project 2 -- Hawks and Doves, simulating competition among birds</a>
           </li>
         
           <li>

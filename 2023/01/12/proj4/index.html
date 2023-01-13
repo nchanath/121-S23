@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>proj4 | CSCI 121 Computer Science I</title>
+  <title>Project 4 -- Adventure | CSCI 121 Computer Science I</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="CSCI 121 Computer Science I Course Website">
+  <meta name="description" content="starter code for the adventure option In this project you will be making your own text-based adventure game.  In such a game, a player walks around in some sort of world, exploring or accomplishing a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="proj4">
+<meta property="og:title" content="Project 4 -- Adventure">
 <meta property="og:url" content="https://nchanath.github.io/121-S23/2023/01/12/proj4/index.html">
 <meta property="og:site_name" content="CSCI 121 Computer Science I">
-<meta property="og:description" content="CSCI 121 Computer Science I Course Website">
+<meta property="og:description" content="starter code for the adventure option In this project you will be making your own text-based adventure game.  In such a game, a player walks around in some sort of world, exploring or accomplishing a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-13T07:05:54.000Z">
-<meta property="article:modified_time" content="2023-01-13T07:05:54.078Z">
+<meta property="article:modified_time" content="2023-01-13T21:54:09.690Z">
 <meta property="article:author" content="Chanathip Namprempre">
+<meta property="article:tag" content="Homework">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@ajmeaw">
   
@@ -107,7 +108,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      proj4
+      Project 4 -- Adventure
     </h1>
   
 
@@ -115,14 +116,137 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p><a href="pr4adventure.zip">starter code for the adventure option</a></p>
+<p>In this project you will be making your own text-based adventure game.  In such a game, a player walks around in some sort of world, exploring or accomplishing a task. You can pick the game’s theme (what sort of world it is, etc.), what sort of activities are most important (fight monsters? trade resources?), and what the goal is.</p>
+<p>We have provided the code with a very simple game to start with. It has a very small world and is a lackluster game, to say the least, but the code provides a framework from which to build your program. There are several Python files that make up the program, each defining classes that help make up the contents of the world. You should start by playing its game (you’ll want to run the script <code>main.py</code>) and then look through the code to see how the code works. (When playing, the command “help” will give you a list of other commands.)</p>
+<p>Once you get comfortable with the code, you should begin changing and building on it to make your own game. We list a collection of suggested changes to make to the code below. It describes many improvements you could make and assigns a number of points to each change. (In general, bigger&#x2F;harder additions are worth more points.)  To get a passing score on this assignment, you must earn at least 20 points, though you should aim to earn at least 40. You can pick which improvements to make, but remember that your goal isn’t just to check off boxes by making the improvements. You want to make something that is actually a good game. (So for example, it is probably necessary to choose the option that expands your world beyond 4 rooms…)</p>
+<p>The improvements are not explained in the sort of specific detail that would tell you exactly what changes they include. You have to add this functionality in a way that you think makes for a good game. For example, you have to figure out how to modify the user interface so that the new functionality can be used. (If you are adding doors that require keys to unlock them, do you just make it so you have to be carrying the key to go through the door? Or is there a specific “unlock” command? If so, you should update the “help” description to include information on how to use it.)</p>
+<p>I have included an <code>examples</code> folder with compiled Python code for a few different games. There is a very simple “minotaur” game that suggests the kind of minimal game that you can get working for the first “check-in” milestone. Run it with the command:</p>
+<pre><code>python3 minotaur-39.py
+</code></pre>
+<p>This only runs on Python 3.9. There is a second file you can use to run on Python 3.8 instead. There are some stellar compiled examples of past students’ projects. Maybe these will be inspiration for developing your own game. They do illustrate well how others have made improvements and made them fit into their own game’s story. To run them, use the <code>.pyc</code> file for your version of Python. I’m running version 3.9 so I would type</p>
+<pre><code> python3 hagoromo-39.pyc
+</code></pre>
+<p>to run the <code>hagoromo</code> game. There is <code>zoo</code> and <code>owl</code> to try, too.</p>
+<p>You should create a document that briefly describes your game and explains its gameplay. You should develop this document as you develop the game. It should include a list of all the improvements you’ve made, the points you feel you earned for each, and a brief explanation of what specifically you did for each improvement. Sometimes there will be very little to say, but if the improvement gave you freedom to choose how things would work, you should say what you chose. If you have to add a new type of monster, for example, say what type you added and what if anything is special about it.  You should also have a quick note about what code in what files was added&#x2F;modified to make this work. You are also free to make improvements that aren’t on the list of options, and if you do that you should describe them here as well. This document should explicitly enumerate and tally for us the points you have earned with your work.</p>
+<p>Your project will be evaluated in several ways. These are:</p>
+<ul>
+<li><p>How many points did you earn from your improvements?</p>
+</li>
+<li><p>How well did you make the improvements you made? Did you do the minimum to make it count, or do something very challenging? Were there bugs? Were the improvements made in a way that was easy for the user to understand? Were they incorporated well into the game?</p>
+</li>
+<li><p>How good is the overall game? You should be trying to make a game that is actually fun to play. Pick improvements that help you achieve this and try to design the game well. Make your improvements well-integrated into the game. (For example, if you add weapons to your game, you should make it so that there are various different weapons that exist in the world so that finding a good weapon is part of playing the game. Just having a single weapon on the floor in the starting room that you pick up at the beginning of the game doesn’t add much.) Make sure someone who is new to the game can figure out how to play.</p>
+</li>
+<li><p>Did you make regular progress in your coding? We will have several “milestones” for this project that we’d like you to reach, and you should think of their dates as real deadlines to meet before the final submission deadline. For these intermediate deadlines you will report by demonstrating your game to us, and show us how much of the work you have completed at each stage. You will be evaluated on your progress with each of these minor deadlines, in addition to what you’ve completed by the major deadline. Start early, do not let this assignment sit.</p>
+</li>
+<li><p>How well documented is your code and how understandable is it? This applies both to comments in the code and to the document you’re submitting. Your code should be well-written and readable, and we should be able to figure out what you did and how you did it.</p>
+</li>
+</ul>
+<p>Some notes on the work:</p>
+<ul>
+<li><p>The starter code has each class in a separate file. It is not necessary to make a file for every class. For example, if you have classes defining particular types of items, it might be natural to put them in the same “game items” file. However, it can often be good practice to keep some things in separate files as a way of making the code more manageable.</p>
+</li>
+<li><p>You should think ahead and have an idea of what you want your game to end up looking like before you start adding things, but you should also add things one at a time in a way that can be tested as they get added.</p>
+</li>
+<li><p>Leave time for general testing of the game at the end. Even once all of the technical improvements have been made, you will want to change things around a bit to make the game better. Feel free to have a friend play the game and see if they enjoy it, if they can figure out how to play, etc. We will formalize this process with the “beta test” deadline in the last week.</p>
+</li>
+<li><p>The starter code is meant as starter code. It is okay to change things. You should also not assume everything is done perfectly. You ideally want your program to work gracefully even if, for example, a user makes a typo while inputting a command. The starter code is reasonably good about this sort of thing, but it can certainly be improved.</p>
+</li>
+</ul>
+<h2 id="Working-with-Partners"><a href="#Working-with-Partners" class="headerlink" title="Working with Partners"></a>Working with Partners</h2><p>You are allowed (even encouraged!) to work with a partner on this project. If you do so, you must both contribute roughly equal work to the project. I expect a slightly more ambitious game from you. You will need 25 points to pass and should aim for at least 50 total points (as opposed to 20 and 40 for single individuals).</p>
+<p>You should also submit a brief description of who did what work. (This should be no more than a page, probably substantially shorter.) Did you sit at a computer together working? Split things up? Test each others’ code? You should describe briefly what parts each person worked on, what was worked on together, what “worked on together” meant for you, and how you coordinated your efforts.</p>
+<p>This is a small enough project that coordinating the efforts of two people should not be too complicated, but if you’re interested, I would recommend using a Git repository. (These can be set up for free online, and a quick google search will give not only the needed resources but also instructions on how to use Git.)</p>
+<h2 id="Deadlines"><a href="#Deadlines" class="headerlink" title="Deadlines"></a>Deadlines</h2><p>This project will include several intermediate deadlines.</p>
+<ul>
+<li><p><strong>Game Proposal:</strong> <em>April 17th.</em> Submit a brief text file to the Gradescope submission system. This should say who you will partner with (if anyone) and the general game idea. (The game idea is just a very basic description– two or three sentences should be plenty.)  If you are working with a partner, you should both separately submit the same proposal file.</p>
+</li>
+<li><p><strong>Progress check-in:</strong> <em>Thursday, April 28th.</em> By this day you should have done the work to have earned at least 20 points, 30 ideally, though perhaps crudely implemented. Briefly show these changes to a TA or professor, either during lab, or during professor office hours, or TA evening hours. We will evaluate your progress.</p>
+</li>
+<li><p><strong>Project submission:</strong> <em>Wednesday, May 5th.</em> Submit your game’s code and any of its supporting files, a description of your game and instructions for playing it, and a report of the features you implemented with a breakdown of the point total you reached.</p>
+</li>
+</ul>
+<h2 id="Menu-of-improvements"><a href="#Menu-of-improvements" class="headerlink" title="Menu of improvements"></a>Menu of improvements</h2><ul>
+<li><p><strong>“me” command</strong> <em>(2 points)</em>:<br>Create a command that lets the player see their current status, including their health and&#x2F;or whatever other attributes you’ve added.</p>
+</li>
+<li><p><strong>bigger world</strong> <em>(2 points)</em>:<br>The game starts with four rooms. That is not enough for much to happen in. Make the world bigger and more interesting. Give descriptions to rooms that say more than just a room number.</p>
+</li>
+<li><p><strong>“inspect” command</strong> <em>(2 points)</em>:<br>Create a command that lets the player look at items. This should display the item description. The player should be able to look at both items they see in their current location and items in their inventory.</p>
+</li>
+<li><p><strong>limited inventory</strong> <em>(2 points)</em>:<br>Make objects you’re carrying have a size or weight, and put a limit on how much you can carry.</p>
+</li>
+<li><p><strong>“drop” command</strong> <em>(2 points)</em>:<br>Make it so that the player can drop items, so that their inventory doesn’t become unreasonably large.</p>
+</li>
+<li><p><strong>weapons</strong> <em>(2 points)</em>:<br>Implement a new type of item for weapons, ones that a player can use to make themselves more formidable in battle. This will requires modifying how fights against monsters work.</p>
+</li>
+<li><p><strong>armor</strong> <em>(2 points)</em>:<br>Implement a type of item for armor.  These make it harder for a monster to kill the player.</p>
+</li>
+<li><p><strong>healing items</strong> <em>(2 points)</em>:<br>Create items that players can use to restore health. These items should only be usable once each and should disappear when used. </p>
+</li>
+<li><p><strong>item stacking</strong> <em>(2 points)</em>:<br>Make the inventory display ‘(x2)’ if there are two identical items (and so on, if there are more), rather than listing the item name twice.</p>
+</li>
+<li><p><strong>introducing monsters during play</strong> <em>(2 points)</em>:<br>Make it so that over time new monsters appear in the world.</p>
+</li>
+<li><p><strong>“wait” command</strong> <em>(2 points)</em>:<br>In the game as it is, time passes only when you move to a new room. Make it so that you can type a command that just lets time pass. Or implement a trickier version: let the user type a number so they can wait for a number of turns with only one command entry.</p>
+</li>
+<li><p><strong>regeneration</strong> <em>(2 points)</em>:<br>Have the player regenerate in some way over time. The easiest thing is to make health increase a little each turn, but there are other things you could do as well.</p>
+</li>
+<li><p><strong>locked chests</strong> <em>(3 points)</em>:<br>Create “chests” or other containers that cannot be opened without a key, and also the relevant keys.</p>
+</li>
+<li><p><strong>locked doors</strong> <em>(3 points)</em>:<br>Create doors that cannot be used unless first unlocked with a key, and also the relevant keys.</p>
+</li>
+<li><p><strong>containers</strong> <em>(3 points)</em>:<br>Make containers (bags, boxes, etc.)  that can hold other objects.</p>
+</li>
+<li><p><strong>victory condition</strong> <em>(3 points)</em>:<br>Create a way for the player to win the game.</p>
+</li>
+<li><p><strong>random world</strong> <em>(3 points)</em>:<br>Make the world be generated in a random way when the program is run so that it’s somewhat different each time the game is played.</p>
+</li>
+<li><p><strong>loot</strong> <em>(3 points)</em>:<br>Make it so that defeating some monsters causes useful items to appear. There should be some amount of randomness about what those items are.</p>
+</li>
+<li><p><strong>events</strong> <em>(3 points)</em>:<br>Make it so that interesting things sometimes happen. Their ocurrence can be governed by a timer or they could happen just at random.</p>
+</li>
+<li><p><strong>more monsters</strong> <em>(3 points)</em>:<br>Create several different types of monsters. They should not just have different names, but really be different in important ways.</p>
+</li>
+<li><p><strong>special rooms</strong> <em>(3 points)</em>:<br>Make rooms that have some effect on the player or monsters when they are entered.  Maybe there’s a hospital that heals you when you enter it? That sort of thing.</p>
+</li>
+<li><p><strong>complex rooms</strong> <em>(3 points)</em>:<br>Give rooms some additional attributes or behavior. Maybe they get dirty?  Or full? Or different types behave differently?</p>
+</li>
+<li><p><strong>player attributes</strong> <em>(3 points)</em>:<br>By default the only characteristic of the player is their health.  Add more attributes that affect what the player can do.</p>
+</li>
+<li><p><strong>command abbreviations</strong> <em>(1-3 points)</em>:<br>The typing needed to play a text adventure can get tedious. Usually games allow abbreviations.  This could simply just be some short, alternate commands (“inv” instead of “inventory”, etc.)  or, more ambitiously, you could accept any string that is the start of only one command. And&#x2F;or you could allow items, monsters, and other things to be abbreviated in some consistent way.</p>
+</li>
+<li><p><strong>helper</strong> <em>(4 points)</em>:<br>Create an autonomous character that is on your side and does something helpful. You should have some ability to control&#x2F;influence how they behave. Maybe you need to ask for their help or ask them to join&#x2F;follow you in your quest, etc.</p>
+</li>
+<li><p><strong>currency</strong> <em>(4 points)</em>:<br>Create a currency for the game. There should be a way for the player to gain currency, and also useful ways for them to spend the currency. (A merchant? a store?)</p>
+</li>
+<li><p><strong>leveling up</strong> <em>(4 points)</em>:<br>Add a mechanism for “leveling up” the player. That is, as they accomplish things in the game, the player should get stronger in some way.</p>
+</li>
+<li><p><strong>crafting</strong> <em>(4 points)</em>:<br>Create some system where the player can use an item, or several items, to construct a useful item.</p>
+</li>
+<li><p><strong>magic</strong> <em>(4 points)</em>:<br>Create a system where the player has “spells” (or “abilities,” whatever best fits your theme) that they can use (possibly learned during the game). There should be some restriction on how often spells can be cast.</p>
+</li>
+<li><p><strong>characters</strong> <em>(4 points)</em>:<br>Characters are neutral beings in the game that you can talk to and interact with.  (The “talking to” can be a matter of picking one of several options of things to say from a list.) They should interact with you or the world in some way when you talk to them. This should be different than the “helper” above (that is, if you make a helper character, then you need another character to get credit for this option).</p>
+</li>
+<li><p><strong>modifying the world</strong> <em>(4 points)</em>:<br>Allow the player to modify rooms&#x2F;locations in some way, more than just by grabbing&#x2F;dropping objects. The changes they make should have a real effect on the gameplay. This could be something like lighting a candle that allows you to see the contents of the room, but only if you are carrying matches. It could be digging a hole that traps monsters. It could be turning on a faucet to flood a room that eventually floods nearby rooms. Perhaps you can make it so that the player creates new rooms or locations with an action.</p>
+</li>
+<li><p><strong>map</strong> <em>(3 to 6 points)</em>:<br>Allow the player to gain the ability to inspect a map of the world. Or give them the ability to look at a map from the start, but make it so that the contents of the map are slowly revealed (say, as rooms are explored). The map can just be “ASCII art,” a printed display.  This is worth more points if you have a larger&#x2F;complex world, or display some interesting things in each location, or limit the map in some way.</p>
+</li>
+<li><p><strong>saving the game</strong> <em>(10 points)</em> :<br>Let a player choose to save their game to come back to later. This should create a file in the folder where the program is stored (or maybe in a “saved” subfolder of that folder) with a name specified by the user. On starting the program, the user should have the option to continue from the point at which they saved, instead of creating a new game.</p>
+</li>
+<li><p><strong>graphical interface</strong> <em>(10 points)</em>:<br>Typing is annoying. Make the program work through a graphical interface instead of typed commands.  You don’t have to create pictures that actually look like the world. You can have a window, with portions dedicated to displaying the description of the current room, what monsters, are there, what items are there, etc. Within this interface, actions should be made by clicking buttons with the mouse or by hitting single keys as controls, rather than just through typing commands. Common options here are the <code>curses</code> library or the “Tk interactive” library <code>tkinter</code>.</p>
+</li>
+<li><p><strong>choose your own</strong> <em>(? points)</em>:<br>Make whatever changes you want, beyond the required points, if it helps make the game better. If it’s important to you to get points for these changes, talk to Jim, David, or Eitan to figure out how many points they are worth.</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj4/" data-id="clcu6t9mk000ujkt09oka7nc8" data-title="proj4" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj4/" data-id="clcv2649i000u8tt07tngct7a" data-title="Project 4 -- Adventure" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
     </footer>
   </div>
   
@@ -132,7 +256,7 @@
   
     <a href="/121-S23/2023/01/12/proj3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">proj3</div>
+      <div class="article-nav-title">Project 2 -- Hawks and Doves, simulating competition among birds</div>
     </a>
   
 </nav>
@@ -184,11 +308,11 @@
       <ul>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj4/">proj4</a>
+            <a href="/121-S23/2023/01/12/proj4/">Project 4 -- Adventure</a>
           </li>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj3/">proj3</a>
+            <a href="/121-S23/2023/01/12/proj3/">Project 2 -- Hawks and Doves, simulating competition among birds</a>
           </li>
         
           <li>

@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>proj3 | CSCI 121 Computer Science I</title>
+  <title>Project 2 -- Hawks and Doves, simulating competition among birds | CSCI 121 Computer Science I</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="CSCI 121 Computer Science I Course Website">
+  <meta name="description" content="Complete and submit by 4&#x2F;15 at 1:00pm   starting code for the hawkdove project   In this project you will build a small ecosystem. In this ecosystem birds of various species look for food. Someti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="proj3">
+<meta property="og:title" content="Project 2 -- Hawks and Doves, simulating competition among birds">
 <meta property="og:url" content="https://nchanath.github.io/121-S23/2023/01/12/proj3/index.html">
 <meta property="og:site_name" content="CSCI 121 Computer Science I">
-<meta property="og:description" content="CSCI 121 Computer Science I Course Website">
+<meta property="og:description" content="Complete and submit by 4&#x2F;15 at 1:00pm   starting code for the hawkdove project   In this project you will build a small ecosystem. In this ecosystem birds of various species look for food. Someti">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-13T07:05:52.000Z">
-<meta property="article:modified_time" content="2023-01-13T07:05:52.048Z">
+<meta property="article:modified_time" content="2023-01-13T21:34:14.380Z">
 <meta property="article:author" content="Chanathip Namprempre">
+<meta property="article:tag" content="Homework">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@ajmeaw">
   
@@ -107,7 +108,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      proj3
+      Project 2 -- Hawks and Doves, simulating competition among birds
     </h1>
   
 
@@ -115,14 +116,92 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p><strong>Complete and submit by 4&#x2F;15 at 1:00pm</strong></p>
+<hr>
+<ul>
+<li><a href="hawkdove.py">starting code for the <strong>hawkdove</strong> project</a></li>
+</ul>
+<hr>
+<p>In this project you will build a small ecosystem. In this ecosystem birds of various species look for food. Sometimes they find it and eat it. Other times they find it, but so does another bird. The birds then have the choice to fight for the food or to be passive. Depending on their decisions, they could get the food or not, but they could also be injured in the fight. You will create different species of birds with varying behaviors and see how those species thrive (or not) in certain situations.</p>
+<p>The scenarios you’ll be investigating here are commonly talked about in a variety of fields. We’ll be focusing on the programming, but there are lots of important ideas here, and the analysis of this sort of situation is of interest to biologists, economists, mathematicians, and others. Computer simulation is only one way to go about thinking about these issues, but it is a tool that can add help greatly with this analysis (and with more complicated scenarios of a similar type).</p>
+<h2 id="The-model"><a href="#The-model" class="headerlink" title="The model"></a>The model</h2><p>The system we simulate is a very simple one, without most of the complexities of the real world. The only active animals in our world will be birds. Each bird has a number representing its health, which starts at 100. If a bird eats, its health goes up. If it is injured, its health goes down. Birds also lose a small amount of health each unit of time. (This represents their normal rate of burning calories—a bird that doesn’t eat slowly gets less healthy over time.) If the health of a bird hits 0, it dies. If the health goes high—over 200—then the bird reproduces. When it reproduces, its health goes down by 100, and a new bird is created.</p>
+<p>Birds find food in one of two ways. Each time step, there are 10 units of food that are found by single birds on their own, who then get to eat the food without worry. There are also 50 units of food that are contested—one bird finds the food, but another approaches before they can eat it. In cases of contested food, each bird has two options—they can be passive or aggressive. Depending on what they choose, one of the following scenarios will occur:</p>
+<ul>
+<li><p><strong>Two passive birds.</strong> When both birds are passive, they will engage in displays meant to get the other bird to leave, and this will continue until one bird does so. The display costs a small amount of health for each bird, and it is random which of the birds ends up with the food.</p>
+</li>
+<li><p><strong>One aggressive and one passive bird.</strong> If one bird is aggressive and the other is passive, the passive bird will flee and the aggressive bird will get the food.</p>
+</li>
+<li><p><strong>Two aggressive birds.</strong> When both birds are aggressive, they will fight. One bird (chosen randomly) will win, and they will get the food. The loser instead is injured, reducing their health.</p>
+</li>
+</ul>
+<p>We will be modeling several types of birds. We’ll begin with hawks and doves. Hawks will always be aggressive, while doves will always be passive. Once we have that simulation working correctly, we’ll add other types of birds. Along the way we’ll get a bunch of interesting results.</p>
+<p><strong>Programming note:</strong> The goal of this project is to show you object-oriented programming used in a particular way. As a result, we will be very precise about exactly what classes there should be, what methods those classes should have, and what those methods should do. Follow the instructions carefully.</p>
+<h1 id="First-Experiment-hawks-and-doves"><a href="#First-Experiment-hawks-and-doves" class="headerlink" title="First Experiment: hawks and doves"></a>First Experiment: hawks and doves</h1><p>Our first goal is to run the simulation with just hawks and doves. In order to do this, we’ll need to write a lot of code. Your starter code file, <code>hawkdove.py</code>, contains an outline of what we will need.</p>
+<p>It has the needed <code>import</code> statements, and it has a set of constants defined at the top. These constants determine the relative values of food, injuries, and displays, as well as how many of each type of bird we create at the start of the simulation. It also has the code for actually running the simulation, but that code won’t work yet. In between those things, we’ll need to add several classes, each with several methods, that will represent the world of our simulation and the birds that live within it. Follow the steps below to add these pieces.</p>
+<ol>
+<li><p>Create a <code>World</code> class. This will represent the world as a whole. (We will only ever create one actual world object.) The initialization method should take no parameters other than <code>self</code>. The class should only have one instance variable, a list of currently-existing birds, and that list should initially be set to the empty list <code>[]</code>.</p>
+</li>
+<li><p>Create a <code>Bird</code> class. We won’t actually create any instances of this class, but we’ll have other classes that inherit from <code>Bird</code> and represent specific types of birds. It will be useful to define some things about birds here so that we don’t need to repeat them many times later. The <code>Bird</code> initialization function should take a single parameter other than <code>self</code>, a world object. The bird should then add itself to the list of birds that exist in that world. It should also keep an instance variable storing the world that it is in, and it should have an instance variable tracking its current health, which starts at <code>100</code>.</p>
+</li>
+<li><p>Add an <code>eat</code> method to the <code>Bird</code> class. This method should take no additional parameters. When it is called, it should increase the bird’s health by the amount specified by the <code>foodbenefit</code> constant.</p>
+</li>
+<li><p>Add an <code>injured</code> method to the <code>Bird</code> class. This method should take no additional parameters, and should reduce the bird’s health by the amount specified by the <code>injurycost</code> constant.</p>
+</li>
+<li><p>Add a <code>display</code> method to the <code>Bird</code> class. This method should take no additional parameters and should reduce the bird’s health by the amount specified by the <code>displaycost</code> constant.</p>
+</li>
+<li><p>Add a <code>die</code> method to the <code>Bird</code> class. This method should take no additional parameters and should remove the bird from its world’s bird list.</p>
+</li>
+<li><p>Add an <code>update</code> method to the <code>Bird</code> class. This method takes no additional parameters and it represents one unit of time passing. It should reduce the bird’s health by <code>1</code> (representing calories being burned) and then should check whether the health is at or below <code>0</code>. If so, the bird should die (which you can make happen using the <code>die</code> method). We now have a <code>Bird</code> class that has all the basic functionality.</p>
+</li>
+<li><p>Let’s now add additional functionality to the <code>World</code> class. First, create an <code>update</code> method in this class. It should take no additional parameters, and should simply call the <code>update</code> method for each bird in the bird list. With this we now have a single method we can call that makes time pass for every individual in our simulation.</p>
+</li>
+<li><p>Add a <code>free_food</code> method to the <code>World</code> class. This represents the uncontested food that birds can find. It should take a single integer as its parameter. It should then award a free unit of food that many times. Each award of free food is done by picking a random bird from the bird list and having that bird <code>eat</code>. (Each choice of bird should be made independent of the others—it is possible a bird will get free food multiple times in a single <code>free_food</code> call if the bird is lucky.)</p>
+</li>
+<li><p>Now create <code>Dove</code> and <code>Hawk</code> classes, representing our two types of birds. These classes should inherit from <code>Bird</code>, so we won’t need to add all that much to them. Each should have a class variable called <code>species</code> that is a string representing the species of that bird. The <code>Dove</code> class should have species set to <code>&quot;Dove&quot;</code> and the <code>Hawk</code> class should have species set to <code>&quot;Hawk&quot;</code>. There is no need to add initialization functions to either class—the initialization function <code>__init__</code> in <code>Bird</code> will do just fine.</p>
+</li>
+<li><p>Add <code>update</code> methods to <code>Dove</code> and <code>Hawk</code>. These are modifications of the method for <code>Bird</code>. They should do the same things <code>Bird</code> does. (Don’t repeat the code—use the function from <code>Bird</code>.) Then they should also reproduce if necessary. After the standard <code>update</code> (including the health reduction) these methods should check whether the dove&#x2F;hawk has health of at least <code>200</code>. If so, the health should be reduced by <code>100</code> and a new bird (of the same type) should be created (in the same world).</p>
+</li>
+<li><p>Add a <code>defend_choice</code> method to <code>Dove</code> and <code>Hawk</code>. This method takes no input and “asks” the bird whether it will defend itself if another bird finds it with food. Doves never will, so their function should always return <code>False</code>, while hawks should have a function that always returns <code>True</code>.</p>
+</li>
+<li><p>Finally, we need to add a method that represents a hawk&#x2F;dove coming upon another bird with food. This method will be called <code>encounter</code>, and it takes as input another bird (the one that has already found the food). It should use <code>defend_choice</code> to find out if the other bird will defend itself, and then respond accordingly. A dove will run away if the other bird defends itself, having no effect on the dove, and letting the other bird eat. (Remember, you need to explicitly have the other bird eat.) If the other bird does not defend itself, both birds should display, then a random one of the two should eat the food. A hawk on the other hand will always eat if the other bird does not defend itself. If it does, the two fight with a random winner. The winner eats and the loser gets injured. Once this is done, your <code>Hawk</code> and <code>Dove</code> classes are complete.</p>
+</li>
+<li><p>We can now complete the <code>World</code> class. First we add a <code>conflict</code> method. This is the analogous function to <code>free_food</code>, and it creates encounters between birds over food. It should take a number parameter and make that many encounters occur. In each encounter, two (different) birds should be randomly selected. An encounter should then occur where one of the birds finds the other. (Do this by calling the <code>encounter</code> method.)  Like with <code>free_food</code>, the same bird can be chosen for multiple encounters.</p>
+</li>
+<li><p>Add a <code>status</code> method to world. This method should count the number of birds of each species that currently exist and print a summary of that information to the terminal.</p>
+</li>
+</ol>
+<p>We can now run our first experiments. Set <code>init_hawk</code> and <code>init_dove</code> to 50, and <code>init_defensive</code> and <code>init_evolving</code> to 0 (these are two types of birds we haven’t made yet, so we don’t want them in this experiment). Then set <code>injurycost</code>, <code>displaycost</code>, and <code>foodbenefit</code> to <code>11</code>, <code>1</code>, and <code>8</code> respectively. Run the script. The code provided at the bottom will run the experiment for <code>10000</code> units of time, at each step providing free food <code>10</code> times and contested food <code>50</code> times. At the end, you should see a mix of hawks and doves. Try changing <code>injurycost</code> to <code>7</code>. Now you should see that only hawks survive. Play around with different numbers. You should find that you can create outcomes that mix hawks and doves and outcomes that are all hawks, but no outcomes that are all doves.</p>
+<h1 id="Second-Experiment-defensive-birds"><a href="#Second-Experiment-defensive-birds" class="headerlink" title="Second Experiment: defensive birds"></a>Second Experiment: defensive birds</h1><p>Next we want to add a new type of bird. This type of bird is “defensive”—if it finds food first, it will fight to defend it from other birds, but it will not attack other birds to take their food. (It will, however, display in the way doves do.) It also of course creates additional defensive birds when it reproduces. You should create a <code>Defensive</code> class to represent this bird. Remember that <code>defend_choice</code> determines what a bird does when it has already found food and another bird appears, while <code>encounter</code> determines what it does when it finds another bird already with food. Remember to avoid repeating code whenever possible!</p>
+<p>When you have such a class created, set <code>init_defensive</code> to <code>50</code> so that we now have three types of birds in our experiment. Now try several experiments. Set <code>injurycost</code> to <code>10</code>, <code>displaycost</code> to <code>1</code> and <code>foodbenefit</code> to <code>12</code>. You should see that only hawks survive. If you instead change <code>foodbenefit</code> to <code>8</code>, you should see only defensive birds. Can you find settings that give a mix of defensive birds and hawks? Can you find settings where doves survive?</p>
+<h1 id="Third-Experiment-evolution"><a href="#Third-Experiment-evolution" class="headerlink" title="Third Experiment: evolution"></a>Third Experiment: evolution</h1><p>Now we make a bigger change. Instead of specifying exactly what type of birds we have and how they behave, we want to allow birds to behave in a variety of ways and let them evolve over generations. We’ll get rid of doves and hawks and defensive birds. Instead we’ll use a new class, <code>Evolving</code>, that can represent birds of various kinds. We’ll let these new birds vary in two ways. One is that they will have different levels of aggression, choosing to fight more or less frequently. The other is that they’ll vary by weight, with heavier birds winning fights more often but also burning more calories over time. Then, we’ll let these birds evolve— children of a bird will have roughly the same (but not identical) attributes as the parent—and we can see how the birds change over time.</p>
+<p>First, you’ll need to write <code>defend_choice</code> and <code>encounter</code>. These methods need to account for the new way birds choose whether to fight. A bird should choose to fight with a probability equal to its aggressiveness (which will always be between <code>0.0</code> and <code>1.0</code>). (Note that this is true whether encountering another bird or defending—we’re dropping the distinction we made in <code>Defensive</code>.) The <code>encounter</code> method also needs to account for the new, more complicated method of fighting. We want heavier birds to win fights more often, so we will say that if the two birds have weights <code>w1</code> and <code>w2</code>, then the probability of first bird winning is <code>w1/(w1+w2)</code>.</p>
+<p><strong>Programming tip:</strong> calling <code>random.random()</code> provides a uniform random number between <code>0.0</code> and <code>1.0</code>. You can use this to make things happen with a certain probability.</p>
+<p>Next you need to write <code>update</code> and <code>__init__</code>. These functions will be used to create two changes from our previous birds. The first is that heavier birds burn more calories. As a result, we want health to decrease by <code>0.4 + 0.6 * w</code> at each unit of time. (This is still 1 for the smallest birds, but it scales up as the birds get larger.)</p>
+<p>The bigger change, however, will be to how reproduction works. It is no longer enough to just create another bird of the same type. We want the offspring of a successful bird to be similar to its parent, but with some variation. (This is a rough approximation of mutations that occur in nature.) You should modify the initialization function for <code>Evolving</code>. It should take one additional argument, the evolving bird’s parent (which could be <code>None</code>).  If this <code>parent</code> argument is set to <code>None</code> (this is what we use when we create the initial population of “Adam&#x2F;Eve” birds at the start of the experiment) then the <code>weight</code> and <code>aggression</code> should be chosen as floating point numbers from the allowed ranges (between <code>0.0</code> and <code>1.0</code> for <code>aggression</code> and between <code>1.0</code> to <code>3.0</code> for weight).</p>
+<p>If instead, the <code>parent</code> parameter is not <code>None</code>, then we give this new bird a <code>weight</code> and <code>aggression</code> close to that of its parent by setting each attribute to that of its parent plus or minus a small random amount.  In particular, <code>weight</code> should be set to the parent’s <code>weight</code> plus a random value between <code>-0.1</code> and <code>0.1</code>. Similarly, <code>aggression</code> should be the parent’s <code>aggression</code> plus a random value between <code>-0.05</code> and <code>0.05</code>. We do, however, want these values to stay in the allowed ranges (again, from <code>0.0</code> to <code>1.0</code> for <code>aggression</code> and from <code>1.0</code> to <code>3.0</code> for <code>weight</code>.) If the random variation would put a value above&#x2F;below the allowed maximum&#x2F;minimum, then instead set it to the maximum&#x2F;minimum exactly.</p>
+<p><strong>Tip:</strong> <code>random.uniform(a,b)</code> returns a random floating point number between <code>a</code> and <code>b</code>.</p>
+<p>The reproduction part of <code>update</code> should use this <code>__init__</code> by creating a new <code>Evolving</code> bird, passing <code>self</code> as the parent parameter. This means that new birds will be similar to the ones that survived, with some mutation. And since the birds we create in the beginning for the initial population are built with a <code>None</code> parent, they’ll have widely varying random values.</p>
+<p>Finally, we need a way to show what the evolving birds are like at a given point in time. We can’t just print counts of each type of bird anymore, so instead we’ll create a simple scatter plot of the weights and aggressiveness of the birds. A simple function for producing scatter plots, <code>plot</code>, has been provided for you. It takes two lists as parameters. The first parameter is the list of <em>x</em> coordinates of points being plotted, which will for us be the <code>weight</code> of each bird in the population.  The second parameter is a list of the corresponding <em>y</em> coordinates (in this case each bird’s aggressiveness). The two lists must correspond in order—the <em>i</em>-th <em>x</em> coordinate must correspond to the same individual as the <em>i</em>-th <em>y</em> coordinate. Add a method <code>evolvingPlot</code> to the <code>World</code> class that creates a scatter plot of all the current <code>Evolving</code> birds.</p>
+<p>We can now run an experiment with these birds. At the bottom of the file, uncomment the line that makes a plot of evolving birds. Then set the initial bird counts so that the only birds we have are <code>150</code> evolving birds. Finally, set <code>injurycost</code> to <code>10</code>, <code>displaycost</code> to <code>1</code> and <code>foodbenefit</code> to <code>8</code>. When you run the script, you should see that our evolving birds naturally separate into two “species” clumps—one passive, light clump fulfilling the “dove” role, and one aggressive, heavier clump fulfilling the “hawk” role. Try varying these constants to see what is possible. You should find that some settings will result in two clumps (though one of these clumps can move around), while others result in a single clump.</p>
+<h1 id="What-all-of-this-means"><a href="#What-all-of-this-means" class="headerlink" title="What all of this means"></a>What all of this means</h1><p>The above description focused on the programming, since that’s what this class is about. The phenomena that you have simulated, though, are part of a deep and interesting area of study. Game theory is the mathematical modeling and analysis of strategic interactions between rational actors. It is widely used in economics to model market interactions—11 game theorists have now won Nobel prizes in economics. Political scientists use it to model any number of things, including international relations and domestic politics.</p>
+<p>Modern game theory began as a result of groundbreaking research by John von Newmann and his 1944 book with Oskar Morgenstern, though some of the basic ideas had been seen earlier in works by Cournot and others. The most famous game theorist is probably John Nash, in part due to the movie A Beautiful Mind. Nash developed the definition of Nash equilibria, the standard solution concept for games, and proved that such equilibria exist in all games. For a more detailed overview of game theory, I recommend the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Game_theory">Wikipedia article</a>.</p>
+<p>The game we simulated in Experiment 1, Hawk-Dove, is a special case of the game of Chicken, a standard example in economics. The Hawk-Dove version was introduced by John Maynard Smith and George Price in a 1973 paper, “The logic of animal conflict.”  Smith also introduced the idea of an “evolutionarily stable strategy,” a solution concept for games specifically tailored to modeling evolution. Again, I recommend the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chicken_(game)">Wikipedia article</a> on the game to see more explanation.</p>
+<p>Games can be (and usually are) analyzed without computer simulation. A large set of mathematical tools has been developed so that one can tell what the equilibrium of a game will be without need to simulate it. However, simulation can provide a concrete means to see how the game behaves. It can also be used to answer difficult questions when the theory becomes very difficult in complicated games. For example, see <a target="_blank" rel="noopener" href="http://octavia.zoology.washington.edu/publications/BergstromAndGodfreySmith98.pdf">this paper by Bergstrom and Godfrey-Smith</a>. This is an example of modern research in biology that uses computer simulation of the hawk-dove game.</p>
+<p>The results of these models do really tell us something about how the world works. The mixed results of the hawk-dove simulation help explain why a variety of animals exist and behave in different ways. The fact that these mixed results disappear in certain cases, with hawks becoming dominant (but never the reverse dominance for doves) also tells us something about which animals might succeed in which sort of situation.</p>
+<p>The strength of the defensive strategy also has wide-ranging implications. It has been used as an argument for why territoriality might develop among certain animals. It can even be used to explain why social norms or a sense of “ownership” might evolve. Rules that specify who should get what reduce conflict, and in some cases it can do so in a way that makes every individual benefit from following the rules, even if they are arbitrary. (Of course, there are many other potential explanations of these things as well.)</p>
+<p>The simulation of evolving birds also of course has relevance to biology. You can see how the mixed equilibrium of hawks and doves can appear even if the initial animals do not fall into two separate species. It can even be used to model one way that speciation might occur, with a previous homogenous population separating into two distinct types.</p>
+<p>Game theory is also used in a variety of fields in computer science. Algorithms research now includes a substantial effort to find efficient ways of analyzing games to find various sorts of equilibria. (This turns out to be a very difficult problem.) Game theory is also used to model interactions between multiple actors. This includes network protocols, peer-to-peer file sharing protocols, and any other situation where protocols are being written for multiple agents to interact. (The goal here is to make it so that self-interested participants can’t deviate from the prescribed protocol in order to take more resources for themselves.) It also has a natural home in cryptography, which routinely studies the interaction of untrustworthy agents. One member of our CS faculty has done research in this area of cryptography and would be happy to talk to you about it if you’re interested.</p>
+<h1 id="Submitting-your-work"><a href="#Submitting-your-work" class="headerlink" title="Submitting your work"></a>Submitting your work</h1><p>All you need to submit for this project is the main file containing all your work. Upload it to the homework submission site whenever you are ready.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj3/" data-id="clcu6t9mh000mjkt07ezg4tsv" data-title="proj3" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj3/" data-id="clcv2649h000s8tt01khwd14o" data-title="Project 2 -- Hawks and Doves, simulating competition among birds" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
     </footer>
   </div>
   
@@ -133,7 +212,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          proj4
+          Project 4 -- Adventure
         
       </div>
     </a>
@@ -193,11 +272,11 @@
       <ul>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj4/">proj4</a>
+            <a href="/121-S23/2023/01/12/proj4/">Project 4 -- Adventure</a>
           </li>
         
           <li>
-            <a href="/121-S23/2023/01/12/proj3/">proj3</a>
+            <a href="/121-S23/2023/01/12/proj3/">Project 2 -- Hawks and Doves, simulating competition among birds</a>
           </li>
         
           <li>
