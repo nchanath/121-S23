@@ -93,6 +93,99 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hw6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw6/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:04:43.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/121-S23/2023/01/12/hw6/">Homework 6 -- Joining Splits and Other Things</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>*<em>Complete and submit by 3&#x2F;3 at 1:00pm</em> </p>
+<p>This week’s lab exercises are a mix of problems that have you work with Python lists and with Python dictionaries. We ask you to write a function for each of them.</p>
+<p>Let me just remind you that lists and dictionaries are both <em>passed by reference</em> to a function.  This means that it is possible to change the values stored in them, and to increase and decrease their size by applying certain operations to them, within a function’s code. These changes can be noticed by the client code that uses the function that changes them.</p>
+<p>An example of this comes from lecture. We wrote the code for <code>rotate_right</code> as below</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">rotate_right</span>(<span class="params">xs</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(xs) &gt; <span class="number">1</span>:</span><br><span class="line">        last = xs.pop()</span><br><span class="line">        xs.insert(<span class="number">0</span>,last)</span><br></pre></td></tr></table></figure>
+<p>The function does not return anything, but it takes the list <code>xs</code> and modifies it by performing a <code>pop</code> to remove the last value in the list, followed by an <code>insert</code> that puts that value at the front. Here it is in action:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; some_values = [11, 7, 17, -3, 5]</span><br><span class="line">&gt;&gt;&gt; rotate_right(some_values)</span><br><span class="line">&gt;&gt;&gt; some_values</span><br><span class="line">[5, 11, 7, 17, -3]</span><br></pre></td></tr></table></figure>
+<p>Calling the function with a list has the effect of “rotating” the contents of the list it is passed.</p>
+<p>Because of this ability to modify lists and dictionaries, you need to pay careful attention as to whether we want your function to change the data structure it is given, and also whether or not we want you to build and return a new data structure.</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW6-P1-make-even"><a href="#HW6-P1-make-even" class="headerlink" title="[HW6 P1] make even"></a><code>[HW6 P1]</code> make even</h2><p>Write a function <code>def make_even(xs)</code> that, when given a list of integers <code>xs</code>, modifies the elements of the list to make them all divisible by 2. If a list element is even, it should not be changed. If a list element is odd, it should be decremented by one. The <code>make_even</code> function should modify the list it is given, and not return a list back.  Have it return the value <code>None</code>, and have the list be modified as a <em>side effect</em> of being executed.  Here is an example of its behavior:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ys = [1, 3, 2, -7, 0, -8, 11]</span><br><span class="line">&gt;&gt;&gt; zs = [10, 0, 1, 1, -1, 100]</span><br><span class="line">&gt;&gt;&gt; make_even(ys)</span><br><span class="line">&gt;&gt;&gt; make_even(zs)</span><br><span class="line">&gt;&gt;&gt; ys</span><br><span class="line">[0, 2, 2, -8, 0, -8, 10]</span><br><span class="line">&gt;&gt;&gt; zs</span><br><span class="line">[10, 0, 0, 0, -2, 100]</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW6-P2-remove-duplicates"><a href="#HW6-P2-remove-duplicates" class="headerlink" title="[HW6 P2] remove duplicates"></a><code>[HW6 P2]</code> remove duplicates</h2><p>Write a function <code>def remove_duplicates(xs)</code> that takes a list of integers and modifies it so that it has the same set of integer items, but with no items duplicated. For example: ~~~ none &gt;&gt;&gt; zs1 &#x3D; [100, 0, 1, -1, 1, 100] &gt;&gt;&gt; remove_duplicates(zs1) &gt;&gt;&gt; zs1 [100, 0, 1, -1] &gt;&gt;&gt; zs2 &#x3D; [100, 100, 100, 100] &gt;&gt;&gt; remove_duplicates(zs2) &gt;&gt;&gt; zs2 [100] &gt;&gt;&gt; zs3 &#x3D; [] &gt;&gt;&gt; remove_duplicates(zs3) &gt;&gt;&gt; zs3 [] ~~~ The list that results should have the same ordering as the ordering of the first occurrences of each integer as they appeared before the duplicates were removed.</p>
+<h2 id="HW6-P3-diagonal-table"><a href="#HW6-P3-diagonal-table" class="headerlink" title="[HW6 P3] diagonal table"></a><code>[HW6 P3]</code> diagonal table</h2><p>Below is a list of lists, where each list has the same length:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[1, 2, 0, 1], [5, 3, 1, 4], [8, 7, 1, 5]]</span><br></pre></td></tr></table></figure>
+<p>The “outer” list has three elememts in it, and each such element is a four-element list. If that list is called <code>table</code>, then accessing the list slot with the value 7 can be done with the notation</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table[2][1]</span><br></pre></td></tr></table></figure>
+<p>because it is held in the last of the three lists, and it is item 1 of that last list.</p>
+<p>We can think of a lists of lists as a table.  Below I’ve laid out its contents to suggest its tabular form:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[1, 2, 0, 1],</span><br><span class="line"> [5, 3, 1, 4],</span><br><span class="line"> [8, 7, 1, 5]]</span><br></pre></td></tr></table></figure>
+
+<p>It has three rows and four columns.  We see that 7 is in row number 2 (the top row is row 0), and in column 1 (the left column is column 0). In general, we can access the item in row <code>r</code> and column <code>c</code> with the notation</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table[r][c]</span><br></pre></td></tr></table></figure>
+
+<p>Write a function <code>def diagonal_table(size)</code> that, when given a positive integer <code>size</code>, returns a list of lists that is a table with the same number of rows and columns in it, with each dimension of length <code>size</code>. It should be full of 0s, excepting that all the entries along the table’s diagonal have the value 1. For example</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = diagonal_table(4)</span><br><span class="line">&gt;&gt;&gt; t</span><br><span class="line">[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]</span><br></pre></td></tr></table></figure>
+<p>Laying the result out as a table, we get</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[1, 0, 0, 0],</span><br><span class="line"> [0, 1, 0, 0],</span><br><span class="line"> [0, 0, 1, 0],</span><br><span class="line"> [0, 0, 0, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>Note that all the non-zero entries are <code>t[i][i]</code>, all the locations where the row number <code>i</code> is the same as the column number <code>i</code>.</p>
+<h2 id="HW6-P4-word-count"><a href="#HW6-P4-word-count" class="headerlink" title="[HW6 P4] word count"></a><code>[HW6 P4]</code> word count</h2><p>A Python string made up of words separated by spaces can be split into a list of strings made up of the words as they were strung together. To do so, you use a string operation called <code>split</code>, passing it the space character <code>&#39; &#39;</code> like so:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sentence = &quot;the quick brown fox jumped over the lazy dogs&quot;</span><br><span class="line">&gt;&gt;&gt; print(sentence)</span><br><span class="line">the quick brown fox jumped over the lazy dogs</span><br><span class="line">&gt;&gt;&gt; words = sentence.split(&#x27; &#x27;)</span><br><span class="line">&gt;&gt;&gt; words</span><br><span class="line">[&#x27;the&#x27;, &#x27;quick&#x27;, &#x27;brown&#x27;, &#x27;fox&#x27;, &#x27;jumped&#x27;, &#x27;over&#x27;, &#x27;the&#x27;, &#x27;lazy&#x27;, &#x27;dogs&#x27;]</span><br><span class="line">&gt;&gt;&gt; &quot;hello there&quot;.split(&#x27; &#x27;)</span><br><span class="line">[&#x27;hello&#x27;, &#x27;there&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>Write a function <code>def word_count(s)</code> that takes a string <code>s</code> and gives back a dictionary that gives an integer count of the number of times each word appears in <code>s</code>. There should be a dictionary entry for every word that appears in <code>s</code> and each should have a value of 1 or more that corresponds to the number of times that word appears.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; word_count(&quot;hello there&quot;)</span><br><span class="line">&#123;&#x27;hello&#x27;:1, &#x27;there&#x27;:1&#125;</span><br><span class="line">&gt;&gt;&gt; word_count(&quot;buffalo buffalo buffalo buffalo buffalo buffalo buffalo buffalo&quot;)</span><br><span class="line">&#123;&#x27;buffalo&#x27;:8&#125;</span><br><span class="line">&gt;&gt;&gt; word_count(&quot;b a n a n a s&quot;)</span><br><span class="line">&#123;&#x27;a&#x27;: 3, &#x27;b&#x27;:1, &#x27;n&#x27;:2, &#x27;s&#x27;:1&#125;</span><br><span class="line">&gt;&gt;&gt; word_count(&quot;i am who i am as far as i know&quot;</span><br><span class="line">&#123;&#x27;as&#x27;:2, &#x27;am&#x27;:2, &#x27;far&#x27;:1, &#x27;i&#x27;:3, &#x27;know&#x27;:1, &#x27;who&#x27;:1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You can assume that the string consists of only the letters from <code>&#39;a&#39;</code> to <code>&#39;z&#39;</code> and spaces, that there are no spaces at the front or end of the string, and that there are never two consecutive spaces.</p>
+<p>Note that the ordering of dictionary entries produced by Python’s report does not matter. Dictionary entries, unlike list entires, are unordered. This means that</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; word_count(&quot;hello there&quot;)</span><br><span class="line">&#123;&#x27;there&#x27;:1, &#x27;hello&#x27;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>is just as correct a result as the result listed before.</p>
+<h2 id="HW6-P5-replace-using"><a href="#HW6-P5-replace-using" class="headerlink" title="[HW6 P5] replace using"></a><code>[HW6 P5]</code> replace using</h2><p>A list of strings can be joined together into a single string by using the string <code>join</code> operation as shown below</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; words = [&#x27;the&#x27;, &#x27;quick&#x27;, &#x27;brown&#x27;, &#x27;fox&#x27;, &#x27;jumped&#x27;, &#x27;over&#x27;, &#x27;the&#x27;, &#x27;lazy&#x27;, &#x27;dogs&#x27;]</span><br><span class="line">&gt;&gt;&gt; sentence = &#x27; &#x27;.join(words)</span><br><span class="line">&gt;&gt;&gt; sentence</span><br><span class="line">&#x27;the quick brown fox jumped over the lazy dogs&#x27;</span><br><span class="line">&gt;&gt;&gt; &#x27; &#x27;.join([&#x27;ba&#x27;,&#x27;nan&#x27;,&#x27;a&#x27;,&#x27;s&#x27;])</span><br><span class="line">&#x27;ba nan a s&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>Write a function <code>def replace_using(s,d)</code> that takes a string <code>s</code> that is a space-separated string of words like in problem <code>[HW6 P4]</code>. It also takes a dictionary of word substitutions. It returns the string that results from applying the replacements in <code>d</code> to the string <code>s</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; replace_using(&quot;i am who i am as far as i know&quot;, &#123;&#x27;i&#x27;:&#x27;am&#x27;,&#x27;am&#x27;:&#x27;was&#x27;,&#x27;know&#x27;:&#x27;now&#x27;&#125;)</span><br><span class="line">&#x27;am was who am was as far as am now&#x27;</span><br><span class="line">&gt;&gt;&gt; replace_using(&quot;i am who i am as far as i know&quot;, &#123;&#x27;i&#x27;:&#x27;as&#x27;, &#x27;as&#x27;:&#x27;yass&#x27;&#125;)</span><br><span class="line">&#x27;as am who as am yass far yass as know&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>Notice that the replacement occurs as a result of one pass through the string.  In the second example, we replaced each <code>&#39;i&#39;</code> in the original string with <code>&#39;as&#39;</code> and we replaced each <code>&#39;as&#39;</code> in the original string with <code>&#39;yass&#39;</code>. We didn’t then replace the <code>&#39;as&#39;</code> words that were placed by that one pass with any <code>&#39;yass&#39;</code> words with some second pass.</p>
+<p>You can assume that the entry words and their replacements are made up of one or more of the letters from <code>&#39;a&#39;</code> to <code>&#39;z&#39;</code>.</p>
+<h2 id="HW6-P6-inverse"><a href="#HW6-P6-inverse" class="headerlink" title="[HW6 P6] inverse"></a><code>[HW6 P6]</code> inverse</h2><p>Write a function <code>def inverse(d)</code> which takes a dictionary <code>d</code> and returns its “inverse” dictionary, a dictionary mapping values of entries in the given dictionary to lists of keys in the given dictionary. The keys of the dictionary it returns are the the values of the original dictionary and whose entries are lists of keys which mapped to that value in the original dictionary. For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; inverse(&#123;&#x27;a&#x27;:&#x27;b&#x27;, &#x27;c&#x27;:&#x27;b&#x27;, &#x27;cats&#x27;:&#x27;rest&#x27;, &#x27;world&#x27;:&#x27;hello&#x27;&#125;)</span><br><span class="line">&#123;&#x27;hello&#x27;:[&#x27;world&#x27;], &#x27;rest&#x27;:[&#x27;cats&#x27;], &#x27;b&#x27;:[&#x27;a&#x27;, &#x27;c&#x27;]&#125;</span><br><span class="line">&gt;&gt;&gt; inverse(&#123;&#125;)</span><br><span class="line">&#123;&#125;</span><br><span class="line">&gt;&gt;&gt; inverse(&#123;&#x27;a&#x27;:&#x27;1&#x27;,&#x27;b&#x27;:&#x27;1&#x27;,&#x27;c&#x27;:&#x27;1&#x27;,&#x27;d&#x27;:&#x27;1&#x27;,&#x27;e&#x27;:&#x27;1&#x27;,&#x27;f&#x27;:&#x27;1&#x27;,&#x27;g&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">&#123;&#x27;1&#x27;:[&#x27;e&#x27;, &#x27;c&#x27;, &#x27;f&#x27;, &#x27;g&#x27;, &#x27;a&#x27;, &#x27;d&#x27;, &#x27;b&#x27;]&#125;</span><br><span class="line">~~~~</span><br><span class="line"></span><br><span class="line">Note that the ordering of dictionary entries produced by Python&#x27;s report does not matter. Dictionary entries, unlike list entires, are unordered. This means that</span><br><span class="line"></span><br><span class="line">~~~ none</span><br><span class="line">&gt;&gt;&gt; inverse(&#123;&#x27;a&#x27;:&#x27;b&#x27;, &#x27;c&#x27;:&#x27;b&#x27;, &#x27;cats&#x27;:&#x27;rest&#x27;, &#x27;world&#x27;:&#x27;hello&#x27;&#125;)</span><br><span class="line">&#123;&#x27;b&#x27;:[&#x27;a&#x27;, &#x27;c&#x27;], &#x27;hello&#x27;:[&#x27;world&#x27;], &#x27;rest&#x27;:[&#x27;cats&#x27;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>is just as correct a result as the result listed before.</p>
+<p>The ordering of the listed values in the inverse dictionary also does not matter.  That means that the entry for <code>&#39;b&#39;</code> could instead have been <code>[&#39;c&#39;, &#39;a&#39;]</code> in the result reported just above.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw6/" data-id="clcu4blce0000zlt06diy7wfc" data-title="Homework 6 -- Joining Splits and Other Things" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hw5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/121-S23/2023/01/12/hw5/" class="article-date">
@@ -957,6 +1050,10 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       <ul>
         
           <li>
+            <a href="/121-S23/2023/01/12/hw6/">Homework 6 -- Joining Splits and Other Things</a>
+          </li>
+        
+          <li>
             <a href="/121-S23/2023/01/12/hw5/">Homework 5 -- List</a>
           </li>
         
@@ -970,10 +1067,6 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
         
           <li>
             <a href="/121-S23/2023/01/11/hw2/">Homework 2 -- Quotients and Conditionals</a>
-          </li>
-        
-          <li>
-            <a href="/121-S23/2023/01/11/hw1/">Homework 1 -- Set-up, Script, and Submit!</a>
           </li>
         
       </ul>
