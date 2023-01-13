@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Project 1 -- The Game of Life and Image Processing | CSCI 121 Computer Science I</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="** Complete and submit by 2&#x2F;27 at 1:00pm** This first project has you inventing a family of different cellular automata.  A cellular automata simulation is one that is applied to a two-dimensiona">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project 1 -- The Game of Life and Image Processing">
+<meta property="og:url" content="https://nchanath.github.io/121-S23/2023/01/12/proj1/index.html">
+<meta property="og:site_name" content="CSCI 121 Computer Science I">
+<meta property="og:description" content="** Complete and submit by 2&#x2F;27 at 1:00pm** This first project has you inventing a family of different cellular automata.  A cellular automata simulation is one that is applied to a two-dimensiona">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://nchanath.github.io/121-S23/images/no-tk.jpg">
+<meta property="og:image" content="https://nchanath.github.io/121-S23/images/life-grid.jpg">
+<meta property="og:image" content="https://nchanath.github.io/121-S23/images/reed-grid.jpg">
+<meta property="article:published_time" content="2023-01-13T06:58:24.000Z">
+<meta property="article:modified_time" content="2023-01-13T07:03:25.858Z">
+<meta property="article:author" content="Chanathip Namprempre">
+<meta property="article:tag" content="Homework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nchanath.github.io/121-S23/images/no-tk.jpg">
+<meta name="twitter:creator" content="@ajmeaw">
+  
+    <link rel="alternate" href="/121-S23/atom.xml" title="CSCI 121 Computer Science I" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/121-S23/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/121-S23/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/121-S23/fancybox/jquery.fancybox.min.css">
+
+  
+  <script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script>
+    MathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";
+    MathJax.Ajax.config.path["font"] = "https://cdn.mathjax.org/mathjax/font";
+  </script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/121-S23/" id="logo">CSCI 121 Computer Science I</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Announcements">Announcements</a>
+        
+          <a class="main-nav-link" href="/121-S23/syllabus">Syllabus</a>
+        
+          <a class="main-nav-link" href="/121-S23/lecturenotes">Lecture Notes</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Handouts">Handouts</a>
+        
+          <a class="main-nav-link" href="/121-S23/tags/Homework">Homework</a>
+        
+          <a class="main-nav-link" href="/121-S23/resources">Resources</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/121-S23/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nchanath.github.io/121-S23"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-proj1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/proj1/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:58:24.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Project 1 -- The Game of Life and Image Processing
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>** Complete and submit by 2&#x2F;27 at 1:00pm**</p>
+<p>This first project has you inventing a family of different <em>cellular automata</em>.  A cellular automata simulation is one that is applied to a two-dimensional grid of <em>cells</em>, where each cell stores an integer value, the cell’s <em>state</em>. With each tick of the simulation’s clock, the grid of cells update their state value by applying a simple rule. The rule specifies how it should calculate its next state from its previous state. This calculation is a <em>local</em> one. A cell changes according to its own state and the state of its immediate neighbor cells in the grid.</p>
+<p>Despite this simplicity, the grid’s entire state can evolve in very interesting ways over time. You can, for example, devise calculation rules that perform image and shape analysis of the grid’s initial state pattern.</p>
+<h2 id="Set-Up"><a href="#Set-Up" class="headerlink" title="Set Up"></a>Set Up</h2><p>Download the project’s source code as a ZIP package using the link below:</p>
+<p>• <a href="project1.zip"><strong>Project 1</strong> package</a></p>
+<p>Have it unpack as a folder named <code>project1</code>, say, within your <code>Desktop</code> folder. In that project folder, you will see a number of <code>.py</code> source files for the Python program that you will be working with. To run the program, bring up terminal console and type the commands</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd Desktop/project1</span><br><span class="line">python3 life.py</span><br></pre></td></tr></table></figure>
+
+<p>If everything is set-up correctly with Python, the program will bring up a window that shows a grid of cells. On some installations or on some systems, you will get an error, something like the following</p>
+<p><img src="/121-S23/images/no-tk.jpg"></p>
+<p>In these situations, Python is complaining that you are missing a needed Python module called <code>tkinter</code>. This module helps us create a window, draw shapes in that window, and allow the user to click on that window.  To fix this situation for your Python set-up, you can enter the console command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install tkinter</span><br></pre></td></tr></table></figure>
+
+<p>Having done this, the command <code>python3 life.py</code> should be able to open a window and show the program’s grid of cells.</p>
+<p>In addition to the displayed grid of cells, there is a color bar shown at the top. The program is prepared to execute the rules of the mathematician John Conway’s cellular automata, one he called “The Game of Life”. If you select one of the colors in the color bar, you can then paint that color onto the cells of the grid. Having done that painting, you can run the Game of life simulation by hitting <code>[SPACE]</code> a few times.  This will change the pattern of colored cells, and how that grid changes is described just below.</p>
+<p>In any case, congratuations! You have created life. Read on. </p>
+<h1 id="Conway’s-Game-of-Life"><a href="#Conway’s-Game-of-Life" class="headerlink" title="Conway’s Game of Life"></a>Conway’s Game of Life</h1><p><img src="/121-S23/images/life-grid.jpg" alt="A view of the Project 1 window."></p>
+<p>The Game of Life is not actually a game at all, not in the usual sense. It is at most a game played by one person, there’s no strategy, and the rules don’t offer a player any choices like a normal game would. Rather, the Game of Life is a simulation of an artificial world, the world of the grid, governed by a very simple mathematical rule. An execution of the Game of Life consists of setting up the initial state of the world and then applying the rule to determine the next state of the world (the next “generation”). By successively applying this rule to the world, computing its state from one generation to the next, some interesting behavior arises.</p>
+<p>In the Game of Life, the world is a grid of cells like you see in the Python program’s display. Each cell has a state associated with it. In the original Game of Life, the state of a cell could either be “living” or “dead”. In this version, the state of a cell is an integer ranging from 0 to 100.</p>
+<p>Feel free to paint on the grid with the mouse using the currently selected color. White is 100. Violet through red is 99 through 1. We say that any such cell, one with a state value from 1 to 100, is “living”. Cells that are black have the state value of 0. We say that these cells are “dead”.</p>
+<p>Once you’ve set up the initial state of the world, painting cells as living, you can then run a step of Conway’s game, changing the grid’s cells’ state. Hit the <em>[SPACE]</em> bar on the keyboard once. Some live cells stay alive and others die. Some dead cells come alive. Hit the space bar again to see the next generation of cells. And again.</p>
+<p>The rule for how the grid changes is deterministic. The next generation’s pattern of living and dead cells is entirely determined by the prior generation’s pattern, The calculation for determining which cells live, and which cells die, is simple. With each step a cell counts the number of living cells in the eight cells immediately surrounding it. In the case where a cell is alive, it remains alive in the next generation if it has two or three living neighbors. Otherwise it dies. If instead a cell is dead, it will be come alive with a step if it has 3 living neighbors. Otherwise it remains dead.</p>
+<p>Try some simple patterns out to test these rules. A good one to try is a row of three live cells surrounded by dead cells. This is a “blinker.” It cycles between two states—a horizontal strip of three, and a vertical strip of three. Another simple one is a 2x2 square called a pod. There are also gliders, spinners, clocks, loaves, hives, spaceships, …</p>
+<p>There has been tremendous effort in studying Conway’s Game of Life, and a number of rich discoveries have been made. The <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia article</a> for it serves as a decent starting point, should you want to learn more about it, and it is a good introduction to cellular automata in general.</p>
+<h1 id="The-Python-Code"><a href="#The-Python-Code" class="headerlink" title="The Python Code"></a>The Python Code</h1><p>The code for the program is made up of three parts. There is <code>life.py</code>, which runs the main program, but it is pretty minimal. It relies almost entirely on <code>Grid.py</code>, which describes the program’s display of, and the user’s possible interaction with, the grid of cells. This is a fairly large Python file that you won’t need to understand to complete this assignment (though do feel free to look at it). Instead, you will be extending the code in the file <code>rules.py</code>. This contains a description of grid rules that can be used to run the program. For example, it contains the definition of a function <code>conway</code> that exactly describes Conway’s cell rule. Take a moment to look at this file, find the <code>conway</code> function, and then see how it implements the cellular behavior.</p>
+<p>Each time that you press the space bar, this function gets executed once for each cell in the world.</p>
+<p>Hopefully, you’ve noticed a few things when inspecting this code. First off, <code>conway</code> is a function whose sole responsibility is to return an integer value that represents the next state of the cell it’s working with at that moment. In order to compute the cell’s next state, it has access to the current state of the cell (the parameter <code>cntr</code>) and the current state of that cell’s eight immediate neighbors (the parameter <code>nbrs</code>). That second parameter is an object that consists of those eight state values. They are accessible with <code>nbrs.N</code>, <code>nbrs.NE</code>, <code>nbrs.E</code>, and so on. With these values and some additional calculations and logic, the value of the next state of a cell is computed and returned.</p>
+<h1 id="Image-Processing"><a href="#Image-Processing" class="headerlink" title="Image Processing"></a>Image Processing</h1><p><img src="/121-S23/images/reed-grid.jpg"></p>
+<p>Instead of simulating life, it’s possible to come up with all sorts of rules for computing the states of cells based on their previous states. One of the more useful application areas is image processing. In image processing, you take the digital version of a photo and manipulate it, either to enhance it’s quality, mess with it, analyze it, etc. Many of the techniques for modifying an image can be performed by local pixel rules, where you compute the tone of a pixel based on the tone values of it and its neighboring pixels). Blurring and sharpening an image are two classic examples of this.</p>
+<p>To play with this feature in the program, quit the simulation demo by pressing the <code>q</code> key. We can instead run a grid simulation within the python interpreter. To do so, type the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from Grid import Grid</span><br><span class="line">&gt;&gt;&gt; from rules import *</span><br><span class="line">&gt;&gt;&gt; Grid(negative,pattern=&#x27;images/reed-square.pgm&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>The program runs with a finer grid whose cells are loaded with the pixels of a greyscale image of Eliot Hall. In this mode, black has the value 0, white has the value 255, and greys have in-between values.</p>
+<p>This also sets up the <code>negative</code> rule for the grid’s cells, rather than the <code>conway</code> rule. This rule makes the picture appear as its negative’s image. It is a very simple rule. With one tap of the space bar, the new value of a pixel 255 minus its prior value. You can find this rule as the function <code>negative</code> in <code>rules.py</code>.</p>
+<p>Another good rule to try is <code>blur</code>. This computes a weighted average of each cell’s four compass-point neighbors <code>nbrs.N</code>, <code>nbrs.E</code>, <code>nbrs.S</code>, and <code>nbrs.W</code>. Hit ‘q’ to end the <code>negative</code> simulation and then, still within Python, type</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Grid(blur,pattern=&#x27;images/reed.pgm&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>This loads a larger, rectangular image of Eliot Hall.</p>
+<p>With the <code>blur</code> rule each cell computes a weighted average of its four compass-point neighbors. The next state of the cell is just the average of itself and the average of its four neighbors. The effect is a smoothing of the details of the image, giving them softer transitions from light to dark. After a few steps, we get a blurred image, as if the camera used was not in focus.</p>
+<h1 id="Making-New-Rules"><a href="#Making-New-Rules" class="headerlink" title="Making New Rules"></a>Making New Rules</h1><p>You can add your own cell rules to the program. Just create a new function definition to <code>rules.py</code>, mimicking my examples.  A rule is a function that takes the center cell value <code>cntr</code> and the 8 neighboring cell values as an object <code>nbrs</code>. Using these parameters on the color grid it returns an integer from 0 to 100. The <code>Grid</code> and other support programs can call this function to compute that rule’s behavior on the grid. If it is instead acting on the greys of the sample images, then it should return an integer from 0 to 255. You can run the grid program on the image, specify your new image rule, and then apply its effect.</p>
+<p>The goal of this assignment is for you to write the code for <strong>eight</strong> functions like <code>conway</code> and <code>blur</code> There is a menu of suggestions at the end of this assignment description that specify what those rules should be.  The menu of possible rules you can construct is fairly rich.  It is surprising what can be done with just a little bit of clever coding.</p>
+<h1 id="The-Assignment"><a href="#The-Assignment" class="headerlink" title="The Assignment"></a>The Assignment</h1><p>In the file <code>rules.py</code>, devise a series of cellular automata and image processing rules. You are to write eight rules, six from the required list below, and the remaining two of your choosing. You should do the required six first, and quickly, so that you gain experience with how the cellular automata rules work. Then make your two “programmer’s choice” behaviors directed and interesting. I’ll give you some suggestions in lecture and in lab for what other rules are possible.</p>
+<p>In a new file named <code>demo.py</code> devise a demonstration of your eight rules similar to my demonstration code in <code>life.py</code>. Your description should give us a brief sense of what rule we are seeing, and how to set up and run your demonstration, if need be. We describe making demos further below.</p>
+<p>Beyond the coding above, you should have ample and useful comments in your <code>rules.py</code> file that describe each function definition at an appropriate level of detail. Same goes for each of the <code>Grid</code> calls in <code>demo.py</code>.</p>
+<p>You will be graded on the quality and correctness of your code, the intricacy of your rules, and on the clarity of your descriptions and comments.</p>
+<h1 id="Menu-of-Required-Rules"><a href="#Menu-of-Required-Rules" class="headerlink" title="Menu of Required Rules"></a>Menu of Required Rules</h1><p>Below we give three categories of prescribed rules. You are to implement two rules from each category. And then there is a fourth “Programmer’s Choice” category where you have the option of inventing your own rules to make into Python code that runs on the grid.  You are to implement two of these in addition to the six prescribed ones.  This should lead you to writing eight different rules.</p>
+<h2 id="Life-Rules"><a href="#Life-Rules" class="headerlink" title="Life Rules."></a><strong>Life Rules.</strong></h2><p><em>Pick two grid simulation rules and implement them.</em></p>
+<p>Implement two of the life-like behaviors below. In some cases, it’s more natural to consider a cell as having only four neighbors, to the <code>N</code>, <code>E</code>, <code>S</code>, and <code>W</code>, rather than the full eight.</p>
+<ol>
+<li><p>Have the color of the cell represent its age.  Perhaps have it die at 100.</p>
+</li>
+<li><p>Have live cells be white, and have dead cells leave a color trace that “decays” from violet to red, then finally to black. The decay happens with each successive step of the simulation. The trace should not affect the white cells’ life simulation.</p>
+</li>
+<li><p>Have the grid instead simulate a <em>sandpile automata</em>. In a sandpile, the state of a cell gives the height of a “pile of sand grains” sitting on that cell. With each step, a cell “fires” if it has four or more grains of sand on it. When it fires, it gives one grain of sand to each of its four compass point neighbors—one to the north, one to the east, one to the south, and one to the west. Its own pile drops by four grains as a result.</p>
+</li>
+</ol>
+<p>For option #3 just above, <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/">Dave Perkinson’s</a> sandpile pages cover a number of aspects of this kind of system, and the <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/divisors_and_sandpiles/">mathematics</a> that relates to its study. He has a <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/grant/">web simulation</a> that you can run. When it loads click on the <em>Go</em> button just right of the <code>n Grains Each Cell</code> line and you’ll see the simulation’s behavior.  A good demo of this involves placing a ton of grains of sands in the center cell and watching that tall pile topple and spread to the other cells.</p>
+<p>Note that our above description of sandpile behavior does not quite line up with how the grid rules are devised. In the description a cell fires by adding grains to its neighbors. In our rule system, however, a cell’s rule only has control over its own cell, and not over the neighboring cells that it reasons about. This means that the sandpile rule function, in our simulation, will have to look at its four neighbors to see whether their grain heights will lead them to fire. It then determines its own height based on their firing.</p>
+<h2 id="Imaging"><a href="#Imaging" class="headerlink" title="Imaging."></a><strong>Imaging.</strong></h2><p><em>Pick two image processing rules and implement them.</em></p>
+<ol>
+<li><p>Increase or decrease the contrast of an image. Like the negative rule, this does not examine the neighboring pixels. Instead, a cell goes darker in a step when its brightness is below middle grey. It goes lighter in a step when its brightness is above middle grey.</p>
+</li>
+<li><p>Sharpen the image with each step. This is similar to blur, surprisingly. In a blur, a cell takes on a value closer to the average of its neighbors. In a sharpening, a cell takes on a value that differentiates it from the average of its neighbors. This has the global effect of bringing out details, since differences between neighboring pixels get amplified.</p>
+</li>
+<li><p>Find edges in an image (places where there is a transition from dark to light). Here, in one step, cells should, say, turn white if they are at such a transition. They should turn black if not. Alternatively, they could be bright grey if they are at a major transition, and draker grey if they are at a minor transition.</p>
+</li>
+</ol>
+<h2 id="Shapes"><a href="#Shapes" class="headerlink" title="Shapes."></a><strong>Shapes.</strong></h2><p><em>Pick two shape processing rules and implement them.</em></p>
+<ol>
+<li><p>With the grid in color mode, starting with a pattern where the cells are mostly black, but with white cells forming a boundary of a region and a single cell of a color somewhere in the middle of that region. With simulation steps, have a rule that leads the color to fill the whole interior of that region, but not leak out.</p>
+</li>
+<li><p>In a grid where the cells are mostly black, but with some forming a pattern (or shape) in white. In one step, this rule should make a shadow of the image of white pixels, “underneath” them, in another color, to their SE.</p>
+</li>
+<li><p>In a grid that is mostly black, except with a blob of pixels that are white somewhere in the middle, have a rule that, after a few steps, ends up drawing a colored rectangle whose width and height is that of the white blob, with that white blob sitting inside.</p>
+</li>
+</ol>
+<h2 id="Programmer’s-choice"><a href="#Programmer’s-choice" class="headerlink" title="Programmer’s choice."></a><strong>Programmer’s choice.</strong></h2><p><em>Devise two more rules.</em></p>
+<p>These can be of your own choosing. Ideally, these should be nontrivial and interesting. They could come from the lists above, or be of some other design. Include a clear description of what each does, or at least what you intended each to do.</p>
+<h1 id="Making-a-Demo"><a href="#Making-a-Demo" class="headerlink" title="Making a Demo"></a>Making a Demo</h1><p>Having written the eight rules, you must also construct a demonstration of them inside a file named <code>demo.py</code>. To see what this demo code should look like, please examine the provided <code>life.py</code>. Your demo file should be a script that runs each of the eight rules, one by one, to demonstrate each. This coding is similar to the interactions above. After the <code>import</code> section of the code, you’ll make eight different calls to <code>Grid</code>.  This will be something like:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Grid(sandpile,<span class="string">&#x27;1. This runs a sanpile simulation.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/sandpile10x10.pat&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Grid(aging,<span class="string">&#x27;2. This runs an &quot;aging&quot; version of Conway.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/glider.pat&#x27;</span>,</span><br><span class="line">     generations=<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">Grid(blur,<span class="string">&#x27;3. This blurs an image.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;images/reed.pgm&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">Grid(maze,<span class="string">&#x27;8. This generates a maze from the white dot.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;dot.pat&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>These lines each specify their rule of their demo, give a description, and give a starting pattern. On our end, we’ll run your demo to see your work and we’ll use your description to understand what we’re seeing.  Your descriptions can give us instructions for how to set things up and details of what we are about to see. We’ll be running this demo while inspecting your rules’ code.</p>
+<p>You can create your own pattern files, similar to our <code>patterns/rpenatmino.pat</code> and other files. If you look at those samples in the <code>patterns</code> folder, you’ll find that they are just text files that can be edited by the same editor you use to edit Python programs. They each start with similar top lines:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">16 16</span><br><span class="line">100</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>The first line gives the number of columns (the width of the pattern) and the number of rows (the height of the pattern). The second line gives the range of color values which, in the case of this example, is 0 to 100. The remaining lines give the contents of each row of the pattern. In this case there are 15 rows each with 16 values from 0 to 100.</p>
+<p>To help you use richer patterns for your demos, we’ve included a <strong>“Save pattern…”</strong> feature in the simulation. If you hit the <code>s</code> key, click on the console window, and then enter a pattern file name within the console, the simulation will save the currently displayed cell pattern as a text file that can then by loaded by a demo.</p>
+<p>The simulation user can also paint cells while <code>Grid</code> runs in demo mode. This allows your demo to instruct the user how to set up the demo by painting. Since the demo doesn’t display the color selection palette, a user can instead type the digits of a cell value, followed by <code>&quot;=&quot;</code>, to choose a particular value for painting.</p>
+<p>You can use earlier demo rules to set up a pattern that later rule demos can load. If you include a <code>save_as</code> parameter in an earlier call to <code>Grid</code>, then the cell pattern of the grid will be saved to that file’s name when the user hits <code>&quot;q&quot;</code>. For example, here is a demo that uses a <code>maze</code> rule to set up a maze pattern that can be used as the initial conditions for a subsequent demo of <code>robot</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Grid(maze,</span><br><span class="line">     <span class="string">&#x27;This builds a maze from a single white square.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/dot.pat&#x27;</span>,</span><br><span class="line">     save_as=<span class="string">&#x27;patterns/maze.pat&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Grid(robot,</span><br><span class="line">     <span class="string">&#x27;Place a robot cell of 40 in the maze. It runs around.&#x27;</span>,</span><br><span class="line">      pattern=<span class="string">&#x27;patterns/maze.pat&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>For image demonstrations, it is okay to just use the two image files provided, for example, <code>images/reed-square.pgm</code>. It is also possible to invent your own images. Ther are in <em>portable grey map</em> or <em>PGM</em> format. This isn’t a very used format— web images are usually <em>JPG</em> or <em>GIF</em> format— but it is an easy format to work with when writing programs. Below gives the start of the square image of Eliot Hall:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P2</span><br><span class="line">#.</span><br><span class="line">128 128</span><br><span class="line">255</span><br><span class="line"> 17  18  19  20  18 ...</span><br></pre></td></tr></table></figure>
+
+<p>The first two lines should always be there. The next line gives the dimensions the same as we you need for <code>.pat</code> files. The next line gives the value of pure white. And then the subsequent lines give the value of each pixel.</p>
+<p>If you like, you can convert your own images to PGM format.  A program that can do this for you is called <a target="_blank" rel="noopener" href="https://www.gimp.org/">GIMP</a> produced by the <strong>Gnu</strong> free software foundation group.</p>
+<h1 id="What-to-Hand-In"><a href="#What-to-Hand-In" class="headerlink" title="What to Hand In"></a>What to Hand In</h1><p>The two files that you will be editing for this project are <code>rules.py</code> and <code>demo.py</code>. Some of you might also have created pattern and image files in the folders <code>patterns</code> and <code>images</code> folders to support your demo.</p>
+<p>I’d like you to <strong>submit the entire project folder</strong> as a <em>compressed ZIP file</em> onto Gradescope. To do this, you need to right click on your <code>project1</code> folder. On Windows, you can also click and hold; on the Mac you can hit the <code>[control]</code> key while clicking.  In both systems, this clicking should bring up a menu item that allows you to “compress” your project folder.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5">Instructions for compressing on Windows</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://support.apple.com/guide/mac-help/zip-and-unzip-files-and-folders-on-mac-mchlp2528/mac">Instructions for compressing on a Mac</a></li>
+</ul>
+<p>Having done this, a compressed <code>project1.ZIP</code> file or <code>project1.zip</code> file will get created in the same folder that contains <code>project1</code>.</p>
+<p>Upload this ZIP file onto Gradescope. It will unpack into all the files for us to inspect. This will also allow us to download and run your demo.</p>
+<p>Each rule’s function definition in <code>rules.py</code> should have a tasteful amount of comments explaining the code that makes up the rule.  You will be graded on these (brief) explanations of your rule’s code and logic. You will be graded on your description of your two programmer’s choice rules. You will also be graded on the quality (the “style”) of your code. The clearer the code, the better.</p>
+<p>Your <code>demo.py</code> should contain a runnable demo, with at least one demo (a call of <code>Grid</code>) for each of your eight rules.  Each demo should have a short, readable description displayed during the demo. You should include extra information about what’s being demonstrated within a code comment near the <code>Grid</code> call in <code>demo.py</code>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj1/" data-id="clcu6czcs000ofat09qe47ev1" data-title="Project 1 -- The Game of Life and Image Processing" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/121-S23/2023/01/12/hw11/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Homework 11 -- Searching and sorting</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Announcements/" rel="tag">Announcements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/121-S23/tags/Announcements/" style="font-size: 10px;">Announcements</a> <a href="/121-S23/tags/Homework/" style="font-size: 20px;">Homework</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/121-S23/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/proj1/">Project 1 -- The Game of Life and Image Processing</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw11/">Homework 11 -- Searching and sorting</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw10/">Homework 10 -- Linked Lists</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw9/">Homework 9 -- Higher-Order Functions</a>
+          </li>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw8/">Homework 8 -- Object Classes and Inheritance</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Chanathip Namprempre<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/121-S23/tags/Announcements" class="mobile-nav-link">Announcements</a>
+  
+    <a href="/121-S23/syllabus" class="mobile-nav-link">Syllabus</a>
+  
+    <a href="/121-S23/lecturenotes" class="mobile-nav-link">Lecture Notes</a>
+  
+    <a href="/121-S23/tags/Handouts" class="mobile-nav-link">Handouts</a>
+  
+    <a href="/121-S23/tags/Homework" class="mobile-nav-link">Homework</a>
+  
+    <a href="/121-S23/resources" class="mobile-nav-link">Resources</a>
+  
+</nav>
+    
+
+
+<script src="/121-S23/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/121-S23/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/121-S23/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

@@ -93,6 +93,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-proj1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/proj1/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:58:24.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/121-S23/2023/01/12/proj1/">Project 1 -- The Game of Life and Image Processing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>** Complete and submit by 2&#x2F;27 at 1:00pm**</p>
+<p>This first project has you inventing a family of different <em>cellular automata</em>.  A cellular automata simulation is one that is applied to a two-dimensional grid of <em>cells</em>, where each cell stores an integer value, the cell’s <em>state</em>. With each tick of the simulation’s clock, the grid of cells update their state value by applying a simple rule. The rule specifies how it should calculate its next state from its previous state. This calculation is a <em>local</em> one. A cell changes according to its own state and the state of its immediate neighbor cells in the grid.</p>
+<p>Despite this simplicity, the grid’s entire state can evolve in very interesting ways over time. You can, for example, devise calculation rules that perform image and shape analysis of the grid’s initial state pattern.</p>
+<h2 id="Set-Up"><a href="#Set-Up" class="headerlink" title="Set Up"></a>Set Up</h2><p>Download the project’s source code as a ZIP package using the link below:</p>
+<p>• <a href="project1.zip"><strong>Project 1</strong> package</a></p>
+<p>Have it unpack as a folder named <code>project1</code>, say, within your <code>Desktop</code> folder. In that project folder, you will see a number of <code>.py</code> source files for the Python program that you will be working with. To run the program, bring up terminal console and type the commands</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd Desktop/project1</span><br><span class="line">python3 life.py</span><br></pre></td></tr></table></figure>
+
+<p>If everything is set-up correctly with Python, the program will bring up a window that shows a grid of cells. On some installations or on some systems, you will get an error, something like the following</p>
+<p><img src="/121-S23/images/no-tk.jpg"></p>
+<p>In these situations, Python is complaining that you are missing a needed Python module called <code>tkinter</code>. This module helps us create a window, draw shapes in that window, and allow the user to click on that window.  To fix this situation for your Python set-up, you can enter the console command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install tkinter</span><br></pre></td></tr></table></figure>
+
+<p>Having done this, the command <code>python3 life.py</code> should be able to open a window and show the program’s grid of cells.</p>
+<p>In addition to the displayed grid of cells, there is a color bar shown at the top. The program is prepared to execute the rules of the mathematician John Conway’s cellular automata, one he called “The Game of Life”. If you select one of the colors in the color bar, you can then paint that color onto the cells of the grid. Having done that painting, you can run the Game of life simulation by hitting <code>[SPACE]</code> a few times.  This will change the pattern of colored cells, and how that grid changes is described just below.</p>
+<p>In any case, congratuations! You have created life. Read on. </p>
+<h1 id="Conway’s-Game-of-Life"><a href="#Conway’s-Game-of-Life" class="headerlink" title="Conway’s Game of Life"></a>Conway’s Game of Life</h1><p><img src="/121-S23/images/life-grid.jpg" alt="A view of the Project 1 window."></p>
+<p>The Game of Life is not actually a game at all, not in the usual sense. It is at most a game played by one person, there’s no strategy, and the rules don’t offer a player any choices like a normal game would. Rather, the Game of Life is a simulation of an artificial world, the world of the grid, governed by a very simple mathematical rule. An execution of the Game of Life consists of setting up the initial state of the world and then applying the rule to determine the next state of the world (the next “generation”). By successively applying this rule to the world, computing its state from one generation to the next, some interesting behavior arises.</p>
+<p>In the Game of Life, the world is a grid of cells like you see in the Python program’s display. Each cell has a state associated with it. In the original Game of Life, the state of a cell could either be “living” or “dead”. In this version, the state of a cell is an integer ranging from 0 to 100.</p>
+<p>Feel free to paint on the grid with the mouse using the currently selected color. White is 100. Violet through red is 99 through 1. We say that any such cell, one with a state value from 1 to 100, is “living”. Cells that are black have the state value of 0. We say that these cells are “dead”.</p>
+<p>Once you’ve set up the initial state of the world, painting cells as living, you can then run a step of Conway’s game, changing the grid’s cells’ state. Hit the <em>[SPACE]</em> bar on the keyboard once. Some live cells stay alive and others die. Some dead cells come alive. Hit the space bar again to see the next generation of cells. And again.</p>
+<p>The rule for how the grid changes is deterministic. The next generation’s pattern of living and dead cells is entirely determined by the prior generation’s pattern, The calculation for determining which cells live, and which cells die, is simple. With each step a cell counts the number of living cells in the eight cells immediately surrounding it. In the case where a cell is alive, it remains alive in the next generation if it has two or three living neighbors. Otherwise it dies. If instead a cell is dead, it will be come alive with a step if it has 3 living neighbors. Otherwise it remains dead.</p>
+<p>Try some simple patterns out to test these rules. A good one to try is a row of three live cells surrounded by dead cells. This is a “blinker.” It cycles between two states—a horizontal strip of three, and a vertical strip of three. Another simple one is a 2x2 square called a pod. There are also gliders, spinners, clocks, loaves, hives, spaceships, …</p>
+<p>There has been tremendous effort in studying Conway’s Game of Life, and a number of rich discoveries have been made. The <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia article</a> for it serves as a decent starting point, should you want to learn more about it, and it is a good introduction to cellular automata in general.</p>
+<h1 id="The-Python-Code"><a href="#The-Python-Code" class="headerlink" title="The Python Code"></a>The Python Code</h1><p>The code for the program is made up of three parts. There is <code>life.py</code>, which runs the main program, but it is pretty minimal. It relies almost entirely on <code>Grid.py</code>, which describes the program’s display of, and the user’s possible interaction with, the grid of cells. This is a fairly large Python file that you won’t need to understand to complete this assignment (though do feel free to look at it). Instead, you will be extending the code in the file <code>rules.py</code>. This contains a description of grid rules that can be used to run the program. For example, it contains the definition of a function <code>conway</code> that exactly describes Conway’s cell rule. Take a moment to look at this file, find the <code>conway</code> function, and then see how it implements the cellular behavior.</p>
+<p>Each time that you press the space bar, this function gets executed once for each cell in the world.</p>
+<p>Hopefully, you’ve noticed a few things when inspecting this code. First off, <code>conway</code> is a function whose sole responsibility is to return an integer value that represents the next state of the cell it’s working with at that moment. In order to compute the cell’s next state, it has access to the current state of the cell (the parameter <code>cntr</code>) and the current state of that cell’s eight immediate neighbors (the parameter <code>nbrs</code>). That second parameter is an object that consists of those eight state values. They are accessible with <code>nbrs.N</code>, <code>nbrs.NE</code>, <code>nbrs.E</code>, and so on. With these values and some additional calculations and logic, the value of the next state of a cell is computed and returned.</p>
+<h1 id="Image-Processing"><a href="#Image-Processing" class="headerlink" title="Image Processing"></a>Image Processing</h1><p><img src="/121-S23/images/reed-grid.jpg"></p>
+<p>Instead of simulating life, it’s possible to come up with all sorts of rules for computing the states of cells based on their previous states. One of the more useful application areas is image processing. In image processing, you take the digital version of a photo and manipulate it, either to enhance it’s quality, mess with it, analyze it, etc. Many of the techniques for modifying an image can be performed by local pixel rules, where you compute the tone of a pixel based on the tone values of it and its neighboring pixels). Blurring and sharpening an image are two classic examples of this.</p>
+<p>To play with this feature in the program, quit the simulation demo by pressing the <code>q</code> key. We can instead run a grid simulation within the python interpreter. To do so, type the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from Grid import Grid</span><br><span class="line">&gt;&gt;&gt; from rules import *</span><br><span class="line">&gt;&gt;&gt; Grid(negative,pattern=&#x27;images/reed-square.pgm&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>The program runs with a finer grid whose cells are loaded with the pixels of a greyscale image of Eliot Hall. In this mode, black has the value 0, white has the value 255, and greys have in-between values.</p>
+<p>This also sets up the <code>negative</code> rule for the grid’s cells, rather than the <code>conway</code> rule. This rule makes the picture appear as its negative’s image. It is a very simple rule. With one tap of the space bar, the new value of a pixel 255 minus its prior value. You can find this rule as the function <code>negative</code> in <code>rules.py</code>.</p>
+<p>Another good rule to try is <code>blur</code>. This computes a weighted average of each cell’s four compass-point neighbors <code>nbrs.N</code>, <code>nbrs.E</code>, <code>nbrs.S</code>, and <code>nbrs.W</code>. Hit ‘q’ to end the <code>negative</code> simulation and then, still within Python, type</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Grid(blur,pattern=&#x27;images/reed.pgm&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>This loads a larger, rectangular image of Eliot Hall.</p>
+<p>With the <code>blur</code> rule each cell computes a weighted average of its four compass-point neighbors. The next state of the cell is just the average of itself and the average of its four neighbors. The effect is a smoothing of the details of the image, giving them softer transitions from light to dark. After a few steps, we get a blurred image, as if the camera used was not in focus.</p>
+<h1 id="Making-New-Rules"><a href="#Making-New-Rules" class="headerlink" title="Making New Rules"></a>Making New Rules</h1><p>You can add your own cell rules to the program. Just create a new function definition to <code>rules.py</code>, mimicking my examples.  A rule is a function that takes the center cell value <code>cntr</code> and the 8 neighboring cell values as an object <code>nbrs</code>. Using these parameters on the color grid it returns an integer from 0 to 100. The <code>Grid</code> and other support programs can call this function to compute that rule’s behavior on the grid. If it is instead acting on the greys of the sample images, then it should return an integer from 0 to 255. You can run the grid program on the image, specify your new image rule, and then apply its effect.</p>
+<p>The goal of this assignment is for you to write the code for <strong>eight</strong> functions like <code>conway</code> and <code>blur</code> There is a menu of suggestions at the end of this assignment description that specify what those rules should be.  The menu of possible rules you can construct is fairly rich.  It is surprising what can be done with just a little bit of clever coding.</p>
+<h1 id="The-Assignment"><a href="#The-Assignment" class="headerlink" title="The Assignment"></a>The Assignment</h1><p>In the file <code>rules.py</code>, devise a series of cellular automata and image processing rules. You are to write eight rules, six from the required list below, and the remaining two of your choosing. You should do the required six first, and quickly, so that you gain experience with how the cellular automata rules work. Then make your two “programmer’s choice” behaviors directed and interesting. I’ll give you some suggestions in lecture and in lab for what other rules are possible.</p>
+<p>In a new file named <code>demo.py</code> devise a demonstration of your eight rules similar to my demonstration code in <code>life.py</code>. Your description should give us a brief sense of what rule we are seeing, and how to set up and run your demonstration, if need be. We describe making demos further below.</p>
+<p>Beyond the coding above, you should have ample and useful comments in your <code>rules.py</code> file that describe each function definition at an appropriate level of detail. Same goes for each of the <code>Grid</code> calls in <code>demo.py</code>.</p>
+<p>You will be graded on the quality and correctness of your code, the intricacy of your rules, and on the clarity of your descriptions and comments.</p>
+<h1 id="Menu-of-Required-Rules"><a href="#Menu-of-Required-Rules" class="headerlink" title="Menu of Required Rules"></a>Menu of Required Rules</h1><p>Below we give three categories of prescribed rules. You are to implement two rules from each category. And then there is a fourth “Programmer’s Choice” category where you have the option of inventing your own rules to make into Python code that runs on the grid.  You are to implement two of these in addition to the six prescribed ones.  This should lead you to writing eight different rules.</p>
+<h2 id="Life-Rules"><a href="#Life-Rules" class="headerlink" title="Life Rules."></a><strong>Life Rules.</strong></h2><p><em>Pick two grid simulation rules and implement them.</em></p>
+<p>Implement two of the life-like behaviors below. In some cases, it’s more natural to consider a cell as having only four neighbors, to the <code>N</code>, <code>E</code>, <code>S</code>, and <code>W</code>, rather than the full eight.</p>
+<ol>
+<li><p>Have the color of the cell represent its age.  Perhaps have it die at 100.</p>
+</li>
+<li><p>Have live cells be white, and have dead cells leave a color trace that “decays” from violet to red, then finally to black. The decay happens with each successive step of the simulation. The trace should not affect the white cells’ life simulation.</p>
+</li>
+<li><p>Have the grid instead simulate a <em>sandpile automata</em>. In a sandpile, the state of a cell gives the height of a “pile of sand grains” sitting on that cell. With each step, a cell “fires” if it has four or more grains of sand on it. When it fires, it gives one grain of sand to each of its four compass point neighbors—one to the north, one to the east, one to the south, and one to the west. Its own pile drops by four grains as a result.</p>
+</li>
+</ol>
+<p>For option #3 just above, <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/">Dave Perkinson’s</a> sandpile pages cover a number of aspects of this kind of system, and the <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/divisors_and_sandpiles/">mathematics</a> that relates to its study. He has a <a target="_blank" rel="noopener" href="https://people.reed.edu/~davidp/grant/">web simulation</a> that you can run. When it loads click on the <em>Go</em> button just right of the <code>n Grains Each Cell</code> line and you’ll see the simulation’s behavior.  A good demo of this involves placing a ton of grains of sands in the center cell and watching that tall pile topple and spread to the other cells.</p>
+<p>Note that our above description of sandpile behavior does not quite line up with how the grid rules are devised. In the description a cell fires by adding grains to its neighbors. In our rule system, however, a cell’s rule only has control over its own cell, and not over the neighboring cells that it reasons about. This means that the sandpile rule function, in our simulation, will have to look at its four neighbors to see whether their grain heights will lead them to fire. It then determines its own height based on their firing.</p>
+<h2 id="Imaging"><a href="#Imaging" class="headerlink" title="Imaging."></a><strong>Imaging.</strong></h2><p><em>Pick two image processing rules and implement them.</em></p>
+<ol>
+<li><p>Increase or decrease the contrast of an image. Like the negative rule, this does not examine the neighboring pixels. Instead, a cell goes darker in a step when its brightness is below middle grey. It goes lighter in a step when its brightness is above middle grey.</p>
+</li>
+<li><p>Sharpen the image with each step. This is similar to blur, surprisingly. In a blur, a cell takes on a value closer to the average of its neighbors. In a sharpening, a cell takes on a value that differentiates it from the average of its neighbors. This has the global effect of bringing out details, since differences between neighboring pixels get amplified.</p>
+</li>
+<li><p>Find edges in an image (places where there is a transition from dark to light). Here, in one step, cells should, say, turn white if they are at such a transition. They should turn black if not. Alternatively, they could be bright grey if they are at a major transition, and draker grey if they are at a minor transition.</p>
+</li>
+</ol>
+<h2 id="Shapes"><a href="#Shapes" class="headerlink" title="Shapes."></a><strong>Shapes.</strong></h2><p><em>Pick two shape processing rules and implement them.</em></p>
+<ol>
+<li><p>With the grid in color mode, starting with a pattern where the cells are mostly black, but with white cells forming a boundary of a region and a single cell of a color somewhere in the middle of that region. With simulation steps, have a rule that leads the color to fill the whole interior of that region, but not leak out.</p>
+</li>
+<li><p>In a grid where the cells are mostly black, but with some forming a pattern (or shape) in white. In one step, this rule should make a shadow of the image of white pixels, “underneath” them, in another color, to their SE.</p>
+</li>
+<li><p>In a grid that is mostly black, except with a blob of pixels that are white somewhere in the middle, have a rule that, after a few steps, ends up drawing a colored rectangle whose width and height is that of the white blob, with that white blob sitting inside.</p>
+</li>
+</ol>
+<h2 id="Programmer’s-choice"><a href="#Programmer’s-choice" class="headerlink" title="Programmer’s choice."></a><strong>Programmer’s choice.</strong></h2><p><em>Devise two more rules.</em></p>
+<p>These can be of your own choosing. Ideally, these should be nontrivial and interesting. They could come from the lists above, or be of some other design. Include a clear description of what each does, or at least what you intended each to do.</p>
+<h1 id="Making-a-Demo"><a href="#Making-a-Demo" class="headerlink" title="Making a Demo"></a>Making a Demo</h1><p>Having written the eight rules, you must also construct a demonstration of them inside a file named <code>demo.py</code>. To see what this demo code should look like, please examine the provided <code>life.py</code>. Your demo file should be a script that runs each of the eight rules, one by one, to demonstrate each. This coding is similar to the interactions above. After the <code>import</code> section of the code, you’ll make eight different calls to <code>Grid</code>.  This will be something like:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Grid(sandpile,<span class="string">&#x27;1. This runs a sanpile simulation.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/sandpile10x10.pat&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Grid(aging,<span class="string">&#x27;2. This runs an &quot;aging&quot; version of Conway.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/glider.pat&#x27;</span>,</span><br><span class="line">     generations=<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">Grid(blur,<span class="string">&#x27;3. This blurs an image.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;images/reed.pgm&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">Grid(maze,<span class="string">&#x27;8. This generates a maze from the white dot.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;dot.pat&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>These lines each specify their rule of their demo, give a description, and give a starting pattern. On our end, we’ll run your demo to see your work and we’ll use your description to understand what we’re seeing.  Your descriptions can give us instructions for how to set things up and details of what we are about to see. We’ll be running this demo while inspecting your rules’ code.</p>
+<p>You can create your own pattern files, similar to our <code>patterns/rpenatmino.pat</code> and other files. If you look at those samples in the <code>patterns</code> folder, you’ll find that they are just text files that can be edited by the same editor you use to edit Python programs. They each start with similar top lines:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">16 16</span><br><span class="line">100</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>The first line gives the number of columns (the width of the pattern) and the number of rows (the height of the pattern). The second line gives the range of color values which, in the case of this example, is 0 to 100. The remaining lines give the contents of each row of the pattern. In this case there are 15 rows each with 16 values from 0 to 100.</p>
+<p>To help you use richer patterns for your demos, we’ve included a <strong>“Save pattern…”</strong> feature in the simulation. If you hit the <code>s</code> key, click on the console window, and then enter a pattern file name within the console, the simulation will save the currently displayed cell pattern as a text file that can then by loaded by a demo.</p>
+<p>The simulation user can also paint cells while <code>Grid</code> runs in demo mode. This allows your demo to instruct the user how to set up the demo by painting. Since the demo doesn’t display the color selection palette, a user can instead type the digits of a cell value, followed by <code>&quot;=&quot;</code>, to choose a particular value for painting.</p>
+<p>You can use earlier demo rules to set up a pattern that later rule demos can load. If you include a <code>save_as</code> parameter in an earlier call to <code>Grid</code>, then the cell pattern of the grid will be saved to that file’s name when the user hits <code>&quot;q&quot;</code>. For example, here is a demo that uses a <code>maze</code> rule to set up a maze pattern that can be used as the initial conditions for a subsequent demo of <code>robot</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Grid(maze,</span><br><span class="line">     <span class="string">&#x27;This builds a maze from a single white square.&#x27;</span>,</span><br><span class="line">     pattern=<span class="string">&#x27;patterns/dot.pat&#x27;</span>,</span><br><span class="line">     save_as=<span class="string">&#x27;patterns/maze.pat&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Grid(robot,</span><br><span class="line">     <span class="string">&#x27;Place a robot cell of 40 in the maze. It runs around.&#x27;</span>,</span><br><span class="line">      pattern=<span class="string">&#x27;patterns/maze.pat&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>For image demonstrations, it is okay to just use the two image files provided, for example, <code>images/reed-square.pgm</code>. It is also possible to invent your own images. Ther are in <em>portable grey map</em> or <em>PGM</em> format. This isn’t a very used format— web images are usually <em>JPG</em> or <em>GIF</em> format— but it is an easy format to work with when writing programs. Below gives the start of the square image of Eliot Hall:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P2</span><br><span class="line">#.</span><br><span class="line">128 128</span><br><span class="line">255</span><br><span class="line"> 17  18  19  20  18 ...</span><br></pre></td></tr></table></figure>
+
+<p>The first two lines should always be there. The next line gives the dimensions the same as we you need for <code>.pat</code> files. The next line gives the value of pure white. And then the subsequent lines give the value of each pixel.</p>
+<p>If you like, you can convert your own images to PGM format.  A program that can do this for you is called <a target="_blank" rel="noopener" href="https://www.gimp.org/">GIMP</a> produced by the <strong>Gnu</strong> free software foundation group.</p>
+<h1 id="What-to-Hand-In"><a href="#What-to-Hand-In" class="headerlink" title="What to Hand In"></a>What to Hand In</h1><p>The two files that you will be editing for this project are <code>rules.py</code> and <code>demo.py</code>. Some of you might also have created pattern and image files in the folders <code>patterns</code> and <code>images</code> folders to support your demo.</p>
+<p>I’d like you to <strong>submit the entire project folder</strong> as a <em>compressed ZIP file</em> onto Gradescope. To do this, you need to right click on your <code>project1</code> folder. On Windows, you can also click and hold; on the Mac you can hit the <code>[control]</code> key while clicking.  In both systems, this clicking should bring up a menu item that allows you to “compress” your project folder.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5">Instructions for compressing on Windows</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://support.apple.com/guide/mac-help/zip-and-unzip-files-and-folders-on-mac-mchlp2528/mac">Instructions for compressing on a Mac</a></li>
+</ul>
+<p>Having done this, a compressed <code>project1.ZIP</code> file or <code>project1.zip</code> file will get created in the same folder that contains <code>project1</code>.</p>
+<p>Upload this ZIP file onto Gradescope. It will unpack into all the files for us to inspect. This will also allow us to download and run your demo.</p>
+<p>Each rule’s function definition in <code>rules.py</code> should have a tasteful amount of comments explaining the code that makes up the rule.  You will be graded on these (brief) explanations of your rule’s code and logic. You will be graded on your description of your two programmer’s choice rules. You will also be graded on the quality (the “style”) of your code. The clearer the code, the better.</p>
+<p>Your <code>demo.py</code> should contain a runnable demo, with at least one demo (a call of <code>Grid</code>) for each of your eight rules.  Each demo should have a short, readable description displayed during the demo. You should include extra information about what’s being demonstrated within a code comment near the <code>Grid</code> call in <code>demo.py</code>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/proj1/" data-id="clcu6czcs000ofat09qe47ev1" data-title="Project 1 -- The Game of Life and Image Processing" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hw11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/121-S23/2023/01/12/hw11/" class="article-date">
@@ -152,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw11/" data-id="clcu5xwln0006cut06eb5533d" data-title="Homework 11 -- Searching and sorting" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw11/" data-id="clcu6czco0007fat0e7ve46mc" data-title="Homework 11 -- Searching and sorting" class="article-share-link">Share</a>
       
       
       
@@ -228,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw10/" data-id="clcu5xwll0003cut0cajca4lw" data-title="Homework 10 -- Linked Lists" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw10/" data-id="clcu6czcj0001fat02ftyhbiz" data-title="Homework 10 -- Linked Lists" class="article-share-link">Share</a>
       
       
       
@@ -320,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw9/" data-id="clcu5xwls000mcut0a88j2yil" data-title="Homework 9 -- Higher-Order Functions" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw9/" data-id="clcu6czct000rfat03ma50r7j" data-title="Homework 9 -- Higher-Order Functions" class="article-share-link">Share</a>
       
       
       
@@ -454,7 +600,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw8/" data-id="clcu5xwls000kcut054dxelo2" data-title="Homework 8 -- Object Classes and Inheritance" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw8/" data-id="clcu6czcr000kfat039cgba9l" data-title="Homework 8 -- Object Classes and Inheritance" class="article-share-link">Share</a>
       
       
       
@@ -541,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw7/" data-id="clcu5xwlr000icut01nqb1sam" data-title="Homework 7 -- Call yourself" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw7/" data-id="clcu6czcq000dfat0exf9971y" data-title="Homework 7 -- Call yourself" class="article-share-link">Share</a>
       
       
       
@@ -634,7 +780,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw6/" data-id="clcu5xwlr000gcut01t21029b" data-title="Homework 6 -- Joining Splits and Other Things" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw6/" data-id="clcu6czcp000bfat03k76e2v0" data-title="Homework 6 -- Joining Splits and Other Things" class="article-share-link">Share</a>
       
       
       
@@ -699,7 +845,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw5/" data-id="clcu5xwlp000bcut08slohqiz" data-title="Homework 5 -- List" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw5/" data-id="clcu6czco0008fat053dzf234" data-title="Homework 5 -- List" class="article-share-link">Share</a>
       
       
       
@@ -844,7 +990,7 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw4/" data-id="clcu5xwlq000dcut0gwava81w" data-title="Homework 4 -- Loop" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw4/" data-id="clcu6czcr000ifat02lyn19zf" data-title="Homework 4 -- Loop" class="article-share-link">Share</a>
       
       
       
@@ -1026,124 +1172,7 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw3/" data-id="clcu5xwlo0008cut088xc1np4" data-title="Homework 3 -- Vend and Function" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hw2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/121-S23/2023/01/11/hw2/" class="article-date">
-  <time class="dt-published" datetime="2023-01-12T03:07:08.000Z" itemprop="datePublished">2023-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/121-S23/2023/01/11/hw2/">Homework 2 -- Quotients and Conditionals</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>Complete and submit by 2&#x2F;3 at 1:00pm</strong></p>
-<p>In this second homework we write a few more interactive scripts.  Some of these just rely on what you learned to complete Homework 1.  We’re giving you more practice with integer and string calculations, with <code>input</code>, and with <code>print</code>. Some also rely on integer division to do their reasoning about their inputs. And some give you a chance to practice using the <em>conditional statement</em> or “<em>if-else</em>“ statement so that their behavior can depend on conditions of the data input.</p>
-<p>You can start work on these exercises in lab. They are all due in a week. We’ll talk more about the conditional statement in the coming lectures.</p>
-<h2 id="On-Integer-Division"><a href="#On-Integer-Division" class="headerlink" title="On Integer Division"></a>On Integer Division</h2><p>Several exercises rely on integer division. This can be computed using the quotient operator <code>//</code> and the remainder operator <code>%</code>. Here is an example of their use:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">37</span> // <span class="number">10</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">37</span> % <span class="number">10</span></span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-<p>These two operations are critical for codes and for digital representations of numbers. For example, we can use integer division by 10 to determine a number’s digits because decimal representation uses a base of 10.  We can perform integer division by 2 to determine its <em>bits</em>. This is the <em>binary</em>, or base 2, representation. Mastering these operations now is going to be useful for understanding several computer concepts we introduce later.</p>
-<p>Clever people that are new to programming will often invent code like</p>
-<center>`dividend - divisor * math.floor(dividend / divisor)`</center>
-
-<p>when they should learn to write</p>
-<center>`dividend % divisor`</center>
-
-<p>to compute the remainder due to a division.  The former code seems like the right idea. It says “<em>Perform the division, throwing out the fractional part with <code>floor</code>, that gives you a whole number. When you multiply it by the divisor, we can subtract that from the dividend to see what’s missing. That missing amount is the remainder.</em>“ While this makes sense, there is no reason to rely on floating point operations to perform integer division. Instead, you can directly use the <code>%</code> operation.</p>
-<p>You should not need to use floating point in any of the exercises below. Instead, stick to using integers.</p>
-<h2 id="The-Conditional-Statement"><a href="#The-Conditional-Statement" class="headerlink" title="The Conditional Statement"></a>The Conditional Statement</h2><p>In lecture we have begun to discuss how Python code can check its data to see if certain conditions are met. For example, we might have an integer variable <code>number</code> and we might check to see if it is a ranking from 1 to 100. Here is a script that does that:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;Enter a ranking from 1 to 100: &quot;</span>))</span><br><span class="line"><span class="keyword">if</span> (number &lt; <span class="number">1</span>) <span class="keyword">or</span> (number &gt; <span class="number">100</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The integer &quot;</span>+<span class="built_in">str</span>(number)+<span class="string">&quot; is not a rank.&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;That was a bad entry.&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Thanks!&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The number &quot;</span>+<span class="built_in">str</span>(number)+<span class="string">&quot; is indeed a rank.&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>In the code above, the expression <code>(number &lt; 1)</code> is true whenever the integer they entered is 0 or smaller. And the expression <code>(number &gt; 100)</code> is true if the integer they entered is 101 or greater.  If either condition holds, then the script tells them that the number is not a ranking. Otherwise, it thanks them for their entry of a rank from 1 to 100.</p>
-<p>The four lines of code starting with <code>if</code> is a conditional statement. It has the general syntax</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if condition-to-check :</span><br><span class="line">    lines-to-execute-if-the-condition-holds</span><br><span class="line">else:</span><br><span class="line">    lines-to-execute-otherwise</span><br></pre></td></tr></table></figure>
-
-<p>The statements in the lines immediately following the <code>if</code> line must be indented, and with four spaces. They are executed whenever the condition checked is true. The statements immediately following the <code>else:</code> line should also each be indented with four spaces. They are executed whenever the condition checked is false.</p>
-<p>We will talk more about the <em>if-else</em> statement in lecture, and you will want to use it to finish some of the exercises below.</p>
-<h2 id="Submission-and-Autograding"><a href="#Submission-and-Autograding" class="headerlink" title="Submission and Autograding"></a>Submission and Autograding</h2><p>Submit each Python source file containing your script code to the Gradescope site. The problems below are labeled the way they will appear as submission items in Gradescope.  As before, we’ll run a series of tests on a problem submission to see if your code is correct. The autograder will your scripts, trying out different input strings. It checks to see whether the lines output by <code>print</code> match what we expect. Before submitting, you should run your scripts several times, and with different inputs, to make sure that your code is working. Only submit it when you have reasonable confidence that it is correct.</p>
-<p>It’s hard to anticipate every possible input, but you should work to anticipate as much as you can.</p>
-<p>Some of the problems allow you to assume that a user won’t enter certain kinds of inputs. When we allow you to make assumptions like that, you do not need to check inputs that aren’t assumed to happen.</p>
-<h2 id="Scoring"><a href="#Scoring" class="headerlink" title="Scoring"></a>Scoring</h2><p>Each problem is worth 30 points. 10 of the points are awarded based on the number of tests you pass. An additional prize of up to 10 points will be awarded if <em>all</em> the tests pass by the due date.  You’ll earn fewer of these prize points if you have to submit a problem several times to get all the tests to pass. Another 10 points will be given after the deadline as a result of our own assessment of the quality of your code.</p>
-<p><strong>Summary:</strong></p>
-<ul>
-<li><strong>test score:</strong> <em>(automated)</em> partial or full credit for passing each test</li>
-<li><strong>prize score:</strong> <em>(automated)</em> additional credit for passing all the tests before the deadline</li>
-<li><strong>style score:</strong> <em>(by hand)</em> partial or full credit for code of reasonable quality</li>
-</ul>
-<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW2-P1-menu"><a href="#HW2-P1-menu" class="headerlink" title="[HW2 P1] menu"></a><code>[HW2 P1]</code> menu</h2><p>A friend in the restaurant business has asked you to develop a Python script for typesetting menus for his restaurants.  Below is one he produced by hand on a typewriter for his fancy bistro called “Bobby’s”:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1234567890123456789012345678901234567890</span><br><span class="line">    </span><br><span class="line">Bobby&#x27;s Entrees				</span><br><span class="line">---------------</span><br><span class="line">Pasta verde.........................$ 15</span><br><span class="line">Filet mignon w/ lobster and caviar..$107</span><br><span class="line">Hamburger with fries................$  9</span><br></pre></td></tr></table></figure>
-
-<p>In the top line, he decided to show that the menus are 40 columns wide. There is a blank line, followed by the restaurant “Entrees” lines, followed by the three entree lines.</p>
-<p>Write a script <code>menu.py</code> that produces these menus as output. It should take the restaurant name as input, and then it should take three input strings for the names of three different entrees, along with their prices in whole dollars. Each menu that your program outputs is 7 lines long and includes the top line with the column numbers.</p>
-<p>Here is a sample interaction:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Restaurant name? Bobby&#x27;s</span><br><span class="line">First entree? Pasta verde	 </span><br><span class="line">First entree price? 15</span><br><span class="line">Second entree? Filet mignon w/ lobster and caviar</span><br><span class="line">Second entree price? 107</span><br><span class="line">Third entree? Hamburger with fries</span><br><span class="line">Third entree price? 9</span><br><span class="line">    		</span><br><span class="line">1234567890123456789012345678901234567890</span><br><span class="line">    		</span><br><span class="line">Bobby&#x27;s Entrees</span><br><span class="line">---------------</span><br><span class="line">Pasta verde.........................$ 15</span><br><span class="line">Filet mignon w/ lobster and caviar..$107</span><br><span class="line">Hamburger with fries................$  9</span><br></pre></td></tr></table></figure>
-
-<p>You can assume that entree prices are under a 1000 dollars, and so you should use three columns for formatting their digits. You can also assume that the entree names they enter will fit, along with their price, within the 40 columns. That is, for example, the “Filet mignon…”  entry is one character shorter than the longest string for an item that your script will ever face.</p>
-<p>Note that to do this you’ll need to use some combination of the string concatenation, repetition, and length operations, just as in the <code>marquee</code> exercise from the last homework. You’ll also want to convert integers to strings to get the price spacing right.</p>
-<h2 id="HW2-P2-tens-digit"><a href="#HW2-P2-tens-digit" class="headerlink" title="[HW2 P2] tens digit"></a><code>[HW2 P2]</code> tens digit</h2><p>In a file called <code>tens_digit.py</code>, write a script that takes an input. It should then report the tens digit of that integer.  You can assume that the integer they enter is 10 or larger. You need not worry about handling smaller integers.</p>
-<p>Here is the interaction in the terminal that we expect with your script:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jimfix@fix-computer homework2 % python3 tens_digit.py</span><br><span class="line">Enter an integer that is larger than 9: 1234</span><br><span class="line">It has a tens digit of 3.</span><br></pre></td></tr></table></figure>
-
-<p>Your code should use the integer division operations, namely the quotient operator <code>//</code> and the remainder operator <code>%</code> to perform this calculation.</p>
-<p>Note that there are Python library functions that convert integers to strings of digit characters, and then string operations to extract these digits.  <em>Please don’t use those string operations in your code.</em></p>
-<h2 id="HW2-P3-reverse"><a href="#HW2-P3-reverse" class="headerlink" title="[HW2 P3] reverse"></a><code>[HW2 P3]</code> reverse</h2><p>Write a script <code>reverse.py</code> that takes a 3-digit integer as its input.  It should then print the number that has the same three digits but in reverse order. For example, below is the kind of interaction we expect to have with your code. We are running the script three times in a row, each time entering a different integer.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jimfix@fix-computer homework2 % python3 reverse.py</span><br><span class="line">Enter a 3-digit integer: 345</span><br><span class="line">543</span><br><span class="line">jimfix@fix-computer homework2 % python3 reverse.py</span><br><span class="line">Enter a 3-digit integer: 719</span><br><span class="line">917</span><br><span class="line">jimfix@fix-computer homework2 % python3 reverse.py</span><br><span class="line">Enter a 3-digit integer: 999</span><br><span class="line">999</span><br></pre></td></tr></table></figure>
-
-<p>You can assume that the script is given an integer that is not divisible by 10.  You can also assume that the function is given an integer that is greater than 100 and less than 1000.</p>
-<p>Please <strong>do not</strong> use string operations to determine the digits of an integer.  Just as in the “tens digit” problem, you should use integer division operations <code>//</code> and <code>%</code> to determine the digits of the number.</p>
-<h2 id="HW2-P4-n-th-digit"><a href="#HW2-P4-n-th-digit" class="headerlink" title="[HW2 P4] n-th digit"></a><code>[HW2 P4]</code> n-th digit</h2><p>Write a script named <code>nth_digit.py</code> that takes two integer inputs. You can assume that both inputs are non-negative. The second integer is used to describe a digit position of the first. The script should then report that digit in that position within the digits of the first number.</p>
-<p>It should behave exactly as follows:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">jimfix@fix-computer homework2 % python3 nth_digit.py </span><br><span class="line">Enter a non-negative integer: 957</span><br><span class="line">Enter a digit position: 1</span><br><span class="line">The 10s digit of that intger is 5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 nth_digit.py </span><br><span class="line">Enter a non-negative integer: 957</span><br><span class="line">Enter a digit position: 2</span><br><span class="line">The 100s digit of that intger is 9.</span><br><span class="line">jimfix@fix-computer homework2 % python3 nth_digit.py </span><br><span class="line">Enter a non-negative integer: 957</span><br><span class="line">Enter a digit position: 0</span><br><span class="line">The 1s digit of that integer is 7.</span><br><span class="line">jimfix@fix-computer homework2 % python3 nth_digit.py </span><br><span class="line">Enter a non-negative integer: 957</span><br><span class="line">Enter a digit position: 3</span><br><span class="line">The 1000s digit of that integer is 0.</span><br></pre></td></tr></table></figure>
-
-<p>Note that, in the above examples, we are numbering the digits from right to left, starting at 0, and so we are working from the least-significant digit to the most-significant digit.  This means that position 0 corresponds to the ones place, position 1 corresponds to the tens place, position 2 corresponds to the hundreds place, and so on.</p>
-<p>Treat positions that are “off to the left” of the digits of the integer as being 0 digits. It’s as if there is an infinite supply of 0s sitting to the left of the actual digits of that number.</p>
-<p>You can assume neither number entered is negative.</p>
-<p>Just as in the earlier two problems where you are asked to determine the digits of an integer, we ask that you not convert the integer to a string to perform this function’s calculation.  Instead, you should use the integer division operations <code>//</code> and <code>%</code> to determine the number’s digits.</p>
-<h2 id="HW2-P5-toonies"><a href="#HW2-P5-toonies" class="headerlink" title="[HW2 P5] toonies"></a><code>[HW2 P5]</code> toonies</h2><p>You decide to visit Canada to do some shopping. You’ve become fond of their one-dollar coin, called a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Loonie">“loonie”</a> because its backside depicts a common loon. You are even more fond of their two-dollar coin called a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Toonie">“toonie”</a>.  You like the toonie so much, you decide to pay for everything using these two-dollar coins.</p>
-<p>Devise a script <code>toonies.py</code> that, when given an item’s cost in Canadian dollars, expresses how many toonies you need to pay for that item. Your script should have this kind of interaction:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C02MX1KLFH04:homework2 jimfix$ python3 toonies.py </span><br><span class="line">Item cost in Canadian dollars? 21</span><br><span class="line">Pay 11 toonies.</span><br><span class="line">C02MX1KLFH04:homework2 jimfix$ python3 toonies.py </span><br><span class="line">Item cost in Canadian dollars? 20</span><br><span class="line">Pay 10 toonies.</span><br></pre></td></tr></table></figure>
-
-<p>You can assume that the item’s price is a whole dollar amount and at least three dollars. (This means that you’ll never calculate payments of fewer than two toonies.) You should only be using integer calculations for this script. You shouldn’t even need to use the conditional statement.</p>
-<p>We are interested here in the evenness and oddness of the payment amount, so you’d look at the amount’s divisibility by two.</p>
-<h2 id="HW2-P6-zap-buzz"><a href="#HW2-P6-zap-buzz" class="headerlink" title="[HW2 P6] zap buzz"></a><code>[HW2 P6]</code> zap buzz</h2><p><em>Zap-Buzz</em> is a variant of a common children’s game. The way the game works is that each person takes a turn saying a number, counting upwards from 1. However, if the number is a multiple of 7 they say “zap” instead of the number. If the number has a digit of 3 in it they say “buzz” instead of the number, and if both things are true they say “zap buzz”.</p>
-<p>Devise a script <code>zap_buzz.py</code> that plays a turn of the game.  It should take a positive integer input. It should then print that integer if neither of the “zap”&#x2F;“buzz” conditions hold.  If some condition holds, print <code>zap</code>, or print <code>buzz</code>, or print <code>zap buzz</code>, whichever is appropriate. You are allowed to assume the parameter is less than 1000.  As in the earlier exercises, please don’t convert the integer to a string to determine its digits.</p>
-<p>Here are several interaction with the code that we might expect:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jimfix@fix-computer homework2 % python3 zap_buzz.py</span><br><span class="line">Integer? 8</span><br><span class="line">8</span><br><span class="line">jimfix@fix-computer homework2 % python3 zap_buzz.py</span><br><span class="line">Integer? 14</span><br><span class="line">zap</span><br><span class="line">jimfix@fix-computer homework2 % python3 zap_buzz.py</span><br><span class="line">Integer? 13</span><br><span class="line">buzz</span><br><span class="line">jimfix@fix-computer homework2 % python3 zap_buzz.py</span><br><span class="line">Integer? 35</span><br><span class="line">zap buzz</span><br></pre></td></tr></table></figure>
-
-<h2 id="HW2-P7-multiple"><a href="#HW2-P7-multiple" class="headerlink" title="[HW2 P7] multiple"></a><code>[HW2 P7]</code> multiple</h2><p>Recall that an integer $a$ is a multiple of $b$ when $a$ can be written as a product of $b$ and some integer. 10 is a multiple of 5 because <code>10 == 5 * 2</code>.  100 is a multiple of 5 because <code>10 == 5 * 20</code>. -10 is a multiple of 5 because <code>-10 == 5 * (-2)</code>. -10 is also a multiple of -5 because <code>-10 == (-5) * 2</code>. And finally 10 is also a multiple of -5 because <code>10 == (-5) * (-2)</code>.</p>
-<p>Write a script named <code>multiple.py</code> that takes two integer inputs.  It should then report whether or not the first is an integer multiple of the second.  Below are several interaction with the code that we expect:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: 10</span><br><span class="line">Enter another integer: 5</span><br><span class="line">10 is a multiple of 5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: 100</span><br><span class="line">Enter another integer: 5</span><br><span class="line">100 is a multiple of 5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: -10</span><br><span class="line">Enter another integer: 5</span><br><span class="line">-10 is a multiple of 5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: 10</span><br><span class="line">Enter another integer: -5</span><br><span class="line">10 is a multiple of -5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: 101</span><br><span class="line">Enter another integer: 5</span><br><span class="line">101 is not a multiple of 5.</span><br><span class="line">jimfix@fix-computer homework2 % python3 multiple.py</span><br><span class="line">Enter an integer: 101</span><br><span class="line">Enter another integer: -5</span><br><span class="line">101 is not a multiple of -5.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nchanath.github.io/121-S23/2023/01/11/hw2/" data-id="clcu5xwln0007cut002xjg71e" data-title="Homework 2 -- Quotients and Conditionals" class="article-share-link">Share</a>
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw3/" data-id="clcu6czcq000gfat07iko8w2s" data-title="Homework 3 -- Vend and Function" class="article-share-link">Share</a>
       
       
       
@@ -1207,6 +1236,10 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       <ul>
         
           <li>
+            <a href="/121-S23/2023/01/12/proj1/">Project 1 -- The Game of Life and Image Processing</a>
+          </li>
+        
+          <li>
             <a href="/121-S23/2023/01/12/hw11/">Homework 11 -- Searching and sorting</a>
           </li>
         
@@ -1220,10 +1253,6 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
         
           <li>
             <a href="/121-S23/2023/01/12/hw8/">Homework 8 -- Object Classes and Inheritance</a>
-          </li>
-        
-          <li>
-            <a href="/121-S23/2023/01/12/hw7/">Homework 7 -- Call yourself</a>
           </li>
         
       </ul>
