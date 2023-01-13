@@ -93,6 +93,151 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hw4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw4/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T05:57:06.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/121-S23/2023/01/12/hw4/">Homework 4 -- Loop</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Complete the exercises by 9am on 9&#x2F;27</strong></p>
+<p>In the last two homeworks we practiced using two kinds of Python constructs that allow a programmer to “<em>control the flow</em>“ of the interpreter’s execution of statements in your program. These were (1) the <code>if</code> statement that provides conditional execution and (2) the <code>def</code> statement that provides a means for defining functions to help compute values.</p>
+<p>With <em>conditional statements</em>, the program might skip past some blocks of statements, or it may execute one block versus another, all depending on some condition that’s checked by that <code>if</code> statement.</p>
+<p>With <em>function definitions</em>, a program can jump to a named section of code to perform some actions, or to compute some result, all towards serving the work of the main script. These <code>def</code> statements act as useful “modules” that serve the main script. The <em>function call mechanism</em> which requires the calling code to pass <em>parameter values</em> to the function, and then (possibly) get a value upon the function’s <code>return</code>, imposes a discipline that helps the programmer structuretheir code in a readable way. Each function definitions provides a reusable code component.</p>
+<p>This week we practice using Python’s <code>while</code> statement for structuring code. A <code>while</code> statement provides <em>iteration</em>: the program can execute a <em>loop</em>. It can repeatedly perform a series of actions until some condition is met. For example, the code below counts from 1 to<br>10. It keeps printing then adding one to the variable <code>count</code> until<br>that variable gets larger than 10:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;I will now count from 1 to 10...&quot;</span>)</span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> count &lt;= <span class="number">10</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The count is now &quot;</span> + <span class="built_in">str</span>(count) + <span class="string">&quot;.&quot;</span>)</span><br><span class="line">    count = count + <span class="number">1</span> // Increments the count variable by <span class="number">1.</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;There. I am done counting.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Here is what that code does: After executing the first two lines, the program will execute the <code>print</code> and the increment statements inside the <code>while</code> statement’s <em>body</em>. This is because the <code>count</code> variable is only at <code>1</code>, and that value is less than or equal to 10.  After executing those two lines once, the interpreter “jumps” back to the condition line to see whether <code>count &lt;= 10</code>. Since the condition is still true (<code>count == 2</code> and <code>2 &lt;= 10</code>), it runs those two lines again and re-checks the condition. It keeps looping through those three code lines– checking the condition, printing, incrementing– until the assignment statement changes the value of <code>count</code> from <code>10</code> to <code>11</code>. When the loop condition is checked an 11-th time, the condition will then be <code>False</code>, and the program skips to the line below the loop body. It prints the message “<code>There. I am done counting.</code>“</p>
+<p>The problems below ask you to write functions that each work in this way.  You will use a <code>while</code> loop (or loops) to do each function’s work.</p>
+<h2 id="Submission-and-Scoring"><a href="#Submission-and-Scoring" class="headerlink" title="Submission and Scoring"></a>Submission and Scoring</h2><p>Submit each source file containing a Python function definition, possibly with some other “helper” functions, to the Gradescope site.  The problems below are labeled the way they will appear as submission items in Gradescope.  We’ll run tests on your submission to see if your code is correct. Before submitting, you should test your function on several scenarios, making sure it works with a good variety of parameters. Only submit it when you have reasonable confidence that it is correct.</p>
+<p>Some of the problems allow you to assume that a function’s client code won’t feed the function certain kinds of parameter values. When we allow you to make assumptions like that, your code need not check for parameters that aren’t assumed to happen.</p>
+<p>Each problem is worth 30 points. 10 of the points are awarded based on the number of tests you pass. An additional prize of up to 10 points will be awarded if <em>all</em> the tests pass by the due date.  You’ll earn fewer of these prize points if you have to submit a problem several times to get all the tests to pass.</p>
+<p>Another 10 points will be offered after the deadline based on the quality of your code. You should look for straight-forward solutions to solve the puzzle, and your code should be clear and easy to understand.  In cases where you feel the need to do something complicated– some programming puzzles require tricky coding– you should include comments that (briefly) explain your code’s approach.</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW4-P1-sum-cubes"><a href="#HW4-P1-sum-cubes" class="headerlink" title="[HW4 P1] sum cubes"></a><code>[HW4 P1]</code> sum cubes</h2><p>Write a function <code>sum_cubes</code> that takes an integer parameter <code>n</code> and returns the sum of the first <code>n</code> cubes, that is, the sum suggested by</p>
+<p>$$1^3 + 2^3 + 3^3 + \cdots + n^3$$</p>
+<p>So, for example, <code>sum_cubes(3)</code> should evaluate to <code>36</code> because it is the sum of the first three cubes $1 + 8 + 27$.  For values of <code>n</code> that are less than <code>1</code>, your function should return <code>0</code>.</p>
+<p>Place your function definition in a file named <code>sum_cubes.py</code> and test it with different values in the Python interpreter before you submit the code.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jimfix@C02F48U1ML7H homework4 $ python3 -i sum_cubes.py</span><br><span class="line">&gt;&gt;&gt; sum_cubes(3)</span><br><span class="line">36</span><br><span class="line">&gt;&gt;&gt; sum_cubes(-1)</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW4-P2-perfect-square"><a href="#HW4-P2-perfect-square" class="headerlink" title="[HW4 P2] perfect square"></a><code>[HW4 P2]</code> perfect square</h2><p>Write a function <code>def perfect_square(number)</code> that takes an integer parameter <code>number</code> and determines whether it is a square of some other number. It should return <code>True</code> when the number is a perfect square.  It should return <code>False</code> otherwise. For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>perfect_square(<span class="number">81</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>because $81 &#x3D; 9^2$.  And also</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>perfect_square(<span class="number">21</span>)</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>because $4^2 &#x3D; 16 &lt; 21 &lt; 25 &#x3D; 5^2$. Negative numbers are not perfect squares.  Zero and one are perfect squares of themselves.</p>
+<p>Do not use floating point calculations to compute this result.</p>
+<h2 id="HW4-P3-divisors"><a href="#HW4-P3-divisors" class="headerlink" title="[HW4 P3] divisors"></a><code>[HW4 P3]</code> divisors</h2><p>Write a function <code>def divisors(number)</code> that takes a positive integer and returns a report of all the positive integer divisors of that number.  That report should be in the form of a string that lists the divisors in order, starting with <code>1</code>.  If there are more than two divisors, it should use an <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Serial_comma">Oxford comma</a> before the mention of the last divisor.</p>
+<p>Here is an example use of the function.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; divisors(35)</span><br><span class="line">&#x27;The divisors of 35 are 1, 5, 7, and 35.&#x27;</span><br><span class="line">&gt;&gt;&gt; divisors(1)</span><br><span class="line">&#x27;The divisor of 1 is 1.&#x27;</span><br><span class="line">&gt;&gt;&gt; divisors(2)</span><br><span class="line">&#x27;The divisors of 2 are 1 and 2.&#x27;</span><br></pre></td></tr></table></figure>
+<p>It takes an integer and returns a string. <strong>The <code>divisors</code> function does not print anything.</strong></p>
+<p><strong>Hint:</strong><br>Your function should seek to build a string by looping through all the possible divisors and appending them to that report string using the string concatenation operation <code>+</code>.  It then will want to append information to the front and back of that report. What it appends will depend on whether there is only one divisor, or two divisors, or more than two divisors.</p>
+<p>Use integer division to figure out divisibility.</p>
+<h2 id="HW4-P4-magnitude"><a href="#HW4-P4-magnitude" class="headerlink" title="[HW4 P4] magnitude"></a><code>[HW4 P4]</code> magnitude</h2><p>People often talk about the order of magnitude of an amount. In doing so, they are often thinking in terms of <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=0fKBhvDjuy0">powers of ten</a>.  Let’s instead give a very computer science-y definition of the <em>magnitude</em> of a number based on powers of two. The first seven powers of two are 1, 2, 4, 8, 16, 32, and 64. We’ll say that</p>
+<ul>
+<li>0 is of magnitude 0;</li>
+<li>1 is of magnitude 1;</li>
+<li>2 and 3 are of magnitude 2;</li>
+<li>4, 5, 6, and 7 all are of magnitude 3;</li>
+<li>the numbers from 8 to 15 are of magnitude 4;</li>
+</ul>
+<p>and so on. Note that 30 is of magnitude 5 because it is less than 32, and $32 &#x3D; 2^5$. But it is also that magnitude because dividing it by 2 yields 15, and 15 is magnitude 4. In other words, the number 30 has one more order of magnitude than 15 because it is twice as big, and because we have chosen to think in base two.</p>
+<p>Write a function <code>magnitude</code> that returns the magnitude of a non-negative integer as we describe above. For example, your function’s code should work as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">0</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">1</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">2</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">3</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">15</span>)</span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">30</span>)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">1023</span>)</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>magnitude(<span class="number">1024</span>)</span><br><span class="line"><span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>You can assume <code>magnitude</code> is called only with numbers 0 or larger.</p>
+<p><strong>Hint</strong>: The magnitude can be computed by counting the number of times you can divide by two until there is nothing left to divide.</p>
+<p>You should not use any floating point operations to do this work. It turns out that the magnitude of a positive number is just the number of bits in its binary representation. Even so, you cannot use any Python-provided library functions that perform binary conversion.  You should instead compute this magnitude “from scratch” using integer division.</p>
+<h2 id="HW4-P5-Euclid"><a href="#HW4-P5-Euclid" class="headerlink" title="[HW4 P5] Euclid"></a><code>[HW4 P5]</code> Euclid</h2><p>In the Western world, Euclid is often touted as the inventor of the first recorded algorithm. In Book VII of Euclid’s <em>Elements</em>, he lays out a description of determining whether two integers have a common divisor, or else are relatively prime. He writes</p>
+<pre><code>&quot;***When two unequal numbers are set out, and the less is continually
+subtracted in turn from the greater, if the number which is left
+never measures the one before it until a unit is left, then the
+original numbers are relatively prime.***&quot; (See the [Proposition](http://aleph0.clarku.edu/~djoyce/elements/bookVII/propVII1.html))
+</code></pre>
+<p>He is describing an iterative process that starts with two positive integers.  If the two numbers are the same, then their common divisor is their whole self.  If instead one of the numbers is <code>1</code>– if it is “a unit”– then the process stops having determined that they have no common divisor. If the numbers differ and are both greater than <code>1</code>, then repeat the process using the smaller number of the pair along with the positive difference between the pair– the subtraction of the lesser from the greater.</p>
+<p>Write a function <code>def euclid(a,b)</code> that performs Euclid’s algorithm to determine whether or not two positive numbers have a common divisor by performing this process.  For example, if the function is handed <code>15</code> and <code>24</code>, the process should repeat with <code>9</code> and <code>15</code> (because <code>9</code> equals <code>24 - 15</code>), and then <code>9</code> and <code>6</code>, and then <code>6</code> and <code>3</code>, and then <code>3</code> and <code>3</code>. Because these are equal, it stops and returns <code>True</code>. As another example, if the numbers it is given are <code>7</code> and <code>5</code>, then its process repeats with <code>5</code> and <code>2</code> (because <code>2</code> equals &#96;7</p>
+<ul>
+<li>5<code>), then with </code>3<code>and</code>2<code>, then </code>2<code>and</code>1<code>. Because one of these is </code>1<code>it then stops and returns</code>False&#96;.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>euclid(<span class="number">15</span>,<span class="number">24</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>euclid(<span class="number">7</span>,<span class="number">5</span>)</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>Your function can assume that its two parameters are both greater than 1. You need not worry about handling other kinds of parameters.</p>
+<h2 id="HW4-P6-reverse-number"><a href="#HW4-P6-reverse-number" class="headerlink" title="[HW4 P6] reverse number"></a><code>[HW4 P6]</code> reverse number</h2><p>The table below illustrates an iterative process for examining the digits of a number.  In particular, it computes the number whose decimal digits are the reverse of that number:</p>
+<table>
+<thead>
+<tr>
+<th align="right">number</th>
+<th align="right">reverse</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">53137</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">5313</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td align="right">531</td>
+<td align="right">73</td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td align="right">731</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">7313</td>
+</tr>
+<tr>
+<td align="right">0</td>
+<td align="right">73135</td>
+</tr>
+</tbody></table>
+<p>The first row starts with a number and also 0.  Each subsequent row of the table advances a calculation on those two numbers that has the effect of changing their digits. The first column gives the result of the number above it when it is divided by 10. The second column is the number above it, multiplied by 10, and with the last digit “lost” from the first column because of the division by 10 added to it. For example, the row with <code>531</code> and <code>73</code> is followed by a row containing <code>53</code> and <code>731</code> because <code>53 == 531 // 10</code> and because <code>731 == 73*10 + 1</code>.</p>
+<p>In this exercise, generalize your code for <strong>[HW2 P3]</strong> so that it computes the reverse as shown in the table.  Write the code as a function <code>def reverse_number(n)</code> instead of as a script. (Put the definition in a file named <code>reverse_number.py</code>.)  It should take a non-negative integer <code>n</code> as a parameter and it should return the integer whose digits are the reverse of the decimal representation of <code>n</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; reverse_number(53137)</span><br><span class="line">73135</span><br><span class="line">&gt;&gt;&gt; reverse_number(0)</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; reverse_number(2112)</span><br><span class="line">2112</span><br><span class="line">&gt;&gt;&gt; reverse_number(1234567)</span><br><span class="line">7654321</span><br></pre></td></tr></table></figure>
+
+<p>Your code should use only integer operations. It should not use floating point, nor should it convert the integer to a string to obtain the decimal digits. Instead, I recommend writing code that mimics the caclulations shown in the table just above.</p>
+<h2 id="HW4-P7-count-palindromes"><a href="#HW4-P7-count-palindromes" class="headerlink" title="[HW4 P7] count palindromes"></a><code>[HW4 P7]</code> count palindromes</h2><p>A number is a <em>decimal palindrome</em> whenever it reads the same forwards and backwards.  For example <code>747</code>, <code>2112</code>, <code>0</code>, and <code>1234567654321</code> are all decimal palindromes.</p>
+<p>Write a procedure <code>def count_palindromes(limit)</code> that gives the numbers from 0 up to <code>limit</code> that are decimal palindromes. For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; count_palindromes(999)</span><br><span class="line">109</span><br><span class="line">&gt;&gt;&gt; count_palindromes(1000)</span><br><span class="line">109</span><br><span class="line">&gt;&gt;&gt; count_palindromes(1001)</span><br><span class="line">110</span><br><span class="line">&gt;&gt;&gt; count_palindromes(77)</span><br><span class="line">17</span><br><span class="line">&gt;&gt;&gt; count_palindromes(10)</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p>The last result is <code>10</code> because the single-digit numbers 0 through 9 are all decimal palindromes. The next-to-last result is <code>17</code> because 11, 22, 33, 44, 55, 66, and 77 are also decimal palindromes.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw4/" data-id="clcu416pn0000wat0ften5i4m" data-title="Homework 4 -- Loop" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hw3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/121-S23/2023/01/12/hw3/" class="article-date">
@@ -745,6 +890,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/121-S23/2023/01/12/hw4/">Homework 4 -- Loop</a>
+          </li>
         
           <li>
             <a href="/121-S23/2023/01/12/hw3/">Homework 3 -- Vend and Function</a>
