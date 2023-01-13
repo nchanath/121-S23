@@ -93,6 +93,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hw5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw5/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:00:34.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/121-S23/2023/01/12/hw5/">Homework 5 -- List</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Complete and submit by 2&#x2F;17 at 1:00pm</strong></p>
+<p>This week we again ask you to write a function for each of the homework exercises.  For some of these you might sometimes find it useful to write other “helper” functions. These can be used by the primary function you are asked to write.  It’s not necessary to do this, but it can sometimes make your problem-solving and your testing easier.</p>
+<p>All the required functions act on Pytgon lists, a <em>mutable, reference-based</em> data structure for storing collections of values. Lists (like <code>[4,1,2,1,1,3]</code>) hold sequences of values, and might have repeated elements.</p>
+<p>Since lists are <em>passed by reference</em> to a function it is possible for a function to modify their contents, changing the values stored in them as a <em>side effect</em> of the function’s execution. When you write your code pay careful attention as to whether we want your function to change the list it is given, or instead whether we want you to build and return a new list (perhaps based on a list that you are given).</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW5-P1-down-up"><a href="#HW5-P1-down-up" class="headerlink" title="[HW5 P1] down up"></a><code>[HW5 P1]</code> down up</h2><p>Write a function <code>def down_up(n)</code> that, when given a positive integer <code>n</code>, returns a list that contains a palindrome of counts as shown here:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; down_up(3)</span><br><span class="line">[3, 2, 1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; down_up(5)</span><br><span class="line">[5, 4, 3, 2, 1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; down_up(1)</span><br><span class="line">   [1]</span><br></pre></td></tr></table></figure>
+
+<p>That is, the returned list’s values should run from <code>n</code> down to 1, then back up to <code>n</code>.</p>
+<h2 id="HW5-P2-sum-list-squares"><a href="#HW5-P2-sum-list-squares" class="headerlink" title="[HW5 P2] sum list squares"></a><code>[HW5 P2]</code> sum list squares</h2><p>Write a function <code>sum_list_squares</code> that takes a list of integers, and returns the sum of the squares of all the elements of that list.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sum_list_squares([10,1,-3])</span><br><span class="line">110</span><br><span class="line">&gt;&gt;&gt; sum_list_squares([3,4])</span><br><span class="line">25</span><br><span class="line">&gt;&gt;&gt; sum_list_squares([1,-1,1,-1,1,-1])</span><br><span class="line">   6</span><br><span class="line">&gt;&gt;&gt; sum_list_squares([11])</span><br><span class="line">   121</span><br><span class="line">&gt;&gt;&gt; sum_list_squares([])</span><br><span class="line">   0</span><br></pre></td></tr></table></figure>
+
+<p>Note that the list could be empty. In that case, the function should return a sum of 0.</p>
+<h2 id="HW5-P3-counts"><a href="#HW5-P3-counts" class="headerlink" title="[HW5 P3] counts"></a><code>[HW5 P3]</code> counts</h2><p>Write a function <code>def counts(n,xs)</code> that when given a positive integer <code>n</code> and a list of integers <code>xs</code>, one whose elements are known to be non-negative integers less than <code>n</code>, builds and returns a list that contains the number of occurrences in <code>xs</code> of each of the values from <code>0</code> to <code>n-1</code>.  For example, we get this interaction</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; counts(6,[1,5,0,0,5,2,5])</span><br><span class="line">[2, 1, 1, 0, 0, 3]</span><br></pre></td></tr></table></figure>
+
+<p>because <code>0</code> occurs twice, <code>1</code> and <code>2</code> each occur once, <code>5</code> occurs three times, and <code>3</code> and <code>4</code> don’t occur. Here are a few more example uses of <code>counts</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; counts(10,[1,5,0,0,5,2,5])</span><br><span class="line">[2, 1, 1, 0, 0, 3, 0, 0, 0, 0]</span><br><span class="line">&gt;&gt;&gt; counts(10,[])</span><br><span class="line">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line">&gt;&gt;&gt; counts(1,[0,0,0])</span><br><span class="line">[3]</span><br><span class="line">&gt;&gt;&gt; counts(3,[2,2,2,1,1,0])</span><br><span class="line">[1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW5-P4-primes-list"><a href="#HW5-P4-primes-list" class="headerlink" title="[HW5 P4] primes list"></a>[HW5 P4] primes list</h2><p>Write a function <code>def primes_list(n)</code> that, when given a non-negative integer <code>n</code>, returns a list of the first <code>n</code> primes (in order).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; primes_list(6)</span><br><span class="line">[2, 3, 5, 7, 11, 13]</span><br><span class="line">&gt;&gt;&gt; primes_list(1)</span><br><span class="line">[2]</span><br><span class="line">&gt;&gt;&gt; primes_list(0)</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<h2 id="HW5-P5-has-duplicates"><a href="#HW5-P5-has-duplicates" class="headerlink" title="[HW5 P5] has duplicates"></a><code>[HW5 P5]</code> has duplicates</h2><p>Write a function <code>def has_duplicates(xs)</code> that takes a list <code>xs</code> and determines whether some value appears more than once.  It should return <code>True</code> if so, and <code>False</code> if there are no reoccurring values.  Note that the list <code>xs</code> could be empty.  For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; has_duplicates([1,2,3,4,5,6])</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; has_duplicates([3,2,3,3,5,3])</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; has_duplicates([1,2,3,4,2,6])</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; has_duplicates([])</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>The function should not modify the list it is given.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw5/" data-id="clcu44pf70000xit027pp8iol" data-title="Homework 5 -- List" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hw4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/121-S23/2023/01/12/hw4/" class="article-date">
@@ -892,6 +957,10 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       <ul>
         
           <li>
+            <a href="/121-S23/2023/01/12/hw5/">Homework 5 -- List</a>
+          </li>
+        
+          <li>
             <a href="/121-S23/2023/01/12/hw4/">Homework 4 -- Loop</a>
           </li>
         
@@ -905,10 +974,6 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
         
           <li>
             <a href="/121-S23/2023/01/11/hw1/">Homework 1 -- Set-up, Script, and Submit!</a>
-          </li>
-        
-          <li>
-            <a href="/121-S23/2023/01/06/welcome/">Welcome</a>
           </li>
         
       </ul>
