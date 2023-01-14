@@ -93,6 +93,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hw7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/121-S23/2023/01/12/hw7/" class="article-date">
+  <time class="dt-published" datetime="2023-01-13T06:11:39.000Z" itemprop="datePublished">2023-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/121-S23/2023/01/12/hw7/">Homework 7 -- Call yourself</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Complete and submit by 3&#x2F;24 at 1:00pm</strong></p>
+<p>This week you are to write several functions that <em>call themselves</em> to do their own work, that is, for each exercise you are asked to write a <em>recursive function</em>.  A classic example of this is the factorial function, which computes<br>$$<br>    n! &#x3D; n \times (n-1) \times (n-2) \times \cdots \times 3 \times 2 \times 1<br>$$</p>
+<p>This can be viewed as a recursive calculation because the product just above can be written as a product of the number <code>n</code> muliplied by the prior factorial, like so:</p>
+<p>$$<br>\begin{array}{rcl}<br>n! &amp; &#x3D; &amp; n \times ((n-1) \times (n-2) \times \cdots \times 3 \times 2 \times 1) \<br>   &amp; &#x3D; &amp; n \times ((n-1)!)<br>\end{array}<br>$$<br>And so we can write factorial this way:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fact</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n * factorial(n-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>The <em>recursive case</em> when <code>n</code> is larger than 1 (and so the product has several terms) is just the Python form of the expression <code>n * ((n-1)!)</code>, The <em>base case</em> occurs when the product is just a single term (when <code>n == 1</code>). This case is handled by the <code>else</code> within this function.</p>
+<p>For all of these below, you’ll want to figure out a similar pattern in their calculation.  Ask yourself: how can the actvity of the function be structured so as to rely on itself? You’ll also want to ask: how do I handle the simple case(s)? These recursive functions rely on the simplest base cases so that this kind of unwinding terminates.</p>
+<p>As we saw in class, if you forget the base case then you’ll probably get an error that your code’s execution exceeded Python’s maximum recursion depth.</p>
+<p>You should not be using any loops to solve these problems.  Use recursion!</p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="HW7-P1-print-digits"><a href="#HW7-P1-print-digits" class="headerlink" title="[HW7 P1] print digits"></a><code>[HW7 P1]</code> print digits</h2><p>Write a printing procedure <code>def print_digits(n)</code> that, when given a positive integer <code>n</code>, outputs the sequence of its digits, one digit on each line. It should output the digits in order of least significant to most significant. This means that the ones digit should be first, followed by the tens digit, followed by the hundreds digit, and so on.</p>
+<p>For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print_digits(1234)</span><br><span class="line">4</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; print_digits(3731)</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">7</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; print_digits(7)</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
+<p>Your procedure must be recursive. It should call itself somewhere within its own definition.</p>
+<p>A quick hint: note that we can think of this procedure, for numbers 10 or larger, as printing the ones digit, followed by printing the other digits.  So for the second example. We output 1, and then we output the digits of 373.</p>
+<p>Notice that you only need to worry about printing the digits of positive integers. We don’t expect your code to work correctly for 0 or for negative numbers.</p>
+<p>You should not get the digits of an integer by converting it to a string with <code>str</code>. Use the integer division operations <code>//</code> and <code>%</code> instead.</p>
+<h2 id="HW7-P2-remainder"><a href="#HW7-P2-remainder" class="headerlink" title="[HW7 P2] remainder"></a><code>[HW7 P2]</code> remainder</h2><p>Consider the quotient and remainder operations when a non-negative integer is divided by a positive integer.  For example, 37 divided by 10 is 3 with a remainder of 7.  One way of thinking about the remainder is that it is the amount left over after repeatedly taking away the divisor from that number. So, since 7 is the result of subtracting 10 three times from 37, is the remainder due to that division by 10. 7 &#x3D; 37-10-10-10.</p>
+<p>Looking at this process, we can see that 37, 27, 17, and 7 all have the same remainder when divided by 10.</p>
+<p>Write a <em>recursive</em> function <code>def remainder(n,d)</code> that, for any non-negative integer <code>n</code> and positive integer <code>d</code>, computes<br>the remainder <code>n % d</code> and returns it.  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; remainder(37,10)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; remainder(15,5)</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; remainder(20,7)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; remainder(3,7)</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>Do not use the <code>//</code> or <code>%</code> operators in your code. Also, do not import anything else into your module.</p>
+<p>Your function must be recursive.</p>
+<p>You need not worry about dividing negative integers. Nor do you need to deal with anything but positive divisors.</p>
+<h2 id="HW7-P3-quotient"><a href="#HW7-P3-quotient" class="headerlink" title="[HW7 P3] quotient"></a><code>[HW7 P3]</code> quotient</h2><p>Using the same ideas we outlined for <code>remainder</code>, instead write a <em>recursive</em> function <code>def quotient(n,d)</code> that, for any non-negative integer <code>n</code> and positive integer <code>d</code>, computes the quotient <code>n // d</code> and returns it.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; quotient(37,10)</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; quotient(15,5)</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; quotient(20,7)</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; quotient(3,7)</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>Note that the quotient of 37 divided by 10 is just one more than the quotient of 27 divided by 10.</p>
+<p>Do not use the <code>//</code> or <code>%</code> operators in your code. Also, do not import anything else into your module.</p>
+<p>Your function must be recursive.</p>
+<p>You need not worry about dividing negative integers. Nor do you need to deal with anything but positive divisors.</p>
+<h2 id="HW7-P4-collatz-length"><a href="#HW7-P4-collatz-length" class="headerlink" title="[HW7 P4] collatz length"></a><code>[HW7 P4]</code> collatz length</h2><p>Consider the following process: Start with some positive integer.  If the number is odd, multiply it by 3 and add 1.  If it is even, divide it by 2. For every number that has ever been tried, repeating this process eventually leads to the number 1.  For example, starting with 6 we get the sequence 6, 3, 10, 5, 16, 8, 4, 2, 1.  This means that the length of 6’s collatz sequence is 9.</p>
+<p>Write a <em>recursive</em> function <code>def collatz_length(n)</code> that takes a positive integer <code>n</code> and returns the length of that integer’s collatz sequence.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; collatz_length(6)</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; collatz_length(1)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; collatz_length(5)</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>Your function must be recursive.</p>
+<h2 id="HW7-P5-is-power"><a href="#HW7-P5-is-power" class="headerlink" title="[HW7 P5] is power"></a><code>[HW7 P5]</code> is power</h2><p>Write a <em>recursive</em> function <code>def is_power(n,b)</code> that takes two positive integers <code>n</code> and <code>b</code> and determines whether or not <code>n</code> is an integer power of <code>b</code>.  If it is, it should return <code>True</code>. If it is not, it<br>should return <code>False</code>.  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; is_power(1000,10)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; is_power(9,3)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; is_power(1,3)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; is_power(16,2)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; is_power(9,2)</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>You should not use any of the built-in power operations <code>**</code> of <code>pow</code>, and you should not import any libraries.  Instead, just use the basic integer arithmetic operations.</p>
+<p>Your function must be recursive.</p>
+<h2 id="HW7-P6-sum-to-power-of-two"><a href="#HW7-P6-sum-to-power-of-two" class="headerlink" title="[HW7 P6] sum to power of two"></a><code>[HW7 P6]</code> sum to power of two</h2><p>Consider the following expressions made up of 1s, parentheses, and <code>+</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(1+1)</span><br><span class="line">((1+1)+(1+1))</span><br><span class="line">(((1+1)+(1+1))+((1+1)+(1+1)))</span><br></pre></td></tr></table></figure>
+
+<p>Note that these sums are decompositions of successive powers of 2.  The first is just <code>2**0</code>, the second sums to <code>2**1</code> or 2, the third sums to <code>2**2</code> or 4, and the fourth sums to <code>2**3</code> or 8. Note also, that a sum is just the parenthesized sum of the prior expression, repeated.</p>
+<p>Write a <em>recursive</em> function <code>def sum_power2(n)</code> which returns a string that expresses a sum of this form for <code>2**n</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sum_power2(0)</span><br><span class="line">&#x27;1&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(1)</span><br><span class="line">&#x27;(1+1)&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(2)</span><br><span class="line">&#x27;((1+1)+(1+1))&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(4)</span><br><span class="line">&#x27;((((1+1)+(1+1))+((1+1)+(1+1)))+(((1+1)+(1+1))+((1+1)+(1+1))))&#x27;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nchanath.github.io/121-S23/2023/01/12/hw7/" data-id="clcv35ijj000ikxt0heno7hjf" data-title="Homework 7 -- Call yourself" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/121-S23/tags/Homework/" rel="tag">Homework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hw6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/121-S23/2023/01/12/hw6/" class="article-date">
@@ -1033,7 +1120,7 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/121-S23/tags/Announcements/" style="font-size: 10px;">Announcements</a> <a href="/121-S23/tags/Handouts/" style="font-size: 10px;">Handouts</a> <a href="/121-S23/tags/Homework/" style="font-size: 20px;">Homework</a>
+      <a href="/121-S23/tags/Announcements/" style="font-size: 10px;">Announcements</a> <a href="/121-S23/tags/Handouts/" style="font-size: 15px;">Handouts</a> <a href="/121-S23/tags/Homework/" style="font-size: 20px;">Homework</a>
     </div>
   </div>
 
@@ -1055,6 +1142,10 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
       <ul>
         
           <li>
+            <a href="/121-S23/2023/01/14/prog-ex-lec01-1/">Programming exercise for Lec01-1</a>
+          </li>
+        
+          <li>
             <a href="/121-S23/2023/01/13/info/">Course information</a>
           </li>
         
@@ -1068,10 +1159,6 @@ original numbers are relatively prime.***&quot; (See the [Proposition](http://al
         
           <li>
             <a href="/121-S23/2023/01/12/proj2/">Project 2 -- Stats/Chats</a>
-          </li>
-        
-          <li>
-            <a href="/121-S23/2023/01/12/proj1/">Project 1 -- The Game of Life and Image Processing</a>
           </li>
         
       </ul>
