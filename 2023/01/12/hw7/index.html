@@ -14,7 +14,7 @@
 <meta property="og:description" content="Complete and submit by 3&#x2F;24 at 1:00pm This week you are to write several functions that call themselves to do their own work, that is, for each exercise you are asked to write a recursive functio">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-13T06:11:39.000Z">
-<meta property="article:modified_time" content="2023-01-13T06:23:40.258Z">
+<meta property="article:modified_time" content="2023-01-19T14:04:09.218Z">
 <meta property="article:author" content="Chanathip Namprempre">
 <meta property="article:tag" content="Homework">
 <meta name="twitter:card" content="summary">
@@ -157,12 +157,16 @@
 
 <p>You should not use any of the built-in power operations <code>**</code> of <code>pow</code>, and you should not import any libraries.  Instead, just use the basic integer arithmetic operations.</p>
 <p>Your function must be recursive.</p>
-<h2 id="HW7-P6-sum-to-power-of-two"><a href="#HW7-P6-sum-to-power-of-two" class="headerlink" title="[HW7 P6] sum to power of two"></a><code>[HW7 P6]</code> sum to power of two</h2><p>Consider the following expressions made up of 1s, parentheses, and <code>+</code>.</p>
+<!---
+## `[HW7 P6]` sum to power of two
+
+Consider the following expressions made up of 1s, parentheses, and `+`.
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(1+1)</span><br><span class="line">((1+1)+(1+1))</span><br><span class="line">(((1+1)+(1+1))+((1+1)+(1+1)))</span><br></pre></td></tr></table></figure>
 
 <p>Note that these sums are decompositions of successive powers of 2.  The first is just <code>2**0</code>, the second sums to <code>2**1</code> or 2, the third sums to <code>2**2</code> or 4, and the fourth sums to <code>2**3</code> or 8. Note also, that a sum is just the parenthesized sum of the prior expression, repeated.</p>
 <p>Write a <em>recursive</em> function <code>def sum_power2(n)</code> which returns a string that expresses a sum of this form for <code>2**n</code>.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sum_power2(0)</span><br><span class="line">&#x27;1&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(1)</span><br><span class="line">&#x27;(1+1)&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(2)</span><br><span class="line">&#x27;((1+1)+(1+1))&#x27;</span><br><span class="line">&gt;&gt;&gt; sum_power2(4)</span><br><span class="line">&#x27;((((1+1)+(1+1))+((1+1)+(1+1)))+(((1+1)+(1+1))+((1+1)+(1+1))))&#x27;</span><br></pre></td></tr></table></figure>
+<p>—&gt;</p>
 
       
     </div>
