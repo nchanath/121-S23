@@ -6,5 +6,5 @@ while i < 6:
 
     print("Do stuff...")
 
-    i = i+1
+    i += 1
     print(f"At the bottom i is {i}\n")
