@@ -3,6 +3,7 @@ def sum_iterative(n):
     total = 0
     for i in range(n+1):
         total += i
+        print(f"Adding {i}. Total is now {total}.")
     return total
 
 # Recursive solution

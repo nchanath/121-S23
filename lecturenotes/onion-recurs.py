@@ -5,6 +5,7 @@ def peel_onion(layers_left):
     else:
         print(f"Peeling layer {layers_left}")
         layers_left -= 1
-        peel_onion(layers_left)
+        peel_onion(layers_left )
+        print(f"Peeling layer {layers_left}")
 
 peel_onion(5)

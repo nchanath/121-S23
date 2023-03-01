@@ -10,16 +10,28 @@ def fib_iterative(n):
             print(f"fib[{i}] = fib[{i-1}] + fib[{i-2}] = {fib[i-1]} + {fib[i-2]} = {fib[i]}")
         return fib[n]
 
-def fib_recursive(n, depth=0):
-    print("  " * depth, f"fib_recursive({n})")
+def fib_recursive(n):
+    print(f"fib_recursive({n})")
     if n <= 1:
         return n
-    fib_n_minus_1 = fib_recursive(n-1, depth+1)
-    fib_n_minus_2 = fib_recursive(n-2, depth+1)
+    fib_n_minus_1 = fib_recursive(n-1)
+    fib_n_minus_2 = fib_recursive(n-2)
+    fib_n = fib_n_minus_1 + fib_n_minus_2
+    print(f"fib_n_minus_1 of {n} = {fib_n_minus_1}")
+    print(f"fib_n_minus_2 of {n} = {fib_n_minus_2}")
+    print(f"fib_recursive({n}) = {fib_n}")
+    return fib_n
+
+def fib_recursive_i(n, depth=0):
+    print("  " * depth, f"fib_recursive_i({n})")
+    if n <= 1:
+        return n
+    fib_n_minus_1 = fib_recursive_i(n-1, depth+1)
+    fib_n_minus_2 = fib_recursive_i(n-2, depth+1)
     fib_n = fib_n_minus_1 + fib_n_minus_2
     print("  " * (depth+1), f"fib_n_minus_1 of {n} = {fib_n_minus_1}")
     print("  " * (depth+1), f"fib_n_minus_2 of {n} = {fib_n_minus_2}")
-    print("  " * depth, f"fib_recursive({n}) = {fib_n}")
+    print("  " * depth, f"fib_recursive_i({n}) = {fib_n}")
     return fib_n
 
     
@@ -28,4 +40,6 @@ n = 5
 print(f"\niterative fib: {fib_iterative(n)}")
 print()
 print(f"\nrecursive fib: {fib_recursive(n)}")
+print()
+print(f"\nrecursive fib: {fib_recursive_i(n)}")
 
