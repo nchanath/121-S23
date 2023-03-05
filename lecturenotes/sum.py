@@ -10,14 +10,15 @@ def sum_iterative(n):
 def sum_recursive(n):
     print(f"Computing sum_recursive({n})")
     if n == 0:
-        print(f"sum_recursive({n}) = 0")
+        print("returning 0")
         return 0
     result = n + sum_recursive(n-1)
-    print(f"sum_recursive({n}) = {n} + sum_recursive({n-1}) = {result}")
+    print(f"returning {result}")
     return result
 
 # Test the functions
 n = 3
+print()
 print(f"Sum of 0 to {n} (iterative): {sum_iterative(n)}\n")
 print()
 print(f"Sum of 0 to {n} (recursive): {sum_recursive(n)}")

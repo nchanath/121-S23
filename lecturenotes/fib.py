@@ -13,12 +13,13 @@ def fib_iterative(n):
 def fib_recursive(n):
     print(f"fib_recursive({n})")
     if n <= 1:
+        print(f"returning {n}")
         return n
-    fib_n_minus_1 = fib_recursive(n-1)
-    fib_n_minus_2 = fib_recursive(n-2)
-    fib_n = fib_n_minus_1 + fib_n_minus_2
-    print(f"fib_n_minus_1 of {n} = {fib_n_minus_1}")
-    print(f"fib_n_minus_2 of {n} = {fib_n_minus_2}")
+    fib_a = fib_recursive(n-1)
+    fib_b = fib_recursive(n-2)
+    fib_n = fib_a + fib_b
+    print(f"fib_a of {n} = {fib_a}")
+    print(f"fib_b of {n} = {fib_b}")
     print(f"fib_recursive({n}) = {fib_n}")
     return fib_n
     

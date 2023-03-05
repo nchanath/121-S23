@@ -6,13 +6,13 @@ def factorial_iterative(n):
     return result
 
 def factorial_recursive(n):
+    print(f"Computing factorial of {n}")
     if n == 0:
-        print(f"factorial_recursive({n}) = 1")
+        print("returning 1")
         return 1
     else:
-        print(f"factorial_recursive({n}) = {n} * factorial_recursive({n-1})")
         result = n * factorial_recursive(n-1)
-        print(f"result for n = {n} is {result}")
+        print(f"returning {result}")
         return result
 
 
