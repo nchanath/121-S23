@@ -21,6 +21,15 @@ def fib_recursive(n):
     print(f"fib_n_minus_2 of {n} = {fib_n_minus_2}")
     print(f"fib_recursive({n}) = {fib_n}")
     return fib_n
+    
+
+n = 4
+print(f"\niterative fib: {fib_iterative(n)}")
+print()
+print(f"\nrecursive fib: {fib_recursive(n)}")
+
+
+##################################################
 
 def fib_recursive_i(n, depth=0):
     print("  " * depth, f"fib_recursive_i({n})")
@@ -33,13 +42,3 @@ def fib_recursive_i(n, depth=0):
     print("  " * (depth+1), f"fib_n_minus_2 of {n} = {fib_n_minus_2}")
     print("  " * depth, f"fib_recursive_i({n}) = {fib_n}")
     return fib_n
-
-    
-
-n = 5
-print(f"\niterative fib: {fib_iterative(n)}")
-print()
-print(f"\nrecursive fib: {fib_recursive(n)}")
-print()
-print(f"\nrecursive fib: {fib_recursive_i(n)}")
-
