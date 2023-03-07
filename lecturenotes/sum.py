@@ -19,7 +19,7 @@ def sum_recursive(n):
 # Test the functions
 n = 3
 print()
-print(f"Sum of 0 to {n} (iterative): {sum_iterative(n)}\n")
+#print(f"Sum of 0 to {n} (iterative): {sum_iterative(n)}\n")
 print()
 print(f"Sum of 0 to {n} (recursive): {sum_recursive(n)}")
 
