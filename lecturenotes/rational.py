@@ -4,29 +4,29 @@ def createRational(n,d):
 def numerator(r):
     return r[0]
 
-def denomitator(r):
+def denominator(r):
     return r[1]
 
 def rationalProduct(r,s):
     newNumer = numerator(r) * numerator(s)
-    newDenom = denomitator(r) * denomitator(s)
+    newDenom = denominator(r) * denominator(s)
     return createRational(newNumer, NewDenom)
 
 def rationalSum(r,s):
-    nr,dr = numerator(r), denomitator(r)
-    ns,ds = numerator(s) * denomitator(s)
+    nr,dr = numerator(r), denominator(r)
+    ns,ds = numerator(s), denominator(s)
     newNumer = nr*ds + ns*dr
-    newdenom = ds*dr
-    return createRational(newNumer, NewDenom)
+    newDenom = ds*dr
+    return createRational(newNumer, newDenom)
 
 def areSameRationals(r,s):
-    nr,dr = numerator(r), denomitator(r)
-    ns,ds = numerator(s), denomitator(s)
+    nr,dr = numerator(r), denominator(r)
+    ns,ds = numerator(s), denominator(s)
     return (nr*ds == ns*dr)
 
 def stringOfRational(r):
     ntext = str(numerator(r))
-    dtext = str(denomitator(r))
+    dtext = str(denominator(r))
     return ntext + "/" + dtext
 
 def outputRational(r):
