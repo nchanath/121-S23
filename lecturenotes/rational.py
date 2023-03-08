@@ -10,7 +10,7 @@ def denominator(r):
 def rationalProduct(r,s):
     newNumer = numerator(r) * numerator(s)
     newDenom = denominator(r) * denominator(s)
-    return createRational(newNumer, NewDenom)
+    return createRational(newNumer, newDenom)
 
 def rationalSum(r,s):
     nr,dr = numerator(r), denominator(r)
