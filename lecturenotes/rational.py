@@ -33,7 +33,11 @@ def outputRational(r):
     print(stringOfRational(r))
 
 def rationalSubtraction(r,s):
-    return
+    nr,dr = numerator(r), denominator(r)
+    ns,ds = numerator(s), denominator(s)
+    newNumer = (nr*ds) - (ns*dr)
+    newDenom = dr*ds
+    return createRational(newNumer, newDenom)
 
 def rationalDivision(r,s):
     return
