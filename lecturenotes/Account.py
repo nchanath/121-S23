@@ -1,6 +1,6 @@
 class Account:
 
-    rate = .02
+    interest_rate = .02
 
     def __init__(self,amount):
         self.balance = amount
@@ -9,10 +9,7 @@ class Account:
         self.balance += amount
 
     def payInterest(self):
-        self.balance *= 1.0 + rate
+        self.balance *= 1.0 + self.interest_rate
 
-    def spend(self, amount):
-        return
-
-    def transferTo(self, receiver):
-        return
+    def getBalance(self):
+        return self.balance
