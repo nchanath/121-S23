@@ -1,3 +1,5 @@
+from Checking import Checking
+
 class PromotionalChecking(Checking):
 
     reward =  50

@@ -1,3 +1,5 @@
+from Account import Account
+
 class Checking(Account):
     min_balance = 1000.0
 
