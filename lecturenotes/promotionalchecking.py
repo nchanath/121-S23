@@ -1,4 +1,4 @@
-from Checking import Checking
+from checking import Checking
 
 class PromotionalChecking(Checking):
 

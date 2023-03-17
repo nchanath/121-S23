@@ -1,3 +1,5 @@
+from account import Account
+
 class Savings(Account):
     interest_rate = 0.04
     withdraw_fee = 1.0

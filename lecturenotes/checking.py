@@ -1,4 +1,4 @@
-from Account import Account
+from account import Account
 
 class Checking(Account):
     min_balance = 1000.0
@@ -6,4 +6,4 @@ class Checking(Account):
     def payInterest(self):
         if self.balance >= self.min_balance:
             Account.payInterest(self)
-    
+#           super().payInterest()    
