@@ -57,7 +57,7 @@ class Rational:
         pass
     
     def __repr__(self):
-        pass
+        return str(self.getNumerator()) + "/" + str(self.getDenominator())
 
     
         

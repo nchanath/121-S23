@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{listings}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=fullflexible,
+frame=single,
+breaklines=true,
+%postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\begin{document}
+
+
+Problem 1
+
+\begin{lstlisting}[language=Python]
+def percentage(amount,total):
+    percent = amount * 100 // total
+    return str(percent) + "%"
+\end{lstlisting}
+
+\bigskip
+Problem 2
+
+\begin{lstlisting}[language=Python]
+def taxi_cost(miles):
+    if miles > 10:
+        return 4*miles
+    else:
+    return 3 + 2*miles
+\end{lstlisting}
+
+\bigskip
+Problem 3
+
+\begin{lstlisting}[language=Python]
+def script():
+    got_it = False
+    while not got_it:
+        number = int(input("Enter a three-digit number: "))
+        
+        if number < 0:
+            print("That number is negative.")
+        elif number < 10:
+            print("That number has only one digit.")
+        elif number < 100:
+            print("That number has only two digits.")
+        elif number >= 1000:
+            # The instructions don't say excatly what to do here. 
+            print("That number has too many digits!")
+        else:
+            got_it = True
+            
+        if not got_it:
+            print("Please try again.")
+
+    # Assumes it is 100 and above, but less than 1000.
+    h = number // 100
+    t = number // 10 % 10
+    o = number % 10
+    print("Its hundreds digit is "+str(h)+".")
+    print("Its tens digit is "+str(t)+".")
+    print("Its ones digit is "+str(o)+".")
+\end{lstlisting}
+
+
+\newpage
+Problem 4 (a)
+
+\begin{lstlisting}[language=Python]
+def squares_of(xs):
+    sqrs = []
+    i = 0
+    while i < len(xs):
+        sqrs.append(xs[i]**2)
+        i += 1
+    return sqrs
+\end{lstlisting}
+
+\bigskip
+Problem 4 (b)
+
+\begin{lstlisting}[language=Python]
+def square_all_of(xs):
+    i = 0
+    while i < len(xs):
+        xs[i] = xs[i] * xs[i]
+        i += 1
+\end{lstlisting}
+
+\bigskip
+Problem 5
+
+\begin{lstlisting}[language=Python]
+def describe_list(xs):
+    if len(xs) == 0:
+        return "That list is empty."
+    elif len(xs) == 1:
+        return "That list holds the value " + str(xs[0]) + "."
+    elif len(xs) == 2:
+        s = "That list holds the value " + str(xs[0])
+        s += " followed by " + str(xs[1]) + "."
+        return s
+    else:
+        s = "That list holds the sequence "
+        i = 0
+        while i < len(xs) - 1:
+            s += str(xs[i]) + ", "
+            i += 1
+        s += "and "+str(xs[i])+"."
+        return s
+\end{lstlisting}
+
+
+\newpage
+Problem 6
+
+\begin{lstlisting}[language=Python]
+def number_pyramid(height):
+    count = 0
+    row = 1
+    pyramid = ""
+    while row <= height:
+        pyramid += " " * (height-row)
+        column = 1
+        while column <= row:
+            pyramid += str(count) + " "
+            column += 1
+            count = (count + 1) % 10
+        if row < height:
+            pyramid += "\n"
+        row += 1
+    print(pyramid)
+\end{lstlisting}
+
+\end{document}

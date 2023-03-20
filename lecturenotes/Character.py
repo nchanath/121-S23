@@ -1,5 +1,7 @@
 class Character:
     def __init__(self, x, y, name):
+        self.ox = x
+        self.oy = x
         self.x = x
         self.y = y
         self.name = name
@@ -13,8 +15,9 @@ class Character:
 
     def update(self):
         # Update the character's attributes based on their actions
-        pass
-
+        
+        
+        
 # Example usage:
 character1 = Character(0, 0, 'Alice')
 character2 = Character(10, 10, 'Bob')
