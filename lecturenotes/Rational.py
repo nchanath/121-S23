@@ -1,10 +1,12 @@
+from math import gcd
+
 class Rational:
     
     def __init__(self,n,d):
         if d < 0:
             n *= -1
             d *= -1
-        g = GCD(n,d)
+        g = gcd(n,d)
         self.numerator = n // g
         self.denominator = d // g
 
