@@ -111,8 +111,3 @@ def apply_function(f, lst):
 def filter_function(f, lst):
     pass
 
-
-
-
-
-
