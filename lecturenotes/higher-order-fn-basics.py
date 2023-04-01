@@ -90,8 +90,14 @@ print(apply_operation(numbers, add5))
 #
 #     For example, if `f` is the `square` function and `g` is the `add3` function that adds `3` to its argument, the composed function should apply `square` to the result of `add3`. Use this composed function to calculate the square of `7` after adding `3` to it.
 
+def add4(x):
+    return x+4
+
+def square(x):
+    return x**2
+
 def compose(f, g):
-    pass
+    return (f(g))
 
 #   
 #  
