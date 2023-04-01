@@ -495,7 +495,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><strong>Complete and submit by 4&#x2F;15 at 1:00pm</strong></p>
+        <p><strong>Cancelled</strong><br><del><strong>Complete and submit by 4&#x2F;15 at 1:00pm</strong></del></p>
 <hr>
 <ul>
 <li><a href="hawkdove.py">starting code for the <strong>hawkdove</strong> project</a></li>
@@ -974,7 +974,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p><strong>Cancelled</strong><br><del><strong>Complete and submit by 4&#x2F;28 at 1:00pm</strong></del></p>
-<p><strong>Note the due date for this assignment.</strong></p>
+<p><del><strong>Note the due date for this assignment.</strong></del></p>
 <h3 id="Part-1-Search-trees"><a href="#Part-1-Search-trees" class="headerlink" title="Part 1: Search trees"></a>Part 1: Search trees</h3><p>For the first two problems below, you are to enhance a class definition of a binary search tree. We’ve provided <a href="BSTree.py"><strong>starting source code</strong></a> for you to download. It contains the definition of a <code>BSTNode</code> class that describes the nodes that make up the structure of a binary search tree. Each such node <code>n</code> has an <code>n.key</code> and an <code>n.value</code>, the two components that serve as an item for a dictionary data structure. It also has two references <code>n.left</code> and <code>n.right</code> that may link to other nodes in the tree or, like a linked list, might have the value <code>None</code>.</p>
 <p>The file also contains a definition of a <code>BSTree</code> class that is a binary search tree implementation of an <em>ordered</em> dictionary as described in lecture. A binary search tree object <code>t</code> has a single attribute <code>t.root</code> that refers to the root node of the tree, an object of type <code>BSTnode</code>.  Included in that class are definitions of methods for inserting and updating entries in the dictionary (<code>set_value</code>), looking up dictionary items’ values by their key (<code>get_value</code>), computing the number of entries in the dictionary (<code>size</code>), finding the minimum-valued key (<code>min_key</code>), and gathering all the entries into a list (<code>as_list</code>).  These should be familiar to you as you saw similar code in lecture.</p>
 <p>Below we ask you add four methods to the <code>BSTree</code> class. In all our examples illustrating how they are to work, you can assume we’ve typed the following into Python:</p>
@@ -1541,5 +1541,21 @@ Consider the following expressions made up of 1s, parentheses, and `+`.
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
