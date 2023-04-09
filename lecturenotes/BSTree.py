@@ -64,17 +64,6 @@ class BSTree:
 
         return subtree_size(self.root)
 
-    def search(self,k):
-        curr = self.root
-        while curr is not None:
-            if k == curr.key:
-                return curr.value
-            if k < curr.key:
-                curr = curr.left
-            if k > curr.key:
-                curr = curr.right
-        return None
-    
     def as_list(self):
 
         def subtree_list(n):
