@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Create an array of values for n ranging from 0 to 10000000
-# n = np.arange(0, 10000)
+#n = np.arange(0, 10000)
 n = np.arange(0, 100000)
 
 # Calculate the values of the functions

@@ -7,7 +7,7 @@ def generate_bitstrings(n):
     bitstrings = []
     prev_bitstrings = generate_bitstrings(n-1)
 
-    # print(prev_bitstrings)
+    print(prev_bitstrings)
     
     for s in prev_bitstrings:
         bitstrings.append(s + "0")
